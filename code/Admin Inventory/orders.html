@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Admin Inventory Management</title>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <a href="#" class="logo"> Admin </a>
+      <ul class="page-buttons">
+        <li>
+          <a href="index.html"
+            ><i class="bx bxs-dashboard icon"></i> Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="products.html"><i class="bx bxs-box icon"></i> Products</a>
+        </li>
+        <li>
+          <a href="orders.html" class="active"
+            ><i class="bx bxs-shopping-bag icon"></i> Orders</a
+          >
+        </li>
+        <li>
+          <a href="users.html"><i class="bx bxs-user-pin icon"></i> Users</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- NAVBAR -->
+    <section id="content">
+      <nav>
+        <i class="bx bx-menu toggle-sidebar"></i>
+        <span class="separator"></span>
+        <ul class="logout">
+          <li>
+            <a href="#"><i class="bx bx-log-out icon"></i> Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- MAIN -->
+      <main>
+        <h1 class="title">Order Management</h1>
+      </main>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
