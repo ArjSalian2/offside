@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 10:18 AM
+-- Generation Time: Nov 27, 2023 at 06:18 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -45,21 +45,6 @@ CREATE TABLE `address` (
 CREATE TABLE `category` (
   `CategoryID` int(100) NOT NULL,
   `Name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer_details`
---
-
-CREATE TABLE `customer_details` (
-  `CustomerDetailsID` int(11) NOT NULL,
-  `UserID` int(11) DEFAULT NULL,
-  `FirstName` varchar(255) DEFAULT NULL,
-  `LastName` varchar(255) DEFAULT NULL,
-  `AddressID` int(255) DEFAULT NULL,
-  `PaymentID` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -125,7 +110,7 @@ CREATE TABLE `payment` (
 CREATE TABLE `products` (
   `ProductID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
-  `Price` decimal(10,2) NOT NULL,
+  `Price` int(11) NOT NULL,
   `CategoryID` int(11) DEFAULT NULL,
   `StockLevel` int(11) DEFAULT NULL,
   `ImageURL` varchar(255) DEFAULT NULL,
@@ -189,10 +174,25 @@ CREATE TABLE `shopping_basket_items` (
 
 CREATE TABLE `users` (
   `userID` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+  `First Name` varchar(100) NOT NULL,
+  `Last Name` varchar(100) NOT NULL,
+  `Email` varchar(255) NOT NULL,
   `Pass` varchar(255) NOT NULL,
-  `user_type` int(11) NOT NULL
+  `Phone Number` int(15) NOT NULL,
+  `user_type` int(11) NOT NULL,
+  `Created` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userID`, `First Name`, `Last Name`, `Email`, `Pass`, `Phone Number`, `user_type`, `Created`) VALUES
+(2, 'Muhammad', 'Shuayb', '2100077568@aston.ac.uk', 'password', 123456789, 0, '2023-11-23'),
+(3, 'John', 'Smith', '210077568@aston.ac.uk', 'password', 123456789, 1, '2023-11-27'),
+(4, 'something', 'somthing', 'sadsadsadsad', 'dasdasdsad', 123456789, 1, '2023-11-27'),
+(5, 'sadsadsada', 'sadasds', 'asdsadsadas', 'sdadsada', 12345678, 1, '2023-11-27'),
+(6, 'somehidsf', 'dfsfdsfdsf', 'sadasdasda', 'dasdsadad', 123456789, 1, '2023-11-27');
 
 -- --------------------------------------------------------
 
@@ -204,6 +204,14 @@ CREATE TABLE `user_type` (
   `UserTypeID` int(11) NOT NULL,
   `Type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`UserTypeID`, `Type`) VALUES
+(0, 'Admin'),
+(1, 'Customer');
 
 -- --------------------------------------------------------
 
@@ -245,15 +253,6 @@ ALTER TABLE `address`
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CategoryID`),
   ADD UNIQUE KEY `FOREIGN` (`Name`);
-
---
--- Indexes for table `customer_details`
---
-ALTER TABLE `customer_details`
-  ADD PRIMARY KEY (`CustomerDetailsID`),
-  ADD KEY `UserID` (`UserID`),
-  ADD KEY `AddressID` (`AddressID`),
-  ADD KEY `PaymentID` (`PaymentID`);
 
 --
 -- Indexes for table `orders`
@@ -360,12 +359,6 @@ ALTER TABLE `address`
   MODIFY `AddressID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `customer_details`
---
-ALTER TABLE `customer_details`
-  MODIFY `CustomerDetailsID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -393,7 +386,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -417,13 +410,13 @@ ALTER TABLE `shopping_basket_items`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `UserTypeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `variation_options`
@@ -434,14 +427,6 @@ ALTER TABLE `variation_options`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `customer_details`
---
-ALTER TABLE `customer_details`
-  ADD CONSTRAINT `customer_details_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `customer_details_ibfk_2` FOREIGN KEY (`AddressID`) REFERENCES `address` (`AddressID`),
-  ADD CONSTRAINT `customer_details_ibfk_3` FOREIGN KEY (`PaymentID`) REFERENCES `payment` (`PaymentID`);
 
 --
 -- Constraints for table `orders`
