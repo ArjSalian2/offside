@@ -124,7 +124,12 @@ session_start();
                         $products = $db->query("SELECT * FROM products WHERE product_gender IN ($genderchecked) AND product_colour IN ($colourchecked) AND product_category IN ($categorychecked)");
                         foreach($products as $product) {
                         ?>
-                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> </div>
+                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                            <!-- Add basket functionality here -->
+                            
+
+                            <!-- ----------------------------- -->
+                            </div>
                         <?php
                         } 
                     }
@@ -132,7 +137,13 @@ session_start();
                         $products = $db->query("SELECT * FROM products"); 
                         foreach($products as $product) {
                         ?>
-                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> </div>
+                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                            
+                            <!-- Add basket functionality here -->
+
+
+                            <!-- ----------------------------- -->
+                            </div>
                         <?php
                         }
 
@@ -142,36 +153,3 @@ session_start();
             </div>
         </main>
     </body>
-<!-- 
-<input type="checkbox" id="mens" name="gender" value="Mens">
-<label for="mens">Mens</label> <br>
-<input type="checkbox" id="womens" name="gender" value="womens">
-<label for="womens">Womens</label> <br>
-
--->
-
-<!--
-<?php /*
-if (isset($_GET["gender"])) {
-    $genderchecked = [];
-    $genderchecked = $_GET["gender"];
-    foreach($genderchecked as $rowgender) {
-        echo $rowgender;
-        $products = $db->query("SELECT * FROM products WHERE product_gender IN ($genderchecked) OR product_colour IN ($colourchecked)");
-        foreach($products as $product) {
-            ?>
-            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> </div>
-            <?php
-        } 
-    }
-}
-else {                    
-    $products = $db->query("SELECT * FROM products");
-    foreach($products as $product) {
-    ?>
-        <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> </div>
-    <?php
-    }
-}
-*/?>
--->
