@@ -42,8 +42,13 @@ session_start();
                         $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
                         $genders = $db->query("SELECT DISTINCT product_gender FROM products ORDER BY product_gender ASC");
                         foreach($genders as $gender) {
+                            $checked = [];
+                            if(isset($_GET['gender'])){
+                                $checked = $_GET['gender'];
+                            }
                         ?>
-                            <input type="checkbox" id="<?= $gender[0];?>" name="gender[]" value="<?=$gender[0];?>">
+                            <input type="checkbox" id="<?= $gender[0];?>" name="gender[]" value="<?=$gender[0];?>"  
+                            <?php if(in_array($gender[0], $checked)){echo "checked";}  ?>>
                             <label for="<?= $gender[0]?>"> <?= strval($gender[0]) ?></label> <br>
                         <?php
                         }
@@ -53,8 +58,13 @@ session_start();
                     <?php
                         $colours = $db->query("SELECT DISTINCT product_colour FROM products ORDER BY product_colour ASC");
                         foreach($colours as $colour) {
+                            $checked = [];
+                            if(isset($_GET['colour'])){
+                                $checked = $_GET['colour'];
+                            }
                         ?>
-                            <input type="checkbox" id="<?= $colour[0];?>" name="colour[]" value="<?=$colour[0];?>">
+                            <input type="checkbox" id="<?= $colour[0];?>" name="colour[]" value="<?=$colour[0];?>"
+                            <?php if(in_array($colour[0], $checked)){echo "checked";}  ?>>
                             <label for="<?= $colour[0]?>"> <?= strval($colour[0]) ?></label> <br>
                         <?php
                         }
@@ -64,8 +74,13 @@ session_start();
                     <?php
                         $categories = $db->query("SELECT DISTINCT product_category FROM products ORDER BY product_category ASC");
                         foreach($categories as $category) {
+                            $checked = [];
+                            if(isset($_GET['category'])){
+                                $checked = $_GET['category'];
+                            }
                         ?>
-                            <input type="checkbox" id="<?= $category[0];?>" name="category[]" value="<?=$category[0];?>">
+                            <input type="checkbox" id="<?= $category[0];?>" name="category[]" value="<?=$category[0];?>"
+                            <?php if(in_array($category[0], $checked)){echo "checked";}  ?>>
                             <label for="<?= $category[0]?>"> <?= strval($category[0]) ?></label> <br>
                         <?php
                         }
