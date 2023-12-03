@@ -125,6 +125,14 @@ session_start();
                         foreach($products as $product) {
                         ?>
                             <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                            <div>
+                                <img src="product_img/<?= $product["ImageURL"] ?>" style="height: 100%; width: 100%; object-fit: contain";>
+                                </div>
+                                <div class="product-card-info">
+                                <p class="product-card-name"> <?= $product["product_name"] ?> </p>
+                                <p class="product-card-gender"> <?= $product["product_gender"] ?> </p>
+                                <p class="product-card-price">£<?= $product["product_price"] ?> </p>
+                            </div>
                             <!-- Add basket functionality here -->
                             
 
@@ -138,7 +146,14 @@ session_start();
                         foreach($products as $product) {
                         ?>
                             <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
-                            
+                                <div>
+                                <img src="product_img/<?= $product["ImageURL"] ?>" style="height: 100%; width: 100%; object-fit: contain";>
+                                </div>
+                                <div class="product-card-info">
+                                <p class="product-card-name"> <?= $product["product_name"] ?> </p>
+                                <p class="product-card-gender"> <?= $product["product_gender"] ?> </p>
+                                <p class="product-card-price">£<?= $product["product_price"] ?> </p>
+                                </div>
                             <!-- Add basket functionality here -->
 
 
