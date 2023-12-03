@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 11:01 AM
+-- Generation Time: Dec 03, 2023 at 08:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -125,12 +125,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_colour`, `product_gender`, `CategoryID`, `product_category`, `StockLevel`, `ImageURL`, `Description`) VALUES
-(3, 'red womens shoes', 10, 'red', 'womens', NULL, 'shoes', NULL, NULL, NULL),
-(4, 'blue womens shoes', 10, 'blue', 'womens', NULL, 'shoes', NULL, NULL, NULL),
-(5, 'black womens shoes', 10, 'black', 'womens', NULL, 'shoes', NULL, NULL, NULL),
-(6, 'red mens shoes', 10, 'red', 'mens', NULL, 'shoes', NULL, NULL, NULL),
-(7, 'blue mens shoes', 10, 'blue', 'mens', NULL, 'shoes', NULL, NULL, NULL),
-(8, 'black mens shoes', 10, 'black', 'mens', NULL, 'shoes', NULL, NULL, NULL);
+(15, 'red womens shoes', 10, 'red', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(16, 'blue womens shoes', 10, 'blue', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(17, 'black womens shoes', 10, 'black', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(18, 'red mens shoes', 10, 'red', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(19, 'blue mens shoes', 10, 'blue', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(20, 'black mens shoes', 10, 'black', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(21, 'red womens shirt', 10, 'red', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(22, 'blue womens shirt', 10, 'blue', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(23, 'black womens shirt', 10, 'black', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(24, 'red mens shirt', 10, 'red', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(25, 'blue mens shirt', 10, 'blue', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(26, 'black mens shirt', 10, 'black', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL);
 
 -- --------------------------------------------------------
 
@@ -401,7 +407,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `reviews`
