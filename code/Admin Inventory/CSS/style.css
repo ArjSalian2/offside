@@ -202,7 +202,7 @@ main .title {
 /* Media */
 
 @media screen and (max-width: 768px) {
-  #content {
+  .content {
     position: relative;
     transition: all 0.3s ease;
     width: calc(100% - 60px);
@@ -242,4 +242,83 @@ table td {
   padding: 20px 20px;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
+}
+
+/*----------------------------------------------------------------*/
+.notMain {
+  width: 100%;
+  padding: 24px 20px 20px 20px;
+}
+
+.notMain .notContent {
+  position: relative;
+  width: calc(100% - 260px);
+  left: 260px;
+  transition: all 0.3s ease;
+}
+
+.notMain .title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.notMain .notInfo-data {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 20px;
+  padding-left: 32.5%;
+}
+
+.notMain .notCard {
+  padding: 20px;
+  width: 400px;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--light);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.notMain .input-field {
+  width: 100%;
+  padding: 10px;
+
+  border-radius: 8px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease;
+}
+.notMain input {
+  padding: 12px;
+  margin-left: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+.notMain .input-field:hover {
+  background-color: var(--grey);
+}
+
+.notMain input:hover {
+  border-color: #888;
+}
+
+.notMain .addButton {
+  margin-top: 20px;
+}
+
+.notMain .addButton button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #858585;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notMain .addButton button:hover {
+  background-color: #000000;
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 06:18 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 03, 2023 at 08:06 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -108,14 +108,35 @@ CREATE TABLE `payment` (
 --
 
 CREATE TABLE `products` (
-  `ProductID` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Price` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_price` int(11) NOT NULL,
+  `product_colour` varchar(43) NOT NULL,
+  `product_gender` varchar(43) NOT NULL,
   `CategoryID` int(11) DEFAULT NULL,
+  `product_category` varchar(43) NOT NULL,
   `StockLevel` int(11) DEFAULT NULL,
   `ImageURL` varchar(255) DEFAULT NULL,
   `Description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_colour`, `product_gender`, `CategoryID`, `product_category`, `StockLevel`, `ImageURL`, `Description`) VALUES
+(15, 'red womens shoes', 10, 'red', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(16, 'blue womens shoes', 10, 'blue', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(17, 'black womens shoes', 10, 'black', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(18, 'red mens shoes', 10, 'red', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(19, 'blue mens shoes', 10, 'blue', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(20, 'black mens shoes', 10, 'black', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
+(21, 'red womens shirt', 10, 'red', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(22, 'blue womens shirt', 10, 'blue', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(23, 'black womens shirt', 10, 'black', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(24, 'red mens shirt', 10, 'red', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(25, 'blue mens shirt', 10, 'blue', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
+(26, 'black mens shirt', 10, 'black', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL);
 
 -- --------------------------------------------------------
 
@@ -288,7 +309,7 @@ ALTER TABLE `payment`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`ProductID`),
+  ADD PRIMARY KEY (`product_id`),
   ADD KEY `CategoryID` (`CategoryID`);
 
 --
@@ -386,7 +407,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -440,7 +461,7 @@ ALTER TABLE `orders`
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`),
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`);
 
 --
@@ -459,7 +480,7 @@ ALTER TABLE `products`
 -- Constraints for table `product_configuration`
 --
 ALTER TABLE `product_configuration`
-  ADD CONSTRAINT `product_configuration_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`),
+  ADD CONSTRAINT `product_configuration_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `product_configuration_ibfk_2` FOREIGN KEY (`VariationOptionID`) REFERENCES `variation_options` (`VariationOptionsID`);
 
 --
@@ -480,7 +501,7 @@ ALTER TABLE `shopping_basket`
 --
 ALTER TABLE `shopping_basket_items`
   ADD CONSTRAINT `shopping_basket_items_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `shopping_basket` (`BasketID`),
-  ADD CONSTRAINT `shopping_basket_items_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`);
+  ADD CONSTRAINT `shopping_basket_items_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`);
 
 --
 -- Constraints for table `users`

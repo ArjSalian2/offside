@@ -1,3 +1,4 @@
+<!-- Sidebar -->
 <div class="sidebar">
   <a href="#" class="logo"> Admin </a>
 
@@ -10,7 +11,7 @@
       <a href="./users.php"><i class="bx bxs-user-pin icon"></i> View Users</a>
     </li>
     <li>
-      <a href="./index.php"><i class="bx bxs-user-plus icon"></i> Add Users</a>
+      <a href="./addUsers.php"><i class="bx bxs-user-plus icon"></i> Add Users</a>
     </li>
     <li>
       <a href="./index.php"><i class="bx bxs-box icon"></i> Products</a>
