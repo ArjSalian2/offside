@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Akshar', sans-serif;
+    color: #0d3141;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.banner {
+    background-image: url(./img/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background: #000;
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    z-index: -1;
+}
+
+.btn-defult {
+    background-color: #017f8d;
+    color: #fff;
+    padding: 8px 30px !important;
+    transition: .3s;
+    border: 1px solid #fff;
+    font-size: 25px;
+}
+
+.btn-defult:hover {
+    background-color: #f2c230;
+    color: #000;
+    transition: .3s;
+    border: 1px solid #fff;
+}
+
+.hero-text p {
+    font-size: 20px;
+}
+
+.sec-title {
+    font-size: 50px;
+}
+
+.sub-title {
+    background: #017f8d;
+    text-align: center;
+    padding: 10px;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.sub-title h3 {
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
