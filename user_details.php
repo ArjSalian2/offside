@@ -149,6 +149,24 @@ unset($_SESSION['password_error']);
             display: none;
         }
 
+        .password-container{
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-value{
+            margin-right: 10px;
+        }
+
+        .edit-button{
+            margin-left: 10px; 
+            font-size: smaller;
+            cursor: pointer;
+            background: transparent;
+            text-decoration: 2px underline;
+            border: 0px;
+        }
 
         .paymentForm {
             display: flex;
@@ -220,7 +238,7 @@ unset($_SESSION['password_error']);
                 <!-- Display user details from the Users table -->
                 <div class="detail">
                     <label>Email: </label>
-                    <input type="text" class="edit-input" name="email" value="<?php echo $user['Email']; ?>">
+                    <input type="email" class="edit-input" name="email" value="<?php echo $user['Email']; ?>">
                 </div>
                 <div class="detail">
                     <label>Password: </label>
