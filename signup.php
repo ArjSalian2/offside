@@ -99,7 +99,7 @@ if (isset($_POST['submitted'])) {
             <input type="text" name="lastName" class="form-input" required>
             <br>
             <label for="phone">Phone:</label>
-            <input type="text" name="phone" class="form-input" required>
+            <input type="tel" name="phone" pattern="[0-9]{5} [0-9]{6}" placeholder="00000 000000" class="form-input" required>
             <br>
             <button type="submit">Sign up</button>
             <input type="hidden" name="submitted" value="TRUE" />
