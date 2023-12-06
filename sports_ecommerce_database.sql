@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 08:06 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 06, 2023 at 11:27 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,12 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `address` (
   `AddressID` int(11) NOT NULL,
+  `UserID` int(100) NOT NULL,
   `AddressLine` varchar(255) DEFAULT NULL,
   `City` varchar(255) DEFAULT NULL,
   `Region` varchar(255) DEFAULT NULL,
   `Postcode` varchar(255) DEFAULT NULL,
   `Country` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`AddressID`, `UserID`, `AddressLine`, `City`, `Region`, `Postcode`, `Country`) VALUES
+(1, 0, 'Aston St', 'Birmingham', 'West Midlands', 'B4 7ET', 'UK'),
+(2, 0, 'Colmore Row', 'Birmingham', 'West Midlands', 'B3 EBJ', 'UK'),
+(3, 0, 'Steelhouse Ln', 'Birmingham', 'West Midlands', 'B4 6SE', 'UK');
 
 -- --------------------------------------------------------
 
@@ -56,11 +66,19 @@ CREATE TABLE `category` (
 CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL,
   `UserID` int(50) DEFAULT NULL,
-  `OrderDate` varchar(255) DEFAULT NULL,
+  `OrderDate` date DEFAULT current_timestamp(),
   `OrderStatus` int(50) DEFAULT NULL,
   `AddressID` int(50) DEFAULT NULL,
   `TotalAmount` int(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `UserID`, `OrderDate`, `OrderStatus`, `AddressID`, `TotalAmount`) VALUES
+(1, 2, '2023-12-05', 1, 1, 20),
+(2, 3, '2023-12-05', 2, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -73,6 +91,15 @@ CREATE TABLE `orderstatus` (
   `StatusName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orderstatus`
+--
+
+INSERT INTO `orderstatus` (`StatusID`, `StatusName`) VALUES
+(1, 'Pending'),
+(2, 'Delivered'),
+(3, 'Returned');
+
 -- --------------------------------------------------------
 
 --
@@ -84,8 +111,17 @@ CREATE TABLE `order_items` (
   `ProductID` int(11) DEFAULT NULL,
   `OrderID` int(11) DEFAULT NULL,
   `Quantity` int(11) DEFAULT NULL,
-  `Price` int(50) DEFAULT NULL
+  `Price` int(50) DEFAULT NULL,
+  `ReturnStatusID` int(100) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`OrderItemsID`, `ProductID`, `OrderID`, `Quantity`, `Price`, `ReturnStatusID`) VALUES
+(1, 26, 1, 2, 20, 2),
+(3, 19, 2, 1, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -152,6 +188,25 @@ CREATE TABLE `product_configuration` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `returnstatus`
+--
+
+CREATE TABLE `returnstatus` (
+  `ReturnStatusID` int(100) NOT NULL,
+  `Name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `returnstatus`
+--
+
+INSERT INTO `returnstatus` (`ReturnStatusID`, `Name`) VALUES
+(1, 'No Return'),
+(2, 'Return Processed');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reviews`
 --
 
@@ -199,7 +254,7 @@ CREATE TABLE `users` (
   `Last Name` varchar(100) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Pass` varchar(255) NOT NULL,
-  `Phone Number` int(15) NOT NULL,
+  `Phone Number` varchar(100) NOT NULL,
   `user_type` int(11) NOT NULL,
   `Created` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -209,11 +264,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `First Name`, `Last Name`, `Email`, `Pass`, `Phone Number`, `user_type`, `Created`) VALUES
-(2, 'Muhammad', 'Shuayb', '2100077568@aston.ac.uk', 'password', 123456789, 0, '2023-11-23'),
-(3, 'John', 'Smith', '210077568@aston.ac.uk', 'password', 123456789, 1, '2023-11-27'),
-(4, 'something', 'somthing', 'sadsadsadsad', 'dasdasdsad', 123456789, 1, '2023-11-27'),
-(5, 'sadsadsada', 'sadasds', 'asdsadsadas', 'sdadsada', 12345678, 1, '2023-11-27'),
-(6, 'somehidsf', 'dfsfdsfdsf', 'sadasdasda', 'dasdsadad', 123456789, 1, '2023-11-27');
+(2, 'Muhammad', 'Shuayb', '2100077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-23'),
+(3, 'John', 'Smith', '210077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-27'),
+(4, 'James', 'Anderson', 'james2123@gmail.com', 'mdo121424', '742434131', 1, '2023-12-05');
 
 -- --------------------------------------------------------
 
@@ -296,7 +349,8 @@ ALTER TABLE `orderstatus`
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`OrderItemsID`),
   ADD KEY `ProductID` (`ProductID`),
-  ADD KEY `OrderID` (`OrderID`);
+  ADD KEY `OrderID` (`OrderID`),
+  ADD KEY `order_items_ibfk_3` (`ReturnStatusID`);
 
 --
 -- Indexes for table `payment`
@@ -318,6 +372,12 @@ ALTER TABLE `products`
 ALTER TABLE `product_configuration`
   ADD KEY `ProductID` (`ProductID`),
   ADD KEY `VariationOptionID` (`VariationOptionID`);
+
+--
+-- Indexes for table `returnstatus`
+--
+ALTER TABLE `returnstatus`
+  ADD PRIMARY KEY (`ReturnStatusID`);
 
 --
 -- Indexes for table `reviews`
@@ -377,25 +437,25 @@ ALTER TABLE `variation_options`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `AddressID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `AddressID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orderstatus`
 --
 ALTER TABLE `orderstatus`
-  MODIFY `StatusID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `StatusID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `OrderItemsID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OrderItemsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -408,6 +468,12 @@ ALTER TABLE `payment`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `returnstatus`
+--
+ALTER TABLE `returnstatus`
+  MODIFY `ReturnStatusID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -462,7 +528,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`);
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`),
+  ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`ReturnStatusID`) REFERENCES `returnstatus` (`ReturnStatusID`);
 
 --
 -- Constraints for table `payment`

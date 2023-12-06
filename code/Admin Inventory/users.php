@@ -47,16 +47,16 @@
                     <?= $row["userID"] ?>
                   </td>
                   <td>
-                    <?= $row["First_Name"] ?>
+                    <?= $row["First Name"] ?>
                   </td>
                   <td>
-                    <?= $row["First_Name"] ?>
+                    <?= $row["Last Name"] ?>
                   </td>
                   <td>
                     <?= $row["Email"] ?>
                   </td>
                   <td>
-                    <?= $row["Phone_Number"] ?>
+                    <?= $row["Phone Number"] ?>
                   </td>
                   <td>
                     <?= $row["Created"] ?>
