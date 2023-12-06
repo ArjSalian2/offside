@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+         
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Products </title>
+        <link rel="stylesheet" href="product-style.css">
+    </head>
+        
+    <body>
+        <main>
+
+            <h1>
+                Products
+            </h1>
+
+
+
+
+            <div id="shopBar">
+                <div class="sortBy">
+                    <h4>SORT BY</h4>
+                    <select>
+                        <option>Most Popular</option>
+                        <option>Price (Lowest to Highest)</option>
+                        <option>Price (Highest to Lowest)</option>
+                        <option>Name (A to Z)</option>
+                    </select>
+
+                </div>
+            </div>
+            
 
 <form class = "search_box" method="GET">
   <label class="search-label" for="search-term">Search:</label>
@@ -5,6 +39,8 @@
   <input type="submit" value="Search" />
 </form>
 
+</html>
+              
 <?php
 
 require_once("connectdb.php");
@@ -43,22 +79,43 @@ if (isset($_GET['search-term'])) {
     $query = "SELECT * FROM products";
   }
   
-$result = $db -> query($query);
 
-echo "<table>";
-echo "<tr><th>Product Name</th><th>Product Price</th><th>Product Colour</th><th>Product Gender</th><th>Product Category</th></tr>";
+$results = $db->query($query); 
+                        foreach($results as $product) {
+                        ?>
+                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                                <div>
+                                <img src="product_img/<?= $product["ImageURL"] ?>" style="height: 100%; width: 100%; object-fit: contain";>
+                                </div>
+                                <div class="product-card-info">
+                                <p class="product-card-name"> <?= $product["product_name"] ?> </p>
+                                <p class="product-card-gender"> <?= $product["product_gender"] ?> </p>
+                                <p class="product-card-price">£<?= $product["product_price"] ?> </p>
+                                </div>
+                            <!-- Add basket functionality here -->
 
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-  echo "<tr>";
 
-  echo "<td>" . $row['product_name'] . "</td>";
-  echo "<td>" . $row['product_price'] . "</td>";
-  echo "<td>" . $row['product_colour'] . "</td>";
-  echo "<td>" . $row['product_gender'] . "</td>";
-  echo "<td>" . $row['CategoryID'] . "</td>";
-  echo "<td>" . $row['product_category'] . "</td>";
+                            <!-- ----------------------------- -->
+                            </div>
+                        <?php
+                        }
 
-}
-echo "</table>";
+
+
+// echo "<table>";
+// echo "<tr><th>Product Name</th><th>Product Price</th><th>Product Colour</th><th>Product Gender</th><th>Product Category</th></tr>";
+
+// while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+//   echo "<tr>";
+
+//   echo "<td>" . $row['product_name'] . "</td>";
+//   echo "<td>" . $row['product_price'] . "</td>";
+//   echo "<td>" . $row['product_colour'] . "</td>";
+//   echo "<td>" . $row['product_gender'] . "</td>";
+//   echo "<td>" . $row['CategoryID'] . "</td>";
+//   echo "<td>" . $row['product_category'] . "</td>";
+
+// }
+// echo "</table>";
 ?>
 
