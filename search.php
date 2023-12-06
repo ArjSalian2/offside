@@ -46,21 +46,18 @@ if (isset($_GET['search-term'])) {
 $result = $db -> query($query);
 
 echo "<table>";
-echo "<tr><th>Product ID</th><th>Product Name</th><th>Product Price</th><th>Product Colour</th><th>Product Gender</th><th>Category ID</th><th>Product Category</th><th>Stock Level</th><th>Image URL</th><th>Description</th></tr>";
+echo "<tr><th>Product Name</th><th>Product Price</th><th>Product Colour</th><th>Product Gender</th><th>Product Category</th></tr>";
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
   echo "<tr>";
-  echo "<td>" . $row['product_id'] . "</td>";
+
   echo "<td>" . $row['product_name'] . "</td>";
   echo "<td>" . $row['product_price'] . "</td>";
   echo "<td>" . $row['product_colour'] . "</td>";
   echo "<td>" . $row['product_gender'] . "</td>";
   echo "<td>" . $row['CategoryID'] . "</td>";
   echo "<td>" . $row['product_category'] . "</td>";
-  echo "<td>" . $row['StockLevel'] . "</td>";
-  echo "<td>" . $row['ImageURL'] . "</td>";
-  echo "<td>" . $row['Description'] . "</td>";
-  echo "</tr>";
+
 }
 echo "</table>";
 ?>
