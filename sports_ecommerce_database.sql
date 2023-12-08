@@ -120,7 +120,7 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`OrderItemsID`, `ProductID`, `OrderID`, `Quantity`, `Price`, `ReturnStatusID`) VALUES
-(1, 26, 1, 2, 20, 2),
+(1, 26, 1, 2, 20, 1),
 (3, 19, 2, 1, 10, 1);
 
 -- --------------------------------------------------------
