@@ -15,7 +15,17 @@ if (isset($_POST['submitted'])) {
     $lastName = isset($_POST['lastName']) ? $_POST['lastName'] : false; // Adjusted case
     $phone = isset($_POST['phone']) ? $_POST['phone'] : false; // Adjusted case
 
+    // Check if the email is already in use
+    $stmtCheckEmail = $db->prepare("SELECT COUNT(*) FROM users WHERE Email = ?");
+    $stmtCheckEmail->execute([$email]);
+    $emailCount = $stmtCheckEmail->fetchColumn();
 
+    if ($emailCount > 0) {
+        $_SESSION['errorMessage'] = "Email already exists";
+        header('Location: signup.php');
+        exit();
+    }
+    
     error_log("User Insert Query: " . "INSERT INTO users ('Email', 'Pass', 'user-type') VALUES ('$email', '$password', '$userType')");
 
     if (!$email || !$password || !$firstName || !$lastName || !$phone ) {
@@ -79,12 +89,34 @@ if (isset($_POST['submitted'])) {
             border-radius: 4px;
             cursor: pointer;
         }
+
+        .error-container{
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 10px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
     </style>
     
 </head>
 <body>
     <div class="signup-container">
         <h2>Signup</h2>
+        <div class="error-container">
+            <?php
+            if (isset($_SESSION['errorMessage']) && !empty($_SESSION['errorMessage'])) {
+                echo "<p style='color: red;'>" . $_SESSION['errorMessage'] . "</p>";
+                unset($_SESSION['errorMessage']); // Clear the error message after displaying it
+            }
+            ?>
+        </div>
         <form action="signup.php" method="post">
             <label for="email">Email:</label>
             <input type="email" name="email" class="form-input" required>
