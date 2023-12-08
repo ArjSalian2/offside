@@ -23,6 +23,7 @@ display: flex;
  
 }
 
+
 /* Dima- nav,basket,search bar */
 #nav1{
   display:flex;
@@ -45,7 +46,6 @@ padding:3px 10px;
   background-color: transparent;
   color: darkgray;
 }
-
 
 #nav2{
   display: flex;
@@ -108,7 +108,7 @@ align-items: center;
   width: 20px;
   height: auto;
 }
-
+/* Dima- END of nav,basket,search bar */
 
 
 #banner {
@@ -194,7 +194,7 @@ button{
 .next{
   right: 10px;
 }
-/* end of code for slider funiction in homepage */
+/* end of code for slider funiction in homepage-Dima */
 
 
 
@@ -270,7 +270,7 @@ button{
 
 
 
-/* customer service-dima */
+/* customer servicesection - Dima */
 .customer h2{
   margin-left: 10px;
 }
@@ -337,7 +337,7 @@ body.about-page{
 }
 
 #about-nav{
-  background-color: #f2f2f2; 
+  background-color:  white!important;
   box-sizing: border-box;
   width: 100%;
   justify-content:flex-end;
@@ -437,7 +437,7 @@ color: white;
      
 
        
-/* Dima-about page sustainability*/
+/* Dima-about page sustainability section*/
 .sustainability{
   background-color:rgba(211, 211, 211, 0.893);
   font-size: 20px;
@@ -476,7 +476,7 @@ color: white;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-/* END Dima-about page sustainability*/
+/* Dima-about page sustainability end*/
 
 .footer{                             /* Hadeeqah*/
   background-color:white ;
