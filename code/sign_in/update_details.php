@@ -23,6 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize data if needed
     $data = $_POST;
 
+    // Check if the new email is already in use by another user
+    $stmtCheckEmail = $db->prepare("SELECT COUNT(*) FROM users WHERE Email = ? AND UserID != ?");
+    $stmtCheckEmail->execute([$data['email'], $userID]);
+    $emailCount = $stmtCheckEmail->fetchColumn();
+
+    if ($emailCount > 0) {
+        $_SESSION['errorMessage'] = "Email already exists";
+        header('Location: user_details.php?tab=account-details');
+        exit();
+    }
+
     // Update password only if it's provided and not null
     if (isset($data['password']) && $data['password'] !== null) {
         $stmtUser = $db->prepare("UPDATE users SET password = ? WHERE UserID = ?");
