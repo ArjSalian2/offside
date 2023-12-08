@@ -1,12 +1,12 @@
 // slide function for the home page
-let slideIndex= 0;
+let slideIndex= 1;
 const slides= document.querySelector(".slides");
 const images= document.querySelectorAll(".slide");
 const prevButton= document.querySelector(".prev");
 const nextButton= document.querySelector(".next");
 const visibleSlides= 3;
 
-const slideWidth = 100 / visibleSlides;
+const slideWidth = 50 / visibleSlides;
 
 prevButton.style.display= "block";
 nextButton.style.display= "block";
@@ -28,5 +28,3 @@ function moveSlide(n){
  toggleArrowVisbility();
 }
 toggleArrowVisbility();
-
-
