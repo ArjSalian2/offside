@@ -77,7 +77,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`OrderID`, `UserID`, `OrderDate`, `OrderStatus`, `AddressID`, `TotalAmount`) VALUES
-(1, 2, '2023-12-05', 1, 1, 20),
+(2, 2, '2023-12-05', 1, 1, 20),
 (2, 3, '2023-12-05', 2, 2, 10);
 
 -- --------------------------------------------------------
