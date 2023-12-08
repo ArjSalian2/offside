@@ -50,7 +50,7 @@
                     <?= $row["First Name"] ?>
                   </td>
                   <td>
-                    <?= $row["First Name"] ?>
+                    <?= $row["Last Name"] ?>
                   </td>
                   <td>
                     <?= $row["Email"] ?>
