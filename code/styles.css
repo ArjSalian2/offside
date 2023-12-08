@@ -17,13 +17,10 @@ display: flex;
  /* flex-grow: 1; */
 } 
 
-.logo img { 
+.logo img {            /* Hadeeqah*/
   max-width: 100px;
   height: auto;
-  /* position: absolute;
-  top:0;
-  left:0;
-  padding:5px; */
+ 
 }
 
 /* Dima- nav,basket,search bar */
@@ -113,36 +110,39 @@ align-items: center;
 }
 
 
-/* <!-- Hadeeqa banner  --> */
+
 #banner {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2;     /* Hadeeqah*/
   color: #000000;
   padding: 20px;
   text-align: center;
 }
 
-.banner-image img {
+.banner-image img {       /* Hadeeqah*/
   width: 100%;
   height: auto;
 }
 
  h2 {
   margin: 0; 
-  font-size: 1.5em; 
+  font-size: 1.5em;     /* Hadeeqah*/
 }
 
  p {
   margin: 0;
-  font-size: 1em; 
+  font-size: 1em;           /* Hadeeqah*/
 }
 
 
 
-/* code for slider funiction in homepage */
+/* Dima-code for slider funiction in homepage */
 .slider{
   position:relative;
   width: 100%;
   overflow: hidden;
+}
+.title3 h3{
+  margin-left: 10px;
 }
 
 .slides{
@@ -198,59 +198,78 @@ button{
 
 
 
-/* explore section */
 
-.explore-products {
+
+.explore-products {   /* Hadeeqah*/
   text-align: left;
   padding: 20px;
    margin-bottom: 20px;
 }
 
 
+.explore-products { /* Hadeeqah*/
+  text-align: left;
+  padding: 20px;
+   margin-bottom: 20px;
+   
+}
 
-
-.explore-products-container {
-  display: flex;
+.explore-products-container {            /* Hadeeqah*/
+  display: flex; 
   justify-content: space-around;
-  margin-bottom: 10px;
-  position: relative
-  
-
-}
-
-
-.explore-products-container img {
-  width: 30%; 
-  margin-right: 10px; 
-  border: 1px solid #ddd;
-  border-radius: 1px; 
-  
+  margin-bottom: 20px;
+  gap: 10px;
  
+}
+
+
+.explore-products-container a {           /* Hadeeqah*/
+  position: relative;
+  flex: 0 0 calc(30% - 10px); 
+}
+
+.explore-products-container img {       /* Hadeeqah*/
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  border: 1px solid #ddd;
+  border-radius: 2px;
   
 }
 
-.overlay-text1,
+.overlay-text1,          /* Hadeeqah*/
 .overlay-text2,
 .overlay-text3 {
   position: absolute;
-  top: 90%;
-  transform: translate(-50%, -50%);
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
   color: #0a0a0a;
-  font-size: 1.5vw;
+  font-size: 1.8vw;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.7);
-  padding: 7px 50px;
-}
-.overlay-text1 {
-  left: 15.5%;
-}
-.overlay-text2 {
-  left: 50%;
+  padding: 7px 20px; 
+  text-align: center; 
 }
 
-.overlay-text3 {
-  left: 83.5%;
+.overlay-text1 {         /* Hadeeqah*/
+  left: 48.5%;
 }
+.overlay-text2 {
+  left: 50%;          /* Hadeeqah*/
+}
+
+.overlay-text3 {            /* Hadeeqah*/
+  left: 50.5%;
+}
+
+
+.explore-products-container a:hover {    /* Hadeeqah*/
+  cursor: pointer;
+} 
+
+
+
 /* customer service-dima */
 .customer h2{
   margin-left: 10px;
@@ -264,17 +283,24 @@ button{
 .image-with-text{
   position:relative;
   text-align: center;
+  width: 380px;
+  height: 390px;
+  border: 1px solid black;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
 .image-with-text img{
-  width: 400px;
-  height: auto;
-  margin-left: 10px;
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
 }
 .image-text{
-  font-size:23px !important;
-  margin-top:-45px;
-  margin-right: 35px;
-  /* color:black !important */
+  position: absolute;
+  top: 10px;
+  left:67px ;
+  padding: 10px;
+  font-size: 23px;
+  color: #000000;
 }
 
 
@@ -297,7 +323,7 @@ button{
 
 
 
-/* about page */
+/* Dima-about page */
 
 body.about-page{
   margin:0;
@@ -333,7 +359,7 @@ body.about-page{
     color: darkgrey
   }
 
-/* the first img on about us page */
+/* Dima-the first img on about us page */
 .image-container{
   position:relative;
   display:inline-block;
@@ -342,39 +368,40 @@ body.about-page{
   display: block;
   margin-left:100px;
 }
-.image-text{
+.image-text2{
   position: absolute;
-  top:70px;
-  left:90px;
+  top:85px;
+  left:135px ;
   padding: 10px;
-  font-size: 35px;
-color: #f2f2f2;
+  font-size: 30px;
+color: white;
 }
 
 
-  /* about page OUR MISSION*/
+  /* Dima-about page OUR MISSION*/
   .about{
-    background-color:rgba(211, 211, 211, 0.893);
+    background-color:#f2f2f2;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 30px;
+    text-align: center;
       }
       .about-title{
         font-weight: bold;
         font-size: 20px;
-        
-        margin-bottom:50px; 
-        margin-left:500px;
+        margin-top: 15px;
+        padding-top: 15px;
+        /* margin-bottom:50px; 
+        margin-left:500px; */
       }
       .about p{
-      margin-top: 30px;
+        position:center;
+      margin-top: 15px;
       font-size: 20px; 
       }
 
 
 
-
-
-     /* about page OUR story*/
+     /*Dima- about page OUR story*/
       .story{
         background-color:white;
         font-size: 20px;
@@ -410,7 +437,7 @@ color: #f2f2f2;
      
 
        
-/* about page sustainability*/
+/* Dima-about page sustainability*/
 .sustainability{
   background-color:rgba(211, 211, 211, 0.893);
   font-size: 20px;
@@ -450,3 +477,14 @@ color: #f2f2f2;
   word-wrap: break-word;
 }
 
+.footer{                             /* Hadeeqah*/
+  background-color:white ;
+    color: black;
+    padding: 0.5px;
+    text-align: right;
+    margin-top: auto; 
+}
+.footer p{   /* Hadeeqah*/
+  margin: 0; 
+  font-size: small;
+}
