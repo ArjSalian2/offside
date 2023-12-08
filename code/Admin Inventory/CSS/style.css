@@ -98,6 +98,14 @@ li {
 
 /* SIDEBAR */
 
+/* CONTENT */
+.content {
+  position: relative;
+  width: calc(100% - 260px);
+  left: 260px;
+  transition: all 0.3s ease;
+}
+
 /* NAVBAR */
 nav {
   background: var(--light);
