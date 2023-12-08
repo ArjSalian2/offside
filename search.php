@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang = "en">
+
          
+<!--NAVBAR STUFF-->
+         
+<header>
+
+
+<div class ="logo"> 
+    <img src="homepage-img/logo.png" alt="Offside Logo">
+</div>
+
+<div class="top-right-nav">
+  <div id="nav1">
+    <a href="about.html">About Us</a> 
+    <a href="#">Contact Us</a> 
+    <a href="#">Sign In</a>
+    <!-- <a href="#">Account details</a>  -->
+</div>
+
+</header> 
+
+<!-- nav2 -->
+<div id="nav2">
+<div class="nav2-center">
+<a href="products.php?gender%5B%5D=womens">Women</a>
+<a href="products.php?gender%5B%5D=mens">Men</a> 
+<a href="#">Accessories</a>
+</div>
+
+<div class="nav2-right">
+  <div id="search">
+    <form>
+ <input type="text" name="search-term" placeholder="Search">
+ <input type="submit" value="Enter">
+    </form>
+  </div>
+  <div id="basket-icon">
+  <a href="cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>  
+  </div>
+</div>
+</div>
+
+  
+  <div id="banner"> 
+    <h2> Free Delivery & Returns</h2>
+    <p> Offside members get free delivery and 60-day returns</p>
+    </div>
+
+
+      <!-- NAVBAR STUFF END -->
+
+
+        <!--SEARCH PAGE--> 
     <head>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Products </title>
-        <link rel="stylesheet" href="product-style.css">
+        <link rel="stylesheet" href="searchstyle.css">
     </head>
         
     <body>
@@ -14,11 +66,12 @@
 
             <h1>
                 Products
+                
             </h1>
 
 
 
-
+          
             <div id="shopBar">
                 <div class="sortBy">
                     <h4>SORT BY</h4>
@@ -30,8 +83,9 @@
                     </select>
 
                 </div>
-            </div>
-            
+
+
+
 
 <form class = "search_box" method="GET">
   <label class="search-label" for="search-term">Search:</label>
@@ -40,10 +94,14 @@
 </form>
 
 </html>
-              
+
+<!--SEARCH PAGE END-->
+                     
 <?php
 
-require_once("connectdb.php");
+ $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");                     
+
+ 
 
 if (isset($_GET['search-term'])) {
   
@@ -55,7 +113,7 @@ if (isset($_GET['search-term'])) {
 
     $invalid_input = "/[^a-zA-Z\s]/";
     if (preg_match($invalid_input, $search_term)){
-      //error message
+      //error message when you input num/symbols/special characters etc.
       echo "<div style=
               '
               border: 2px solid #000000; 
@@ -63,7 +121,8 @@ if (isset($_GET['search-term'])) {
               padding: 10px; 
               margin: 10px 350;
               text-align: center;
-              color: #ff0000              
+              color: #ff0000 
+
               '>";
       
       echo " <b> Invalid input </b>";
@@ -80,10 +139,12 @@ if (isset($_GET['search-term'])) {
   }
   
 
+
+
 $results = $db->query($query); 
                         foreach($results as $product) {
                         ?>
-                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_category"] ?> 
                                 <div>
                                 <img src="product_img/<?= $product["ImageURL"] ?>" style="height: 100%; width: 100%; object-fit: contain";>
                                 </div>
@@ -92,13 +153,12 @@ $results = $db->query($query);
                                 <p class="product-card-gender"> <?= $product["product_gender"] ?> </p>
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
-                            <!-- Add basket functionality here -->
 
-
-                            <!-- ----------------------------- -->
                             </div>
                         <?php
                         }
+
+
 
 
 
@@ -107,15 +167,18 @@ $results = $db->query($query);
 
 // while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 //   echo "<tr>";
-
 //   echo "<td>" . $row['product_name'] . "</td>";
 //   echo "<td>" . $row['product_price'] . "</td>";
 //   echo "<td>" . $row['product_colour'] . "</td>";
 //   echo "<td>" . $row['product_gender'] . "</td>";
-//   echo "<td>" . $row['CategoryID'] . "</td>";
+
 //   echo "<td>" . $row['product_category'] . "</td>";
 
+//   echo "</tr>";
 // }
 // echo "</table>";
-?>
 
+
+
+
+?>
