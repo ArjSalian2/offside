@@ -1,97 +1,101 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 
-         
+
 <!--NAVBAR STUFF-->
-         
+
 <header>
 
 
-<div class ="logo"> 
-    <img src="homepage-img/logo.png" alt="Offside Logo">
-</div>
+  <div class="logo">
+    <a href="/offside/index.html">
+      <img src="homepage-img/logo.png" alt="Offside Logo">
+    </a>
+  </div>
 
-<div class="top-right-nav">
-  <div id="nav1">
-    <a href="about.html">About Us</a> 
-    <a href="#">Contact Us</a> 
-    <a href="#">Sign In</a>
-    <!-- <a href="#">Account details</a>  -->
-</div>
+  <div class="top-right-nav">
+    <div id="nav1">
+      <a href="about.html">About Us</a>
+      <a href="basket/contact.php">Contact Us</a>
+      <a href="user_files/login.php">Log In</a>
+      <a href="user_files/user_details.php">Account details</a>
+    </div>
+  </div>
 
-</header> 
+</header>
 
 <!-- nav2 -->
 <div id="nav2">
-<div class="nav2-center">
-<a href="products.php?gender%5B%5D=womens">Women</a>
-<a href="products.php?gender%5B%5D=mens">Men</a> 
-<a href="#">Accessories</a>
-</div>
-
-<div class="nav2-right">
-  <div id="search">
-    <form>
- <input type="text" name="search-term" placeholder="Search">
- <input type="submit" value="Enter">
-    </form>
+  <div class="nav2-center">
+    <a href="products.php?gender%5B%5D=womens">Women</a>
+    <a href="products.php?gender%5B%5D=mens">Men</a>
+    <a href="products.php?category%5B%5D=accessories">Accessories</a>
   </div>
-  <div id="basket-icon">
-  <a href="cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>  
-  </div>
-</div>
-</div>
 
-  
-  <div id="banner"> 
-    <h2> Free Delivery & Returns</h2>
-    <p> Offside members get free delivery and 60-day returns</p>
+  <div class="nav2-right">
+    <div id="search">
+      <form>
+        <input type="text" name="search-term" placeholder="Search">
+        <input type="submit" value="Enter">
+      </form>
     </div>
+    <div id="basket-icon">
+      <a href="basket/cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+    </div>
+  </div>
+</div>
 
 
-      <!-- NAVBAR STUFF END -->
+<div id="banner">
+  <h2> Free Delivery & Returns</h2>
+  <p> Offside members get free delivery and 60-day returns</p>
+</div>
 
 
-        <!--SEARCH PAGE--> 
-    <head>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Products </title>
-        <link rel="stylesheet" href="searchstyle.css">
-    </head>
-        
-    <body>
-        <main>
-
-            <h1>
-                Products
-                
-            </h1>
+<!-- NAVBAR STUFF END -->
 
 
+<!--SEARCH PAGE-->
 
-          
-            <div id="shopBar">
-                <div class="sortBy">
-                    <h4>SORT BY</h4>
-                    <select>
-                        <option>Most Popular</option>
-                        <option>Price (Lowest to Highest)</option>
-                        <option>Price (Highest to Lowest)</option>
-                        <option>Name (A to Z)</option>
-                    </select>
+<head>
 
-                </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Products </title>
+  <link rel="stylesheet" href="searchstyle.css">
+</head>
+
+<body>
+  <main>
+
+    <h1>
+      Products
+
+    </h1>
 
 
 
 
-<form class = "search_box" method="GET">
-  <label class="search-label" for="search-term">Search:</label>
-  <input type="text" name="search-term" id="search-term" />
-  <input type="submit" value="Search" />
-</form>
+    <div id="shopBar">
+      <div class="sortBy">
+        <h4>SORT BY</h4>
+        <select>
+          <option>Most Popular</option>
+          <option>Price (Lowest to Highest)</option>
+          <option>Price (Highest to Lowest)</option>
+          <option>Name (A to Z)</option>
+        </select>
+
+      </div>
+
+
+
+
+      <form class="search_box" method="GET">
+        <label class="search-label" for="search-term">Search:</label>
+        <input type="text" name="search-term" id="search-term" />
+        <input type="submit" value="Search" />
+      </form>
 
 </html>
 

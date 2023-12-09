@@ -13,7 +13,9 @@
     <header>
 
         <div class="logo"> <!--Hadeeqa-The logo for top of page-->
-            <img src="homepage-img/logo.png" alt="Offside Logo">
+            <a href="/offside/index.html">
+                <img src="homepage-img/logo.png" alt="Offside Logo">
+            </a>
         </div>
 
         <div class="top-right-nav">
