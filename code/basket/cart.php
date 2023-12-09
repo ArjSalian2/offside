@@ -58,7 +58,7 @@
                     <div class="cart shadow-lg rounded p-5 my-5">
                         <div class="d-flex align-items-center justify-content-between">
                             <h1>Cart</h1>
-                            <a href="products.php"><button class="btn-lg btn-defult">Buy more products</button></a>
+                            <a href="../products.php"><button class="btn-lg btn-defult">Buy more products</button></a>
 
                         </div>
                         <div id="cart-container"></div>
