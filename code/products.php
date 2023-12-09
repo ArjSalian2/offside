@@ -4,15 +4,73 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang = "en">
-    
-    <head>
+<html lang="en">
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Products </title>
-        <link rel="stylesheet" href="product-style.css">
-    </head>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Products </title>
+    <link rel="stylesheet" href="product-style.css">
+    <link rel="stylesheet" href="nav-styles.css">
+</head>
+
+
+<script>
+    searchParam = new URLSearchParams(window.location.search);
+    url = 'search.php' + '?' +searchParam;
+    if (searchParam.has("search-term")) {
+        alert(url);
+        window.location.href = url;
+    }
+
+
+</script>
+
+<header>
+
+    <div class="logo"> <!--Hadeeqah -The logo for top of page-->
+        <a href="/offside/index.html">
+            <img src="homepage-img/logo.png" alt="Offside Logo">
+        </a>
+    </div>
+
+    <div class="top-right-nav">
+        <div id="nav1">
+            <a href="about.html">About Us</a>
+            <a href="basket/contact.php">Contact Us</a>
+            <a href="user_files/login.php">Log In</a>
+            <a href="user_files/user_details.php">Account details</a>
+            <a href="basket/my_orders.php">My orders</a>
+        </div>
+    </div>
+
+</header>
+
+<!-- nav2-dima -->
+<div id="nav2">
+    <div class="nav2-center">
+        <a href="products.php?gender%5B%5D=womens">Women</a>
+        <a href="products.php?gender%5B%5D=mens">Men</a>
+        <a href="products.php?category%5B%5D=accessories">Accessories</a>
+    </div>
+
+    <div class="nav2-right">
+        <div id="search">
+            <form>
+                <input type="text" name="search-term" placeholder="Search">
+                <input type="submit" value="Enter">
+            </form>
+        </div>
+        <div id="basket-icon">
+            <a href="basket/cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+        </div>
+    </div>
+</div>
+<div id="banner">
+    <h2> Free Delivery & Returns</h2>
+    <p> Offside members get free delivery and 60-day returns</p>
+</div>
 
     <body>
         <main>
@@ -149,7 +207,7 @@ session_start();
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                             </div>
                             <!-- Add basket functionality here -->
-                            
+                            <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
 
                             <!-- ----------------------------- -->
                             </div>
@@ -170,7 +228,7 @@ session_start();
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
                             <!-- Add basket functionality here -->
-
+                                <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
 
                             <!-- ----------------------------- -->
                             </div>
@@ -182,4 +240,5 @@ session_start();
                 ?>
             </div>
         </main>
+        <script src="basket/script.js"></script>
     </body>
