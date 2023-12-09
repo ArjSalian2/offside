@@ -18,10 +18,10 @@
 
         <div class="top-right-nav">
             <div id="nav1">
-                <a href="about.html">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Sign In</a>
-                <!-- <a href="#">Account details</a>  -->
+                <a href="../about.html">About Us</a>
+                <a href="../basket/contact.php">Contact Us</a>
+                <a href="../user_files/login.php">Sign In</a>
+                <a href="../user_files/user_details.php">Account details</a>
             </div>
 
     </header>
@@ -29,9 +29,9 @@
     <!-- nav2-dima -->
     <div id="nav2">
         <div class="nav2-center">
-            <a href="products.php?gender%5B%5D=womens">Women</a>
-            <a href="products.php?gender%5B%5D=mens">Men</a>
-            <a href="#">Accessories</a>
+            <a href="../products.php?gender%5B%5D=womens">Women</a>
+            <a href="../products.php?gender%5B%5D=mens">Men</a>
+            <a href="../products.php?category%5B%5D=accessories">Accessories</a>
         </div>
 
         <div class="nav2-right">
@@ -42,7 +42,7 @@
                 </form>
             </div>
             <div id="basket-icon">
-                <a href="cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+                <a href="../basket/cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
             </div>
         </div>
     </div>
