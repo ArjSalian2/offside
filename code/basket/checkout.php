@@ -7,11 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart-style.css">
+    <link rel="stylesheet" href="../nav-styles.css">
     <title></title>
 </head>
 
 <body>
+
+
+<script>
+    searchParam = window.location.search;
+    url = '../search.php' + searchParam;
+    if (searchParam) {
+      window.location.href = url;
+    }
+    
+
+  </script>
+
+  <header>
+
+    <div class="logo"> <!--Hadeeqah -The logo for top of page-->
+      <a href="/offside/index.html">
+        <img src="../homepage-img/logo.png" alt="Offside Logo">
+      </a>
+    </div>
+
+    <div class="top-right-nav">
+      <div id="nav1">
+        <a href="../about.html">About Us</a>
+        <a href="contact.php">Contact Us</a>
+        <a href="../user_files/login.php">Log In</a>
+        <a href="../user_files/user_details.php">Account details</a>
+        <a href="my_orders.php">My orders</a>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- nav2-dima -->
+  <div id="nav2">
+    <div class="nav2-center">
+      <a href="../products.php?gender%5B%5D=womens">Women</a>
+      <a href="../products.php?gender%5B%5D=mens">Men</a>
+      <a href="../products.php?category%5B%5D=accessories">Accessories</a>
+    </div>
+
+    <div class="nav2-right">
+      <div id="search">
+        <form>
+          <input  type="text" name="search-term" placeholder="Search">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+      <div id="basket-icon">
+        <a href="cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
+      </div>
+    </div>
+  </div>
+
+
+<!--
 <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -49,7 +105,7 @@
             </div>
         </nav>
     </header>
-
+-->
 
     <section>
         <div class="container">
