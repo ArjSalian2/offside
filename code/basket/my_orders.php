@@ -24,7 +24,7 @@
                 <div class="collapse justify-content-end navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="products.php">Shop</a>
+                            <a class="nav-link" href="../products.php">Shop</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cart.php">Cart</a>
