@@ -342,6 +342,7 @@ unset($_SESSION['password_error']);
     <a href="../basket/contact.php">Contact Us</a> 
     <a href="login.php">Log In</a>
     <a href="user_details.php">Account details</a>
+    <a href="../basket/my_orders.php">My orders</a>
     </div>
 
     </header> 

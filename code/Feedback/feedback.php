@@ -24,6 +24,7 @@
                 <a href="../basket/contact.php">Contact Us</a>
                 <a href="../user_files/login.php">Sign In</a>
                 <a href="../user_files/user_details.php">Account details</a>
+                <a href="../basket/my_orders.php">My orders</a>
             </div>
 
     </header>
