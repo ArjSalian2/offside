@@ -12,6 +12,17 @@
 </head>
 
 <body>
+
+  <script>
+    searchParam = window.location.search;
+    url = 'search.php' + searchParam;
+    if (searchParam) {
+      window.location.href = url;
+    }
+    
+
+  </script>
+
   <header>
 
     <div class="logo"> <!--Hadeeqah -The logo for top of page-->
@@ -20,10 +31,10 @@
 
     <div class="top-right-nav">
       <div id="nav1">
-        <a href="about.html">AboutUs</a>
-        <a href="#">Contact Us</a>
-        <a href="login.php">Log In</a>
-        <a href="#">Account details</a>
+        <a href="about.html">About Us</a>
+        <a href="basket/contact.php">Contact Us</a>
+        <a href="user_files/login.php">Log In</a>
+        <a href="user_files/user_details.php">Account details</a>
       </div>
     </div>
 
@@ -34,18 +45,18 @@
     <div class="nav2-center">
       <a href="products.php?gender%5B%5D=womens">Women</a>
       <a href="products.php?gender%5B%5D=mens">Men</a>
-      <a href="#">Accessories</a>
+      <a href="products.php?category%5B%5D=accessories">Accessories</a>
     </div>
 
     <div class="nav2-right">
       <div id="search">
         <form>
-          <input type="text" name="search" placeholder="Search">
+          <input  type="text" name="search-term" placeholder="Search">
           <input type="submit" value="Enter">
         </form>
       </div>
       <div id="basket-icon">
-        <a href="cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+        <a href="basket/cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
       </div>
     </div>
   </div>
@@ -137,21 +148,21 @@
   <div class="customer-service">
 
     <div class="image-with-text">
-      <a href="returns.php">
+      <a href="Returns/allOrders.php">
         <img src="homepage-img/return.png" alt="return">
         <span class="image-text">OFFSIDE Return Page</span>
       </a>
     </div>
 
     <div class="image-with-text">
-      <a href="feedback.php">
+      <a href="Feedback/feedback.php">
         <img src="homepage-img/form1.png" alt="feedback">
         <span class="image-text">Feedback Form</span>
       </a>
     </div>
 
     <div class="image-with-text">
-      <a href="user_details.php">
+      <a href="user_files/user_details.php">
         <img src="homepage-img/account.png" alt="account">
         <span class="image-text">Acsess Your OFFSIDE Account</span>
       </a>
