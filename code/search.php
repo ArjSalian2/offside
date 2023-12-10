@@ -98,6 +98,7 @@
         <input type="submit" value="Search" />
       </form>
 
+      <script src="basket/script.js"></script>
 </html>
 
 <!--SEARCH PAGE END-->
@@ -158,7 +159,7 @@ $results = $db->query($query);
                                 <p class="product-card-gender"> <?= $product["product_gender"] ?> </p>
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
-
+                                <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
                             </div>
                         <?php
                         }
