@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="homepage-img/logo.png">
+  <title> Products </title>
+  <link rel="stylesheet" href="searchstyle.css">
+</head>
 <!--NAVBAR STUFF-->
 
 <header>
@@ -58,13 +65,7 @@
 
 <!--SEARCH PAGE-->
 
-<head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Products </title>
-  <link rel="stylesheet" href="searchstyle.css">
-</head>
 
 <body>
   <main>

@@ -2,8 +2,9 @@
 <html>
 
 <head>
-    <title>Return</title>
+    <title>Returns</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../homepage-img/logo.png">
     <link rel="stylesheet" href="./css/style.css">
     </link>
 

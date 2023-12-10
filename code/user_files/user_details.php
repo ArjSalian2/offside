@@ -48,6 +48,7 @@ unset($_SESSION['password_error']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../homepage-img/logo.png">
     <title>User Details</title>
 
     <style>
@@ -485,17 +486,17 @@ unset($_SESSION['password_error']);
     
                 <div>
                     <label for="currentPassword"><b>Current Password</b></label>
-                    <input type="password" placeholder="Enter Current Password" name="currentPassword" required>
+                    <input id="currentPassword" type="password" placeholder="Enter Current Password" name="currentPassword" required>
                 </div>
                 <br>
                 <div>
                     <label for="newPassword"><b>New Password</b></label>
-                    <input type="password" placeholder="Enter New Password" name="newPassword" required>
+                    <input id="newPassword" type="password" placeholder="Enter New Password" name="newPassword" required>
                 </div>
                 <br>
                 <div>
                     <label for="confirmPassword"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Confirm New Password" name="confirmPassword" required>
+                    <input id="confirmPassword" type="password" placeholder="Confirm New Password" name="confirmPassword" required>
                 </div>
                 <br>
                 <button type="submit" class="btn">Save Changes</button>
@@ -537,17 +538,17 @@ unset($_SESSION['password_error']);
     
             <div>
                 <label for="accountNumber"><b>Card Number</b></label>
-                <input type="text" placeholder="Card Number" name="accountNumber" required>
+                <input id="accountNumber" type="text" placeholder="Card Number" name="accountNumber" required>
             </div>
             <br>
             <div>
                 <label for="expirationDate"><b>ExpirationDate</b></label>
-                <input type="text" placeholder="MM/YY" name="expirationDate" required>
+                <input id="expirationDate" type="text" placeholder="MM/YY" name="expirationDate" required>
             </div>
             <br>
             <div>
                 <label for="cvv"><b>CVV</b></label>
-                <input type="text" placeholder="CVV" name="cvv" required>
+                <input id="cvv" type="text" placeholder="CVV" name="cvv" required>
             </div>
             <br>
             <button type="submit" class="btn">Add Payment Method</button>

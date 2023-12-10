@@ -10,6 +10,7 @@ session_start();
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="homepage-img/logo.png">
     <title> Products </title>
     <link rel="stylesheet" href="product-style.css">
     <link rel="stylesheet" href="nav-styles.css">
@@ -20,7 +21,6 @@ session_start();
     searchParam = new URLSearchParams(window.location.search);
     url = 'search.php' + '?' +searchParam;
     if (searchParam.has("search-term")) {
-        alert(url);
         window.location.href = url;
     }
 

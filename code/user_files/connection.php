@@ -3,13 +3,13 @@
 $server = "localhost";
 $user = "root";
 $password = "";
-$db = "sports_ecommerce_database";
+$dbname = "sports_ecommerce_database";
 
-$conn = mysqli_connect($server, $user, $password, $db);
+$db = new PDO("mysql:host=$server;dbname=$dbname", $user, $password);
 
-if (!$conn) {
-   die("Connection Failed:" . mysqli_connect_error());
-} else {
-   echo "Connected successfully";
-}
+//if (!$conn) {
+   //die("Connection Failed:" . mysqli_connect_error());
+//} else {
+   //echo "Connected successfully";
+//}
 ?>
