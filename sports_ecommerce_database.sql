@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 11:27 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 10, 2023 at 01:58 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,8 @@ CREATE TABLE `address` (
 INSERT INTO `address` (`AddressID`, `UserID`, `AddressLine`, `City`, `Region`, `Postcode`, `Country`) VALUES
 (1, 0, 'Aston St', 'Birmingham', 'West Midlands', 'B4 7ET', 'UK'),
 (2, 0, 'Colmore Row', 'Birmingham', 'West Midlands', 'B3 EBJ', 'UK'),
-(3, 0, 'Steelhouse Ln', 'Birmingham', 'West Midlands', 'B4 6SE', 'UK');
+(3, 0, 'Steelhouse Ln', 'Birmingham', 'West Midlands', 'B4 6SE', 'UK'),
+(4, 7, 'addressline', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -161,18 +162,22 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_colour`, `product_gender`, `CategoryID`, `product_category`, `StockLevel`, `ImageURL`, `Description`) VALUES
-(15, 'red womens shoes', 10, 'red', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
-(16, 'blue womens shoes', 10, 'blue', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
-(17, 'black womens shoes', 10, 'black', 'womens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
-(18, 'red mens shoes', 10, 'red', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
-(19, 'blue mens shoes', 10, 'blue', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
-(20, 'black mens shoes', 10, 'black', 'mens', NULL, 'shoes', NULL, 'jordan_img.webp', NULL),
-(21, 'red womens shirt', 10, 'red', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
-(22, 'blue womens shirt', 10, 'blue', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
-(23, 'black womens shirt', 10, 'black', 'womens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
-(24, 'red mens shirt', 10, 'red', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
-(25, 'blue mens shirt', 10, 'blue', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL),
-(26, 'black mens shirt', 10, 'black', 'mens', NULL, 'shirts', NULL, 'mavs_img.webp', NULL);
+(40, 'white womens trousers', 10, 'white', 'womens', NULL, 'trousers', NULL, 'womens_white_trousers.webp', NULL),
+(41, 'black womens trousers', 10, 'black', 'womens', NULL, 'trousers', NULL, 'womens_black_trousers.webp', NULL),
+(42, 'red mens trousers', 10, 'red', 'mens', NULL, 'trousers', NULL, 'red_trousers.webp', NULL),
+(43, 'white mens trousers', 10, 'white', 'mens', NULL, 'trousers', NULL, 'mens_white_trousers.webp', NULL),
+(44, 'black mens trousers', 10, 'black', 'mens', NULL, 'trousers', NULL, 'mens_black_trousers.webp', NULL),
+(45, 'white womens hoodie', 10, 'white', 'womens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
+(46, 'blue womens hoodie', 10, 'blue', 'womens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
+(47, 'black womens hoodie', 10, 'black', 'womens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
+(48, 'white mens hoodie', 10, 'white', 'mens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
+(49, 'blue mens hoodie', 10, 'blue', 'mens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
+(50, 'black mens hoodie', 10, 'black', 'mens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
+(51, 'white womens cap', 10, 'white', 'womens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
+(52, 'black womens cap', 10, 'black', 'womens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
+(53, 'white mens cap', 10, 'white', 'mens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
+(54, 'black mens cap', 10, 'black', 'mens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
+(55, 'black womens bag', 10, 'red', 'womens', NULL, 'accessories', NULL, 'black_bag.webp', NULL);
 
 -- --------------------------------------------------------
 
@@ -266,7 +271,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`userID`, `First Name`, `Last Name`, `Email`, `Pass`, `Phone Number`, `user_type`, `Created`) VALUES
 (2, 'Muhammad', 'Shuayb', '2100077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-23'),
 (3, 'John', 'Smith', '210077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-27'),
-(4, 'James', 'Anderson', 'james2123@gmail.com', 'mdo121424', '742434131', 1, '2023-12-05');
+(4, 'James', 'Anderson', 'james2123@gmail.com', 'mdo121424', '742434131', 1, '2023-12-05'),
+(7, 'first', 'last2', 'example@email.com', '$2y$10$5BsI59TrvvLRkLbk7MCUbeu2HUBhn6j9kEPHH7n0c/sPF1AFlIC1G', '00000 000000', 1, '2023-12-09');
 
 -- --------------------------------------------------------
 
@@ -437,7 +443,7 @@ ALTER TABLE `variation_options`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `AddressID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `AddressID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -467,7 +473,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `returnstatus`
@@ -497,7 +503,7 @@ ALTER TABLE `shopping_basket_items`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_type`
