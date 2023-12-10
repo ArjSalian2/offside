@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 01:58 PM
+-- Generation Time: Dec 10, 2023 at 04:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,7 +45,7 @@ INSERT INTO `address` (`AddressID`, `UserID`, `AddressLine`, `City`, `Region`, `
 (1, 0, 'Aston St', 'Birmingham', 'West Midlands', 'B4 7ET', 'UK'),
 (2, 0, 'Colmore Row', 'Birmingham', 'West Midlands', 'B3 EBJ', 'UK'),
 (3, 0, 'Steelhouse Ln', 'Birmingham', 'West Midlands', 'B4 6SE', 'UK'),
-(4, 7, 'addressline', '', '', '', '');
+(4, 7, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -162,22 +162,35 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_colour`, `product_gender`, `CategoryID`, `product_category`, `StockLevel`, `ImageURL`, `Description`) VALUES
-(40, 'white womens trousers', 10, 'white', 'womens', NULL, 'trousers', NULL, 'womens_white_trousers.webp', NULL),
-(41, 'black womens trousers', 10, 'black', 'womens', NULL, 'trousers', NULL, 'womens_black_trousers.webp', NULL),
-(42, 'red mens trousers', 10, 'red', 'mens', NULL, 'trousers', NULL, 'red_trousers.webp', NULL),
-(43, 'white mens trousers', 10, 'white', 'mens', NULL, 'trousers', NULL, 'mens_white_trousers.webp', NULL),
-(44, 'black mens trousers', 10, 'black', 'mens', NULL, 'trousers', NULL, 'mens_black_trousers.webp', NULL),
-(45, 'white womens hoodie', 10, 'white', 'womens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
-(46, 'blue womens hoodie', 10, 'blue', 'womens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
-(47, 'black womens hoodie', 10, 'black', 'womens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
-(48, 'white mens hoodie', 10, 'white', 'mens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
-(49, 'blue mens hoodie', 10, 'blue', 'mens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
-(50, 'black mens hoodie', 10, 'black', 'mens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
-(51, 'white womens cap', 10, 'white', 'womens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
-(52, 'black womens cap', 10, 'black', 'womens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
-(53, 'white mens cap', 10, 'white', 'mens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
-(54, 'black mens cap', 10, 'black', 'mens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
-(55, 'black womens bag', 10, 'red', 'womens', NULL, 'accessories', NULL, 'black_bag.webp', NULL);
+(56, 'red womens shoes', 10, 'red', 'womens', NULL, 'shoes', NULL, 'red_shoes.webp', NULL),
+(57, 'white womens shoes', 10, 'white', 'womens', NULL, 'shoes', NULL, 'white_shoes.webp', NULL),
+(58, 'black womens shoes', 10, 'black', 'womens', NULL, 'shoes', NULL, 'black_shoes.webp', NULL),
+(59, 'red mens shoes', 10, 'red', 'mens', NULL, 'shoes', NULL, 'red_shoes.webp', NULL),
+(60, 'white mens shoes', 10, 'white', 'mens', NULL, 'shoes', NULL, 'white_shoes.webp', NULL),
+(61, 'black mens shoes', 10, 'black', 'mens', NULL, 'shoes', NULL, 'black_shoes.webp', NULL),
+(62, 'white womens t-shirt', 10, 'white', 'womens', NULL, 'tshirts', NULL, 'womens_white_tshirt.webp', NULL),
+(63, 'brown womens t-shirt', 10, 'brown', 'womens', NULL, 'tshirts', NULL, 'womens_brown_tshirt.webp', NULL),
+(64, 'black womens t-shirt', 10, 'black', 'womens', NULL, 'tshirts', NULL, 'womens_black_tshirt.webp', NULL),
+(65, 'white mens t-shirt', 10, 'white', 'mens', NULL, 'tshirts', NULL, 'mens_white_tshirt.webp', NULL),
+(66, 'brown mens t-shirt', 10, 'brown', 'mens', NULL, 'tshirts', NULL, 'mens_brown_tshirt.webp', NULL),
+(67, 'black mens t-shirt', 10, 'black', 'mens', NULL, 'tshirts', NULL, 'mens_black_tshirt.webp', NULL),
+(68, 'red womens trousers', 10, 'red', 'womens', NULL, 'trousers', NULL, 'red_trousers.webp', NULL),
+(69, 'white womens trousers', 10, 'white', 'womens', NULL, 'trousers', NULL, 'womens_white_trousers.webp', NULL),
+(70, 'black womens trousers', 10, 'black', 'womens', NULL, 'trousers', NULL, 'womens_black_trousers.webp', NULL),
+(71, 'red mens trousers', 10, 'red', 'mens', NULL, 'trousers', NULL, 'red_trousers.webp', NULL),
+(72, 'white mens trousers', 10, 'white', 'mens', NULL, 'trousers', NULL, 'mens_white_trousers.webp', NULL),
+(73, 'black mens trousers', 10, 'black', 'mens', NULL, 'trousers', NULL, 'mens_black_trousers.webp', NULL),
+(74, 'white womens hoodie', 10, 'white', 'womens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
+(75, 'blue womens hoodie', 10, 'blue', 'womens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
+(76, 'black womens hoodie', 10, 'black', 'womens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
+(77, 'white mens hoodie', 10, 'white', 'mens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
+(78, 'blue mens hoodie', 10, 'blue', 'mens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
+(79, 'black mens hoodie', 10, 'black', 'mens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
+(80, 'white womens cap', 10, 'white', 'womens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
+(81, 'black womens cap', 10, 'black', 'womens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
+(82, 'white mens cap', 10, 'white', 'mens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
+(83, 'black mens cap', 10, 'black', 'mens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
+(84, 'black womens bag', 10, 'red', 'womens', NULL, 'accessories', NULL, 'black_bag.webp', NULL);
 
 -- --------------------------------------------------------
 
@@ -473,7 +486,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `returnstatus`
