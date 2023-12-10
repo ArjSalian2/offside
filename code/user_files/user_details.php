@@ -450,7 +450,7 @@ unset($_SESSION['password_error']);
                     <input type="tel" pattern="[0-9]{5} [0-9]{6}" placeholder="00000 000000" class="edit-input" name="phone" value="<?php echo $user['Phone Number']; ?>">
                     <br>
                     <label>Address</label>
-                    <input type="text" class="edit-input" name="addressLine" value="<?php if(isset($address['AddressLine'])){ echo $address['AddressLine'] ;} else{echo 'addressline';}?>">
+                    <input type="text" class="edit-input" name="addressLine" value="<?php if(isset($address['AddressLine'])){ echo $address['AddressLine'] ;} else{echo '';}?>">
                     <br>
                     <label>City</label>
                     <input type="text" class="edit-input" name="city" value="<?php if(isset($address['City'])){ echo $address['City'] ;} else{echo '';}?>">
