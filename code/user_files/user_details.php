@@ -332,6 +332,14 @@ unset($_SESSION['password_error']);
     <link rel="stylesheet" href="../nav-styles.css" />
 </head>
 <body>
+
+    <script>
+        searchParam = window.location.search;
+        url = 'search.php' + searchParam;
+        if (searchParam) {
+        window.location.href = url;
+        }
+    </script>
     <header>
     
         <div class="logo"> <!--Hadeeqa-The logo for top of page-->
