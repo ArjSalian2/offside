@@ -335,7 +335,7 @@ unset($_SESSION['password_error']);
 
     <script>
         searchParam = window.location.search;
-        url = 'search.php' + searchParam;
+        url = '../search.php' + searchParam;
         if (searchParam) {
         window.location.href = url;
         }
