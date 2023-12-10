@@ -197,7 +197,7 @@ session_start();
                         $products = $db->query("SELECT * FROM products WHERE product_gender IN ($genderchecked) AND product_colour IN ($colourchecked) AND product_category IN ($categorychecked)");
                         foreach($products as $product) {
                         ?>
-                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                            <div class="product-card" id="<?=$product["product_id"]?>"> 
                             <div>
                                 <img src="product_img/<?= $product["ImageURL"] ?>" style="height: 100%; width: 100%; object-fit: contain";>
                                 </div>
@@ -218,7 +218,7 @@ session_start();
                         $products = $db->query("SELECT * FROM products"); 
                         foreach($products as $product) {
                         ?>
-                            <div class="product-card" id="<?=$product["product_id"]?>"> <?= $product["product_name"] ?> 
+                            <div class="product-card" id="<?=$product["product_id"]?>">
                                 <div>
                                 <img src="product_img/<?= $product["ImageURL"] ?>" style="height: 100%; width: 100%; object-fit: contain";>
                                 </div>

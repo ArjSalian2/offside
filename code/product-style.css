@@ -90,6 +90,14 @@ section {
     border: 0px solid black;
     display: block;
     padding-left: 10px;
+}
+
+.product-card-name {
+    font-size: 20px;
+}
+
+.product-card-name, .product-card-gender, .product-card-price{
+    margin-top: 5px;
 
 }
 
