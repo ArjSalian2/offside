@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0px 20px;
+    /*border: 1px solid black;*/
+}
+
+aside,
+section {
+    width: 25%;
+    border-right: 1px solid rgba(51, 51, 51, 0.3);
+    float:left;
+}
+
+#shopBar {
+
+    height: 55px;
+    border-top: 1px solid rgba(51, 51, 51, 0.3);
+    border-bottom: 1px solid rgba(51, 51, 51, 0.3); 
+    margin-bottom: 20px;
+}
+
+#shopBar select {
+    max-width: 200px;
+    float: right;
+    border-radius: 5px;
+   
+}
+
+.sortBy {
+    float: right;
+    width: 275px;
+    padding: 18px 0;
+}
+
+.sortBy h4 {
+    float: left;
+    margin: 0px;
+}
+
+.grid-container {
+    display: grid;
+    max-width: 1200px;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-left: 25%;
+    
+}
+
+.product-card {
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    
+}
+
+#filters h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.submit-button {
+    background-color: black;
+    color: white;
+    border: 1px solid;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.submit-button {
+    transition-duration: 0.2s;
+}
+  
+.submit-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.product-card {
+    text-align: center;
+}
+
+.product-card-info {
+    text-align: left;
+    border: 0px solid black;
+    display: block;
+    padding-left: 10px;
+}
+
+.product-card-name {
+    font-size: 20px;
+}
+
+.product-card-name, .product-card-gender, .product-card-price{
+    margin-top: 5px;
+
+}
+
+.add-to-cart-btn {
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    float: right;
+    margin-right: 10px;
+}
