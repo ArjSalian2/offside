@@ -49,21 +49,23 @@ unset($_SESSION['password_error']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;
             margin: 0;
             padding: 0;
-            display: flex;
+            
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
         .page-container{
-            position: relative;
+            /**position: relative;**/
             bottom: 250px;
+            display: flex;
         }
 
         header{
@@ -253,7 +255,8 @@ unset($_SESSION['password_error']);
             max-width: 400px;
             width: 100%;
             margin: auto;
-            margin-top: 50vh;
+            /**margin-top: 50vh;**/
+            margin-top: 26px;
         }
 
         .password-container{
@@ -326,47 +329,54 @@ unset($_SESSION['password_error']);
         }
 
     </style>
+    <link rel="stylesheet" href="../nav-styles.css" />
 </head>
 <body>
     <header>
-
-    <div class ="logo">  <!--Hadeeqa-The logo for top of page-->
-        <a href="/offside/index.html">
-            <img src="homepage-img/logo.png" alt="Offside Logo">
-        </a>
-    </div>
-
-    <div class="top-right-nav">
-    <div id="nav1">
-    <a href="../about.html">About Us</a> 
-    <a href="../basket/contact.php">Contact Us</a> 
-    <a href="login.php">Log In</a>
-    <a href="user_details.php">Account details</a>
-    <a href="../basket/my_orders.php">My orders</a>
-    </div>
-
-    </header> 
-
+    
+        <div class="logo"> <!--Hadeeqa-The logo for top of page-->
+            <a href="/offside/index.html">
+                <img src="../homepage-img/logo.png" alt="Offside Logo">
+            </a>
+        </div>
+    
+        <div class="top-right-nav">
+            <div id="nav1">
+                <a href="../about.html">About Us</a>
+                <a href="../basket/contact.php">Contact Us</a>
+                <a href="login.php">Log In</a>
+                <a href="user_details.php">Account details</a>
+                <a href="../basket/my_orders.php">My orders</a>
+            </div>
+        </div>
+    
+    </header>
+    
     <div id="nav2">
-    <div class="nav2-center">
-    <a href="../products.php?gender%5B%5D=womens">Women</a>
-    <a href="../products.php?gender%5B%5D=mens">Men</a> 
-    <a href="../products.php?category%5B%5D=accessories">Accessories</a>
+        <div class="nav2-center">
+            <a href="../products.php?gender%5B%5D=womens">Women</a>
+            <a href="../products.php?gender%5B%5D=mens">Men</a>
+            <a href="../products.php?category%5B%5D=accessories">Accessories</a>
+        </div>
+    
+        <div class="nav2-right">
+            <div id="search">
+                <form>
+                    <input type="text" name="search" placeholder="Search">
+                    <input type="submit" value="Enter">
+                </form>
+            </div>
+            <div id="basket-icon">
+                <a href="../basket/cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
+            </div>
+        </div>
     </div>
 
-    <div class="nav2-right">
-    <div id="search">
-        <form>
-    <input type="text" name="search" placeholder="Search">
-    <input type="submit" value="Enter">
-        </form>
-    </div>
-    <div id="basket-icon">
-    <a href="../basket/cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>  
-    </div>
-    </div>
-    </div>
-
+    <div id="banner">
+        <h2> Free Delivery & Returns</h2>
+        <p> Offside members get free delivery and 60-day returns</p>
+      </div>
+      
     <div class="messages-container">
         <?php if ($passwordError): ?>
         <div class="error-message"><?php echo $passwordError; ?></div>
@@ -405,9 +415,9 @@ unset($_SESSION['password_error']);
         <div class="tab-content" id="account-details">
             <form method='post' action='update_details.php'>
                 <div class="details-container">
-                    <h2>User Details</h2>
+                    <h2>User Details</h2> 
     
-                    <!-- Display user details from the Users table -->
+                    <!-- Display user details from the Users table --> 
                     <div class="detail">
                         <label>Email: </label>
                         <input type="email" class="edit-input" name="email" value="<?php echo $user['Email']; ?>">
@@ -431,19 +441,19 @@ unset($_SESSION['password_error']);
                     <input type="tel" pattern="[0-9]{5} [0-9]{6}" placeholder="00000 000000" class="edit-input" name="phone" value="<?php echo $user['Phone Number']; ?>">
                     <br>
                     <label>Address</label>
-                    <input type="text" class="edit-input" name="addressLine" value="<?php echo $address['AddressLine'] ?>">
+                    <input type="text" class="edit-input" name="addressLine" value="<?php if(isset($address['AddressLine'])){ echo $address['AddressLine'] ;} else{echo 'addressline';}?>">
                     <br>
                     <label>City</label>
-                    <input type="text" class="edit-input" name="city" value="<?php echo $address['City'] ?>">
+                    <input type="text" class="edit-input" name="city" value="<?php if(isset($address['City'])){ echo $address['City'] ;} else{echo '';}?>">
                     <br>
                     <label>Region</label>
-                    <input type="text" class="edit-input" name="region" value="<?php echo $address['Region'] ?>">
+                    <input type="text" class="edit-input" name="region" value="<?php if(isset($address['Region'])){ echo $address['Region'] ;} else{echo '';}?>">
                     <br>
                     <label>Postcode</label>
-                    <input type="text" class="edit-input" name="postcode" value="<?php echo $address['Postcode'] ?>">
+                    <input type="text" class="edit-input" name="postcode" value="<?php if(isset($address['Postcode'])){ echo $address['Postcode'] ;} else{echo '';}?>">
                     <br>
                     <label>Country</label>
-                    <input type="text" class="edit-input" name="country" value="<?php echo $address['Country'] ?>">
+                    <input type="text" class="edit-input" name="country" value="<?php if(isset($address['Country'])){ echo $address['Country'] ;} else{echo '';}?>">
                     <br>
     
                     <!-- Save Changes button -->
