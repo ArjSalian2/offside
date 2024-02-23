@@ -30,10 +30,10 @@ if (isset($_POST['submitted'])) {
                 header("Location: user_details.php");
                 exit();
             } else {
-                $errorMessage = "Error logging in, password does not match";
+                $errorMessage = "Error logging in, email or password does not match";
             }
         } else {
-            $errorMessage = "Error logging in, email not found";
+            $errorMessage = "Error logging in, email or password does not match";
         }
     } catch (PDOException $ex) {
         $errorMessage = "Failed to connect to the database.<br>" . $ex->getMessage();
