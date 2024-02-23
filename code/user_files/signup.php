@@ -122,7 +122,7 @@ if (isset($_POST['submitted'])) {
             <input type="email" name="email" class="form-input" required>
             <br>
             <label for="password">Password:</label>
-            <input type="password" name="password" class="form-input" required>
+            <input type="password" name="password" minlength="8" class="form-input" required>
             <br>
             <label for="firstName">First Name:</label>
             <input type="text" name="firstName" class="form-input" required>

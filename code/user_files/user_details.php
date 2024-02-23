@@ -491,12 +491,12 @@ unset($_SESSION['password_error']);
                 <br>
                 <div>
                     <label for="newPassword"><b>New Password</b></label>
-                    <input id="newPassword" type="password" placeholder="Enter New Password" name="newPassword" required>
+                    <input id="newPassword" type="password" placeholder="Enter New Password" name="newPassword" minlength="8" required>
                 </div>
                 <br>
                 <div>
                     <label for="confirmPassword"><b>Confirm Password</b></label>
-                    <input id="confirmPassword" type="password" placeholder="Confirm New Password" name="confirmPassword" required>
+                    <input id="confirmPassword" type="password" placeholder="Confirm New Password" name="confirmPassword" minlength="8" required>
                 </div>
                 <br>
                 <button type="submit" class="btn">Save Changes</button>
