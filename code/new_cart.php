@@ -96,7 +96,7 @@ if (!isset($_SESSION['user_id'])) {
             </form>
         </div>
         <div id="basket-icon">
-            <a href="cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+            <a href="new_cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
         </div>
     </div>
 </div>

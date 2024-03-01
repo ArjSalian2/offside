@@ -376,7 +376,7 @@ unset($_SESSION['password_error']);
                 </form>
             </div>
             <div id="basket-icon">
-                <a href="../basket/cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
+                <a href="../new_cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
             </div>
         </div>
     </div>
