@@ -1,0 +1,46 @@
+#basket-div {
+    outline: black solid 1px;
+    border-radius: 4px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#basket-div h1 {
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100%;
+    overflow: hidden;
+}
+
+.basket-item-card {
+    outline: black solid 1px;;
+    border-radius: 4px;
+    height:110px;
+    width:95%;
+    display:inline-flexbox;
+    margin-bottom: 10px;
+    margin-left: 2.5%;
+
+}
+
+.basket-item-card img{
+    height:100px;
+    width: 100px;
+}
+
+.item_img, .item_name, .item_quantity, .increase-btn, .decrease-btn, .remove-btn {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: inline-start;
+}
+
+#summ-div {
+    margin-left: 2.5%;
+}

@@ -1,6 +1,11 @@
 <?php
 // Start the session
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    $userId = null;  
+} else {
+    $userId = $_SESSION["user_id"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +27,17 @@ session_start();
     url = 'search.php' + '?' +searchParam;
     if (searchParam.has("search-term")) {
         window.location.href = url;
+    }
+    function addToCart(buttonParam, userIdParam) {
+        productIdToAdd = buttonParam.getAttribute("data-product-id");
+        userID = userIdParam;
+        if(userID != null) {
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "addToBasketDB.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("prodID="+productIdToAdd + "&userID="+userID);
+        }
+
     }
 
 
@@ -63,7 +79,7 @@ session_start();
             </form>
         </div>
         <div id="basket-icon">
-            <a href="basket/cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+            <a href="new_cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
         </div>
     </div>
 </div>
@@ -75,7 +91,7 @@ session_start();
     <body>
         <main>
 
-            <h1>
+            <h1 id="productTitle">
                 Products
             </h1>
 
@@ -207,7 +223,7 @@ session_start();
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                             </div>
                             <!-- Add basket functionality here -->
-                            <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                            <button onclick="addToCart(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
 
                             <!-- ----------------------------- -->
                             </div>
@@ -228,7 +244,7 @@ session_start();
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
                             <!-- Add basket functionality here -->
-                                <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                                <button onclick="addToCart(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
 
                             <!-- ----------------------------- -->
                             </div>
@@ -240,5 +256,5 @@ session_start();
                 ?>
             </div>
         </main>
-        <script src="basket/script.js"></script>
+       <!--<script src="basket/script.js"></script>-->
     </body>
