@@ -24,9 +24,9 @@ if (!isset($_SESSION['user_id'])) {
 
 
 <script>
-    searchParam = window.location.search;
-    url = '../search.php' + searchParam;
-    if (searchParam) {
+    searchParam = new URLSearchParams(window.location.search);
+    url = 'search.php' + '?' +searchParam;
+    if (searchParam.has("search-term")) {
         window.location.href = url;
     }
 
