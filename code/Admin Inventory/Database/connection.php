@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $server = "localhost";
 $user = "root";
@@ -9,7 +10,5 @@ $conn = mysqli_connect($server, $user, $password, $db);
 
 if (!$conn) {
    die("Connection Failed:" . mysqli_connect_error());
-} else {
-   echo "Connected successfully";
 }
 ?>
