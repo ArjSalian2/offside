@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 04:55 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Mar 08, 2024 at 04:32 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,6 +58,17 @@ CREATE TABLE `category` (
   `Name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`CategoryID`, `Name`) VALUES
+(5, 'accessories'),
+(1, 'hoodies'),
+(3, 'shoes'),
+(2, 'trousers'),
+(4, 'tshirts');
+
 -- --------------------------------------------------------
 
 --
@@ -78,8 +89,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`OrderID`, `UserID`, `OrderDate`, `OrderStatus`, `AddressID`, `TotalAmount`) VALUES
-(1, 2, '2023-12-05', 1, 1, 20),
-(2, 2, '2023-12-05', 2, 2, 10);
+(1, NULL, '2023-12-05', 1, 1, 20),
+(2, NULL, '2023-12-05', 2, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -162,31 +173,31 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_colour`, `product_gender`, `CategoryID`, `product_category`, `StockLevel`, `ImageURL`, `Description`) VALUES
-(56, 'red womens shoes', 10, 'red', 'womens', NULL, 'shoes', NULL, 'red_shoes.webp', NULL),
-(57, 'white womens shoes', 10, 'white', 'womens', NULL, 'shoes', NULL, 'white_shoes.webp', NULL),
-(58, 'black womens shoes', 10, 'black', 'womens', NULL, 'shoes', NULL, 'black_shoes.webp', NULL),
-(59, 'red mens shoes', 10, 'red', 'mens', NULL, 'shoes', NULL, 'red_shoes.webp', NULL),
-(60, 'white mens shoes', 10, 'white', 'mens', NULL, 'shoes', NULL, 'white_shoes.webp', NULL),
-(61, 'black mens shoes', 10, 'black', 'mens', NULL, 'shoes', NULL, 'black_shoes.webp', NULL),
-(62, 'white womens t-shirt', 10, 'white', 'womens', NULL, 'tshirts', NULL, 'womens_white_tshirt.webp', NULL),
-(63, 'brown womens t-shirt', 10, 'brown', 'womens', NULL, 'tshirts', NULL, 'womens_brown_tshirt.webp', NULL),
-(64, 'black womens t-shirt', 10, 'black', 'womens', NULL, 'tshirts', NULL, 'womens_black_tshirt.webp', NULL),
-(65, 'white mens t-shirt', 10, 'white', 'mens', NULL, 'tshirts', NULL, 'mens_white_tshirt.webp', NULL),
-(66, 'brown mens t-shirt', 10, 'brown', 'mens', NULL, 'tshirts', NULL, 'mens_brown_tshirt.webp', NULL),
-(67, 'black mens t-shirt', 10, 'black', 'mens', NULL, 'tshirts', NULL, 'mens_black_tshirt.webp', NULL),
-(68, 'red womens trousers', 10, 'red', 'womens', NULL, 'trousers', NULL, 'red_trousers.webp', NULL),
-(69, 'white womens trousers', 10, 'white', 'womens', NULL, 'trousers', NULL, 'womens_white_trousers.webp', NULL),
-(70, 'black womens trousers', 10, 'black', 'womens', NULL, 'trousers', NULL, 'womens_black_trousers.webp', NULL),
-(71, 'red mens trousers', 10, 'red', 'mens', NULL, 'trousers', NULL, 'red_trousers.webp', NULL),
-(72, 'white mens trousers', 10, 'white', 'mens', NULL, 'trousers', NULL, 'mens_white_trousers.webp', NULL),
-(73, 'black mens trousers', 10, 'black', 'mens', NULL, 'trousers', NULL, 'mens_black_trousers.webp', NULL),
-(74, 'white womens hoodie', 10, 'white', 'womens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
-(75, 'blue womens hoodie', 10, 'blue', 'womens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
-(76, 'black womens hoodie', 10, 'black', 'womens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
-(77, 'white mens hoodie', 10, 'white', 'mens', NULL, 'hoodies', NULL, 'white_hoodie.webp', NULL),
-(78, 'blue mens hoodie', 10, 'blue', 'mens', NULL, 'hoodies', NULL, 'blue_hoodie.webp', NULL),
-(79, 'black mens hoodie', 10, 'black', 'mens', NULL, 'hoodies', NULL, 'black_hoodie.webp', NULL),
-(80, 'white womens cap', 10, 'white', 'womens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
+(56, 'red womens shoes', 10, 'red', 'womens', 3, 'shoes', 50, 'red_shoes.webp', NULL),
+(57, 'white womens shoes', 10, 'white', 'womens', 3, 'shoes', 250, 'white_shoes.webp', NULL),
+(58, 'black womens shoes', 10, 'black', 'womens', 3, 'shoes', 30, 'black_shoes.webp', NULL),
+(59, 'red mens shoes', 10, 'red', 'mens', 3, 'shoes', 25, 'red_shoes.webp', NULL),
+(60, 'white mens shoes', 10, 'white', 'mens', 3, 'shoes', 45, 'white_shoes.webp', NULL),
+(61, 'black mens shoes', 10, 'black', 'mens', 3, 'shoes', 64, 'black_shoes.webp', NULL),
+(62, 'white womens t-shirt', 10, 'white', 'womens', 4, 'tshirts', 455, 'womens_white_tshirt.webp', NULL),
+(63, 'brown womens t-shirt', 10, 'brown', 'womens', 4, 'tshirts', 34, 'womens_brown_tshirt.webp', NULL),
+(64, 'black womens t-shirt', 10, 'black', 'womens', 4, 'tshirts', 76, 'womens_black_tshirt.webp', NULL),
+(65, 'white mens t-shirt', 10, 'white', 'mens', 4, 'tshirts', 65, 'mens_white_tshirt.webp', NULL),
+(66, 'brown mens t-shirt', 10, 'brown', 'mens', 4, 'tshirts', 23, 'mens_brown_tshirt.webp', NULL),
+(67, 'black mens t-shirt', 10, 'black', 'mens', 4, 'tshirts', 87, 'mens_black_tshirt.webp', NULL),
+(68, 'red womens trousers', 10, 'red', 'womens', 2, 'trousers', 54, 'red_trousers.webp', NULL),
+(69, 'white womens trousers', 10, 'white', 'womens', 2, 'trousers', 76, 'womens_white_trousers.webp', NULL),
+(70, 'black womens trousers', 10, 'black', 'womens', 2, 'trousers', 32, 'womens_black_trousers.webp', NULL),
+(71, 'red mens trousers', 10, 'red', 'mens', 2, 'trousers', 34, 'red_trousers.webp', NULL),
+(72, 'white mens trousers', 10, 'white', 'mens', 2, 'trousers', 0, 'mens_white_trousers.webp', NULL),
+(73, 'black mens trousers', 10, 'black', 'mens', 2, 'trousers', 10, 'mens_black_trousers.webp', NULL),
+(74, 'white womens hoodie', 10, 'white', 'womens', 1, 'hoodies', 43, 'white_hoodie.webp', NULL),
+(75, 'blue womens hoodie', 10, 'blue', 'womens', 1, 'hoodies', 0, 'blue_hoodie.webp', NULL),
+(76, 'black womens hoodie', 10, 'black', 'womens', 1, 'hoodies', 76, 'black_hoodie.webp', NULL),
+(77, 'white mens hoodie', 10, 'white', 'mens', 1, 'hoodies', 22, 'white_hoodie.webp', NULL),
+(78, 'blue mens hoodie', 10, 'blue', 'mens', 1, 'hoodies', 21, 'blue_hoodie.webp', NULL),
+(79, 'black mens hoodie', 10, 'black', 'mens', 1, 'hoodies', 74, 'black_hoodie.webp', NULL),
+(80, 'white womens cap', 10, 'white', 'womens', 5, 'accessories', 11, 'white_cap.webp', NULL),
 (81, 'black womens cap', 10, 'black', 'womens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
 (82, 'white mens cap', 10, 'white', 'mens', NULL, 'accessories', NULL, 'white_cap.webp', NULL),
 (83, 'black mens cap', 10, 'black', 'mens', NULL, 'accessories', NULL, 'black_cap.webp', NULL),
@@ -282,9 +293,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `First Name`, `Last Name`, `Email`, `Pass`, `Phone Number`, `user_type`, `Created`) VALUES
-(2, 'Muhammad', 'Shuayb', '2100077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-23'),
-(3, 'John', 'Smith', '210077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-27'),
-(4, 'James', 'Anderson', 'james2123@gmail.com', 'mdo121424', '742434131', 1, '2023-12-05'),
 (7, 'first', 'last2', 'example@email.com', '$2y$10$5BsI59TrvvLRkLbk7MCUbeu2HUBhn6j9kEPHH7n0c/sPF1AFlIC1G', '00000 000000', 1, '2023-12-09');
 
 -- --------------------------------------------------------
@@ -538,74 +546,21 @@ ALTER TABLE `variation_options`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`OrderStatus`) REFERENCES `orderstatus` (`StatusID`),
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`AddressID`) REFERENCES `address` (`AddressID`);
-
---
--- Constraints for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`),
-  ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`ReturnStatusID`) REFERENCES `returnstatus` (`ReturnStatusID`);
 
 --
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`);
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`);
-
---
--- Constraints for table `product_configuration`
---
-ALTER TABLE `product_configuration`
-  ADD CONSTRAINT `product_configuration_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `product_configuration_ibfk_2` FOREIGN KEY (`VariationOptionID`) REFERENCES `variation_options` (`VariationOptionsID`);
-
---
--- Constraints for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`OrderProductID`) REFERENCES `order_items` (`OrderItemsID`);
-
---
--- Constraints for table `shopping_basket`
---
-ALTER TABLE `shopping_basket`
-  ADD CONSTRAINT `shopping_basket_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`);
-
---
--- Constraints for table `shopping_basket_items`
---
-ALTER TABLE `shopping_basket_items`
-  ADD CONSTRAINT `shopping_basket_items_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `shopping_basket` (`BasketID`),
-  ADD CONSTRAINT `shopping_basket_items_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_type` (`UserTypeID`);
-
---
--- Constraints for table `variations`
---
-ALTER TABLE `variations`
-  ADD CONSTRAINT `variations_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`);
-
---
--- Constraints for table `variation_options`
---
-ALTER TABLE `variation_options`
-  ADD CONSTRAINT `variation_options_ibfk_1` FOREIGN KEY (`VariationID`) REFERENCES `variations` (`VariationID`);
+  ADD CONSTRAINT `CategoryID_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
