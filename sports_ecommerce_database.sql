@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 04:55 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Mar 08, 2024 at 04:09 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -78,8 +78,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`OrderID`, `UserID`, `OrderDate`, `OrderStatus`, `AddressID`, `TotalAmount`) VALUES
-(1, 2, '2023-12-05', 1, 1, 20),
-(2, 2, '2023-12-05', 2, 2, 10);
+(1, NULL, '2023-12-05', 1, 1, 20),
+(2, NULL, '2023-12-05', 2, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -282,8 +282,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `First Name`, `Last Name`, `Email`, `Pass`, `Phone Number`, `user_type`, `Created`) VALUES
-(2, 'Muhammad', 'Shuayb', '2100077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-23'),
-(3, 'John', 'Smith', '210077568@aston.ac.uk', 'password', '123456789', 1, '2023-11-27'),
 (4, 'James', 'Anderson', 'james2123@gmail.com', 'mdo121424', '742434131', 1, '2023-12-05'),
 (7, 'first', 'last2', 'example@email.com', '$2y$10$5BsI59TrvvLRkLbk7MCUbeu2HUBhn6j9kEPHH7n0c/sPF1AFlIC1G', '00000 000000', 1, '2023-12-09');
 
@@ -538,74 +536,15 @@ ALTER TABLE `variation_options`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`OrderStatus`) REFERENCES `orderstatus` (`StatusID`),
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`AddressID`) REFERENCES `address` (`AddressID`);
-
---
--- Constraints for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`),
-  ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`ReturnStatusID`) REFERENCES `returnstatus` (`ReturnStatusID`);
 
 --
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`);
-
---
--- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`);
-
---
--- Constraints for table `product_configuration`
---
-ALTER TABLE `product_configuration`
-  ADD CONSTRAINT `product_configuration_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `product_configuration_ibfk_2` FOREIGN KEY (`VariationOptionID`) REFERENCES `variation_options` (`VariationOptionsID`);
-
---
--- Constraints for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`OrderProductID`) REFERENCES `order_items` (`OrderItemsID`);
-
---
--- Constraints for table `shopping_basket`
---
-ALTER TABLE `shopping_basket`
-  ADD CONSTRAINT `shopping_basket_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`);
-
---
--- Constraints for table `shopping_basket_items`
---
-ALTER TABLE `shopping_basket_items`
-  ADD CONSTRAINT `shopping_basket_items_ibfk_1` FOREIGN KEY (`BasketID`) REFERENCES `shopping_basket` (`BasketID`),
-  ADD CONSTRAINT `shopping_basket_items_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`product_id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_type` (`UserTypeID`);
-
---
--- Constraints for table `variations`
---
-ALTER TABLE `variations`
-  ADD CONSTRAINT `variations_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`CategoryID`);
-
---
--- Constraints for table `variation_options`
---
-ALTER TABLE `variation_options`
-  ADD CONSTRAINT `variation_options_ibfk_1` FOREIGN KEY (`VariationID`) REFERENCES `variations` (`VariationID`);
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`userID`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
