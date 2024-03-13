@@ -4,12 +4,10 @@ include_once "./Database/connection.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
-  
   <title>Admin Inventory Management</title>
 </head>
 
@@ -23,6 +21,8 @@ include_once "./Database/connection.php";
 
 <?php
 include_once "./Database/connection.php";
+
+///////////DELETING PRODUCTS////////////////
 
 // IF statement for deleting a product from sql database!
 
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
         echo "<script>alert('Error deleting product');</script>";
     }
 }
+///////////////////////////////////////////
 ?>
 
 <!DOCTYPE html>
@@ -94,6 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
               $result = mysqli_query($conn, $sql);
 
               // Check ing to see if the products are in the datavase
+
+
+
               if (mysqli_num_rows($result) > 0) {
                   // Output data of each row
                   while ($row = mysqli_fetch_assoc($result)) {
@@ -105,14 +109,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
                       echo "<td>" . $row["product_gender"] . "</td>";
                       echo "<td>" . $row["CategoryID"] . "</td>";
                       echo "<td>" . $row["StockLevel"] . "</td>";
-                      echo "<td>" . $row["ImageURL"] . "</td>"; //fix image
+                      echo "<td><img src='../product_img/" . $row["ImageURL"] . "' alt='Product Image' width='150' height='150'></td>"; // SHOWS IMAGES
+                      
                       echo "<td><form method='post' action=''><input type='hidden' name='product_id' value='" . $row["product_id"] . "'><button type='submit' name='delete_product' class='deletebutton'><i class='bx bx-trash'></i></button></form></td>";
 
                       echo "</tr>";
+
+                      
                   }
+
+                    
+
               } else {
                   echo "<tr><td colspan='9'>No products found</td></tr>";
-              }
+              
+                  
+              
+                }
               ?>
             </tbody>
           </table>
