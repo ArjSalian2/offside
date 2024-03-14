@@ -81,6 +81,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <div class="content">
             <h1 class="title">Edit User</h1>
+            <div class="col-left">
+                <a href="view_customer.php" class="adminbutton"><i class='bx bx-arrow-back'></i> Back</a>
+            </div>
             <div class="info-data">
                 <div class="card">
                     <form action="" method="POST">
