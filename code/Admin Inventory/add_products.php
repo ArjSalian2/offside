@@ -71,8 +71,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
                         <option value="Unisex">Unisex</option>
                     </select><br><br>
 
-                    <label for="CategoryID">Category ID:</label><br>
-                    <input type="number" id="CategoryID" name="CategoryID" required><br><br>
+                    <label for="CategoryID">Category:</label><br>
+                    <select id="CategoryID" name="CategoryID" required>
+                        <option value="1">Hoodies</option>
+                        <option value="2">Trousers</option>
+
+                        <option value="3">Shoes</option>
+                        <option value="4">T-Shirt</option>
+                        <option value="5">Accessories</option>
+                    </select><br><br>
 
                     <label for="StockLevel">Stock Level:</label><br>
                     <input type="number" id="StockLevel" name="StockLevel" required><br><br>
