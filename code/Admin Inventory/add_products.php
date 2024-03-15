@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
                     </select><br><br>
 
                     <label for="StockLevel">Stock Level:</label><br>
-                    <input type="number" id="StockLevel" name="StockLevel" required><br><br>
+                    <input type="number" id="StockLevel" name="StockLevel" required min="1"><br><br>
 
                     <label for="image">Product Image:</label><br>
 
