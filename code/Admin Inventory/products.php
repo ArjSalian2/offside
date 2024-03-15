@@ -22,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
         $search .= " AND product_price BETWEEN '" . $minprice . "' AND '" . $maxprice . "' ";
     }
 }
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +43,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
     include "./sidebar.php";
     include "./nav.php";
     ?>
+
+<?php
+include_once "./Database/connection.php";
+
+///////////DELETING PRODUCTS////////////////
+
+// IF statement for deleting a product from sql database!
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
+    // Retrieve product ID to be deleted
+    $product_id = $_POST['product_id'];
+
+    // Delete product from the database
+    $sql = "DELETE FROM products WHERE product_id = '$product_id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+
+        // product deleted successfully
+        echo "<script>alert('Product deleted successfully');</script>";
+    } else {
+
+        // Error deleting product
+        echo "<script>alert('Error deleting product');</script>";
+    }
+}
+///////////////////////////////////////////
+?>
+
     <main>
         <div class="content">
             <h1 class="title">Product Management</h1>
@@ -53,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
                         </button>
 
                         <div class="col-right">
-                            <a href="add_user.php" class="addbutton"><i class='bx bx-plus-circle'></i> Add Product</a>
+                            <a href="add_products.php" class="addbutton"><i class='bx bx-plus-circle'></i> Add Product</a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
                         while ($row = $result->fetch_assoc()) {
                             ?>
                             <div class="productcard">
-                                <img class='thumb' src='/offside/code/product_img/<?= $row['ImageURL'] ?>'>
+                                <img class='thumb' src='../product_img/<?= $row['ImageURL'] ?>'>
                                 <div class="productcard-details">
                                     <p>ProductId:
                                         <strong>
@@ -157,8 +189,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
                                                 class='bx bxs-user-detail'></i></a>
                                         <a href='edit_product.php?id=<?= $row['product_id'] ?>' class='editbutton'><i
                                                 class='bx bx-edit'></i></a>
-                                        <a href='delete_product.php?id=<?= $row['product_id'] ?>' class='deletebutton'><i
-                                                class='bx bx-user-x'></i></a>
+
+                                        ///delete form
+                                        <form method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');" style="display: inline;">
+                                                <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
+                                                <button type="submit" name="delete_product" class="deletebutton"><i
+                                                class='bx bx-user-x'></i></button>
+                                        ///
+                                </form>
                                     </div>
                                 </div>
                             </div>
