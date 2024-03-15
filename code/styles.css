@@ -311,16 +311,62 @@ button{
 
 
 
-.footer{
-  background-color:white ;
-    color: black;
-    padding: 0.5px;
-    text-align: right;
-    margin-top: auto; 
+/* DIMA   */
+.footer {
+  background-color: rgb(14, 11, 11);
+  color: rgb(236, 231, 231);
+  /* padding: 0.5px; */
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links {
+  display: flex;
+}
+
+.icons{
+  margin-right :13px;
+  margin-top: 12px;;
+}
+.footer a{
+  color:white;
+  display:inline-block;
+  margin-right :13px;
+  margin-left :5px;
+  font-size: 13px;
+  text-decoration: none;
 }
 .footer p{
-  margin: 0;
-  font-size: small;
+  color:white;
+  display:inline-block;
+  margin:10px 10px;
+  text-decoration: none;
+}
+.footer a:hover{
+  color:lightgray;
+}
+
+.fa{
+  padding: 10px;
+  width: 18px;
+  text-align: center;
+  border-radius: 50%;
+}
+.fa:hover{
+  opacity: 0.7;
+}
+.fa-twitter {
+  background: grey;
+  color: white;
+}
+.fa-instagram{
+  background: grey;
+  color: white;
+}
+.fa-facebook{
+  background: grey;
+  color: white;
 }
 
 
