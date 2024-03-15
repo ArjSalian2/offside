@@ -65,6 +65,11 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="top-right-nav">
         <div id="nav1">
+            <?php if ($isAdmin): ?>
+            <div class="admin-button">
+            <a href="../Admin Inventory/dashboard.php">Admin</a>
+            </div>
+            <?php endif; ?>
             <a href="about.html">About Us</a>
             <a href="basket/contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
