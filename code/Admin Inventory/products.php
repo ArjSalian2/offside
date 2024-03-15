@@ -24,8 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
 }
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,15 +56,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
     // Delete product from the database
     $sql = "DELETE FROM products WHERE product_id = '$product_id'";
     $result = mysqli_query($conn, $sql);
-    if ($result) {
+
+    //commented out as it is uneccesary
+   // if ($result) {
 
         // product deleted successfully
-        echo "<script>alert('Product deleted successfully');</script>";
-    } else {
+   //     echo "<script>alert('Product deleted successfully');</script>";
+   // } else {
 
-        // Error deleting product
-        echo "<script>alert('Error deleting product');</script>";
-    }
+   //     // Error deleting product
+   //     echo "<script>alert('Error deleting product');</script>";
+   // }
 }
 ///////////////////////////////////////////
 ?>
