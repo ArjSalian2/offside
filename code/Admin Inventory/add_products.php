@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Product added successfully');</script>";
+                header("Location: products.php")
             } else {
                 echo "<script>alert('Error adding product');</script>";
             }
