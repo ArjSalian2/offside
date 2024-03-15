@@ -1,11 +1,23 @@
 <?php
 // Start the session
 session_start();
+
+// Connect to the database
+require_once('<user_files>/connection.php');
+
+$isAdmin = false;
+
 if (!isset($_SESSION['user_id'])) {
     $userId = null;  
 } else {
     $userId = $_SESSION["user_id"];
+    $stmtUser = $db->prepare("SELECT * FROM users WHERE userID = ?");
+    $stmtUser->execute([$userId]);
+    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+    // Check if the user is an admin
+    $isAdmin = ($user['user_type'] == 0);
 }
+
 ?>
 
 <!DOCTYPE html>
