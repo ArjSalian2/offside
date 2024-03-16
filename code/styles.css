@@ -541,3 +541,56 @@ color: white;
   margin: 0; 
   font-size: small;
 }
+
+
+/*HADEEQAH- CSS FOR FAQS PAGE*/
+
+body.FAQ-page { 
+  font-family: 'Arial', sans-serif; 
+  background-image: url('homepage-img/image3.jpg');  
+  background-size: cover; 
+  
+ 
+}
+
+
+
+.faq-container {
+  max-width: 900px; 
+  margin: 50px auto; 
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8); 
+  border: 2px solid #000000; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); 
+  
+  
+
+}
+.faq-container:hover { 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+  transition: box-shadow 0.8s ease; 
+}
+
+.faq-header h1 { 
+  color: #000000; 
+  text-align: center; 
+  margin-bottom: 10px; 
+  font-size: 30px; 
+ 
+}
+
+.FAQs{ 
+  border: 1px solid #000000; 
+  padding: 10px; 
+  cursor: pointer; 
+  background-color: #e8dedea6; 
+  
+}
+
+
+.FAQs:hover {
+  background-color: rgb(238, 240, 214); 
+ 
+ }
+
