@@ -17,20 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
 
     // Uploading file to  eccomerce sports database
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            
-            $sql = "INSERT INTO products (product_name, product_price, product_colour, product_gender, CategoryID, StockLevel, ImageURL) 
+
+        $sql = "INSERT INTO products (product_name, product_price, product_colour, product_gender, CategoryID, StockLevel, ImageURL) 
                     VALUES ('$product_name', '$product_price', '$product_colour', '$product_gender', '$CategoryID', '$StockLevel', '$new_image_name')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                echo "<script>alert('Product added successfully');</script>";
-                header("Location: products.php")
-            } else {
-                echo "<script>alert('Error adding product');</script>";
-            }
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            echo "<script>alert('Product added successfully');</script>";
+            header("Location: products.php");
         } else {
-            echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
+            echo "<script>alert('Error adding product');</script>";
         }
+    } else {
+        echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
     }
+}
 
 ?>
 
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
 
                     <input type="file" id="image" name="image" required><br><br>
 
-                    <button type="submit" name="add_product" id = "addbutton" class = "addbutton">Add Product</button>
+                    <button type="submit" name="add_product" id="addbutton" class="addbutton">Add Product</button>
 
                 </form>
             </div>

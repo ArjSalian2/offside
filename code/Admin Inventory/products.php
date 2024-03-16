@@ -42,34 +42,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
     include "./nav.php";
     ?>
 
-<?php
-include_once "./Database/connection.php";
+    <?php
+    include_once "./Database/connection.php";
 
-///////////DELETING PRODUCTS////////////////
+    ///////////DELETING PRODUCTS////////////////
+    
+    // IF statement for deleting a product from sql database!
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
+        // Retrieve product ID to be deleted
+        $product_id = $_POST['product_id'];
 
-// IF statement for deleting a product from sql database!
+        // Delete product from the database
+        $sql = "DELETE FROM products WHERE product_id = '$product_id'";
+        $result = mysqli_query($conn, $sql);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
-    // Retrieve product ID to be deleted
-    $product_id = $_POST['product_id'];
-
-    // Delete product from the database
-    $sql = "DELETE FROM products WHERE product_id = '$product_id'";
-    $result = mysqli_query($conn, $sql);
-
-    //commented out as it is uneccesary
-   // if ($result) {
-
+        //commented out as it is uneccesary
+        // if ($result) {
+    
         // product deleted successfully
-   //     echo "<script>alert('Product deleted successfully');</script>";
-   // } else {
-
-   //     // Error deleting product
-   //     echo "<script>alert('Error deleting product');</script>";
-   // }
-}
-///////////////////////////////////////////
-?>
+        //     echo "<script>alert('Product deleted successfully');</script>";
+        // } else {
+    
+        //     // Error deleting product
+        //     echo "<script>alert('Error deleting product');</script>";
+        // }
+    }
+    ///////////////////////////////////////////
+    ?>
 
     <main>
         <div class="content">
@@ -85,7 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
                         </button>
 
                         <div class="col-right">
-                            <a href="add_products.php" class="addbutton"><i class='bx bx-plus-circle'></i> Add Product</a>
+                            <a href="add_products.php" class="addbutton"><i class='bx bx-plus-circle'></i> Add
+                                Product</a>
                         </div>
                     </div>
                 </div>
@@ -190,13 +191,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_product'])) {
                                         <a href='edit_product.php?id=<?= $row['product_id'] ?>' class='editbutton'><i
                                                 class='bx bx-edit'></i></a>
 
-                                        ///delete form
-                                        <form method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');" style="display: inline;">
-                                                <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
-                                                <button type="submit" name="delete_product" class="deletebutton"><i
-                                                class='bx bx-user-x'></i></button>
-                                        ///
-                                </form>
+                                        <!--delete form-->
+                                        <form method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this product?');"
+                                            style="display: inline;">
+                                            <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
+                                            <button type="submit" name="delete_product" class="deletebutton"><i
+                                                    class='bx bx-user-x'></i></button>
+
+                                        </form>
                                     </div>
                                 </div>
                             </div>
