@@ -594,3 +594,16 @@ body.FAQ-page {
  
  }
 
+ .faq-question { 
+  font-size:15px ;
+  color: #000000; 
+  margin-bottom: 3px;
+  
+}
+
+.faq-answer { 
+  display: none;
+  color: #2b0101;
+  font-size: 14px; 
+  
+}
