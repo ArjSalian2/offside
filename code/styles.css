@@ -607,3 +607,25 @@ body.FAQ-page {
   font-size: 14px; 
   
 }
+
+.back-to-top { 
+  text-align: center; 
+  margin-top: 20px; 
+  display: block; 
+  width: fit-content; 
+  margin-left: auto; 
+  margin-right: auto;
+  padding: 4px 11px; 
+  border: 1px solid #000; 
+  background-color: #ffffff; 
+  
+  
+ 
+}
+
+.back-to-top a { 
+  text-decoration: none; 
+  color: #171414b9; 
+  font-weight: bold; 
+  
+}
