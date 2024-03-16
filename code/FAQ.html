@@ -112,3 +112,31 @@
     <a href="#top">Back to Top</a>
   </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() { 
+      var faq = document.querySelectorAll('.FAQs'); 
+  
+      faq.forEach(function(item) { 
+        item.addEventListener('click', function() { 
+          var content = this.querySelector('.faq-answer');
+          if (content.style.display === 'block') { 
+            content.style.display = 'none'; 
+          } else { 
+            content.style.display = 'block'; 
+          }
+        });
+      });
+    });
+  </script>
+
+
+
+
+</body>
+
+
+
+
+
+</html>
