@@ -314,7 +314,7 @@ button{
 /* DIMA   */
 .footer {
   background-color: rgb(14, 11, 11);
-  color: rgb(236, 231, 231);
+  /* color: rgb(236, 231, 231); */
   /* padding: 0.5px; */
   text-align: left;
   display: flex;
