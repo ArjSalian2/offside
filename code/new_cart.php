@@ -84,7 +84,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
             <a href="user_files/user_details.php">Account details</a>
-            <a href="my_orders.php">My orders</a>
+            <a href="view_orders.php">My orders</a>
         </div>
     </div>
 
