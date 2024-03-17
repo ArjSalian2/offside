@@ -133,7 +133,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="basket-item-card"> 
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
                         <p class="item_name"> <?= $productRecord["product_name"] ?></p>
-                        <p class="item_quantity"> <?= $basketProduct["Quantity"] ?></p>
+                        <p class="item_quantity"> Quantity: <?= $basketProduct["Quantity"] ?></p>
                         <button onclick="updateCart(this)" class="increase-btn" value="increase" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">+</button>
                         <button onclick="updateCart(this)" class="decrease-btn" value="decrease" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">-</button>
                         <button onclick="updateCart(this)" class="remove-btn" value="remove" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">Remove</button>
@@ -154,7 +154,7 @@ if (!isset($_SESSION['user_id'])) {
             
             <div id="summ-div">
                 <p>Total: £<?= $totalPrice ?></p>
-                <button onclick="submitOrder(<?=$userId?>, <?=$totalPrice?>, <?=$basketID?>)">Checkout</button>
+                <button onclick="submitOrder(<?=$userId?>, <?=$totalPrice?>, <?=$basketID?>)" class="checkout-btn">Checkout</button>
             </div>
             <?php
             }
