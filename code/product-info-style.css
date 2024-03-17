@@ -70,3 +70,11 @@ body {
 .stock {
     color: red;
 }
+
+.description-title {
+    margin-top: 10px;
+}
+
+.info {
+    text-transform: capitalize;
+}

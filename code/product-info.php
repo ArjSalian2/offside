@@ -111,10 +111,11 @@ $productRecord = $stmt->fetch();
             <div class="product-description">
                 <h1><?=$productRecord["product_name"] ?></h1>
                 <h3 class="stock"> <?="Only " .$productRecord["StockLevel"] . " in stock"?> </h3>
-                <p><?=$productRecord["product_gender"] ?></p>
-                <p>£<?=$productRecord["product_price"] ?></p>
-                <p>Description:</p>
-                <p><?=$productRecord["Description"] ?></p>
+                <p class="info"><?=$productRecord["product_gender"] ?></p>
+                <p class="info"><?=$productRecord["product_category"] ?></p>
+                <p class="info">£<?=$productRecord["product_price"] ?></p>
+                <p class="description-title">Description:</p>
+                <p ><?=$productRecord["Description"] ?></p>
                 <button onclick="addToCart(<?= $productID?>, <?= $userId?>)" class="add-to-cart-btn">Add to Cart</button>
             </div>
 
