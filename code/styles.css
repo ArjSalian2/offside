@@ -700,3 +700,9 @@ body.FAQ-page {
   background-color: white; 
   color: black; 
 }
+
+.terms-and-conditions {
+  margin-top: 80px; 
+  font-size: 13px; 
+  color: #808080; 
+}
