@@ -20,6 +20,7 @@
 
 .basket-item-card {
     outline: black solid 1px;;
+    background-color: rgb(240, 240, 240);
     border-radius: 4px;
     height:110px;
     width:95%;
@@ -80,4 +81,10 @@
     background-color: black;
     color: white;
     margin-bottom: 10px;
+}
+
+#stockMessageDiv {
+    font-size: 20px;
+    color: red;
+    margin-bottom: 5px;
 }

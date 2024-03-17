@@ -48,14 +48,24 @@ if (!isset($_SESSION['user_id'])) {
         userId = userIdParam;
         totalPrice = totalPriceParam
         basketId = basketIdParam
+        outOfStock = false;
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            document.getElementById("cartTitle").innerHTML = this.responseText;
+            if (this.responseText != "") {
+                outOfStock = true;
+            }
+            if (outOfStock == false) {
+                location.reload();
+            } else {
+                document.getElementById("stockMessageDiv").innerHTML = this.responseText;
+            }
+            
         }
         xhttp.open("POST", "submit_order.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("userID="+userId + "&totalPrice="+totalPrice + "&basketID="+basketId);
-        location.reload();
+
+
     }
 </script>
 
@@ -104,6 +114,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <div id="basket-div">
         <h1 id="cartTitle"> Cart </h1>
+        <p id="stockMessageDiv"> </p>
         <div id="cart-item-grid" >
             <?php
             if (!isset($_SESSION['user_id'])) {
