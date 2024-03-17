@@ -104,6 +104,7 @@ if (!isset($_SESSION['user_id'])) {
                             <p class="order_id"> Order ID:  <?= $order["OrderID"] ?></p>
                         </div>
                         <p class="order-info"> Status: <?= $orderStatus["StatusName"] ?></p>
+                        <a class="order-info" href="order-info.php?id=<?= $order["OrderID"] ?>"> View ordered products</a>
                     </div>
                 <?php
             }
