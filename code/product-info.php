@@ -110,6 +110,7 @@ $productRecord = $stmt->fetch();
 
             <div class="product-description">
                 <h1><?=$productRecord["product_name"] ?></h1>
+                <h3 class="stock"> <?="Only " .$productRecord["StockLevel"] . " in stock"?> </h3>
                 <p><?=$productRecord["product_gender"] ?></p>
                 <p>£<?=$productRecord["product_price"] ?></p>
                 <p>Description:</p>
