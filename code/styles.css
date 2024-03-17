@@ -29,7 +29,6 @@ header {   /*Hadeeqah*/
 .top-right-nav a {  /*Hadeeqah*/
   color: #000000; 
   text-decoration: none; 
-  font-weight: bold; 
   margin-left:20px; 
 }
 
@@ -53,7 +52,6 @@ header {   /*Hadeeqah*/
 .nav2-center a {  /*Hadeeqah*/
   text-decoration: none; 
   color: #000000; 
-  font-weight: bold;
   font-size: 13px; 
   margin: 0px 1px; 
   padding: 10px 10px; 
