@@ -374,8 +374,7 @@ button{
 
 
 
-
-/* Dima-about page */
+/* Dima-about us page */
 
 body.about-page{
   margin:0;
@@ -383,58 +382,18 @@ body.about-page{
   background-color:  #f2f2f2; 
 }
 
-.branding{
-  color: black;
-  margin-right:auto;
-}
-
-#about-nav{
-  background-color:  white!important;
-  box-sizing: border-box;
-  width: 100%;
-  justify-content:flex-end;
-  padding: 10px;
-  display: flex;
-  justify-content:flex-end;  
-  }
-  
-  #about-nav a {
-    color: black;
-    font-size: 14px;
-    text-align: center;
-    padding: 3px 10px;
-    text-decoration: none;
-  }
-  
-  #bout-nav a:hover {
-    background-color: transparent;
-    color: darkgrey
-  }
-
 /* Dima-the first img on about us page */
-.image-container{
-  position:relative;
-  display:inline-block;
-}
+
 .about-image{
   display: block;
-  margin-left:100px;
-}
-.image-text2{
-  position: absolute;
-  top:85px;
-  left:135px ;
-  padding: 10px;
-  font-size: 30px;
-color: white;
-}
+  margin: 0;
+   width: 100%;
 
-
+}
   /* Dima-about page OUR MISSION*/
   .about{
     background-color:#f2f2f2;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 30px;
     text-align: center;
       }
       .about-title{
@@ -442,8 +401,6 @@ color: white;
         font-size: 20px;
         margin-top: 15px;
         padding-top: 15px;
-        /* margin-bottom:50px; 
-        margin-left:500px; */
       }
       .about p{
         position:center;
@@ -486,6 +443,7 @@ color: white;
         font-size: 20px;
         
       }
+     
      
 
        
