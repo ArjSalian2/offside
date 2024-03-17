@@ -488,17 +488,7 @@ body.about-page{
 }
 /* Dima-about page sustainability end*/
 
-.footer{                             /* Hadeeqah*/
-  background-color:white ;
-    color: black;
-    padding: 0.5px;
-    text-align: right;
-    margin-top: auto; 
-}
-.footer p{   /* Hadeeqah*/
-  margin: 0; 
-  font-size: small;
-}
+
 
 
 /*HADEEQAH- CSS FOR FAQS PAGE*/
