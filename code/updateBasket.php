@@ -14,6 +14,16 @@ if ($recievedCartAction == "increase") {
     $stmt = $db->prepare("UPDATE shopping_basket_items SET Quantity = Quantity - 1 WHERE ShoppingBasketItemID = ?");
     $stmt->execute([$recievedItemID]);
 
+    $stmt = $db->prepare("SELECT * FROM shopping_basket_items WHERE ShoppingBasketItemID = ?");
+    $stmt->execute([$recievedItemID]);
+    $itemToCheck = $stmt->fetch();
+
+    if ($itemToCheck["Quantity"] == 0) {
+        $stmt = $db->prepare("DELETE FROM shopping_basket_items WHERE ShoppingBasketItemID = ?");
+        $stmt->execute([$recievedItemID]);
+    }
+
+
 } else if ($recievedCartAction == "remove"){
     $stmt = $db->prepare("DELETE FROM shopping_basket_items WHERE ShoppingBasketItemID = ?");
     $stmt->execute([$recievedItemID]);
