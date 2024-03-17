@@ -33,3 +33,11 @@
     padding: 10px;
 }
 
+.order-card a {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-left: 10px;
+    padding: 6px;
+}
