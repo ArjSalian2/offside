@@ -32,6 +32,19 @@ $orderID = $_GET["id"];
         window.location.href = url;
     }
 
+    function returnItem(buttonParam) {
+        itemId = buttonParam.getAttribute("order-item-id");
+        cartAction = buttonParam.value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("cartTitle").innerHTML = this.responseText;
+            
+        }
+        xhttp.open("POST", "updateBasket.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("itemID="+itemId + "&cartAction="+cartAction);
+        location.reload();
+    }
 </script>
 
 
@@ -99,14 +112,17 @@ $orderID = $_GET["id"];
                 $stmt->execute([$orderItem["ProductID"]]);
                 $productRecord = $stmt->fetch();
                 $totalPrice = $totalPrice + ($productRecord["product_price"] * $orderItem["Quantity"]);
+
+                $stmt = $db->prepare("SELECT * FROM returnstatus WHERE ReturnStatusID=?");
+                $stmt->execute([$orderItem["ReturnStatusID"]]);
+                $returnStatus = $stmt->fetch();
             ?>
                     <div class="order-item-card"> 
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
                         <p class="item_name"> <?= $productRecord["product_name"] ?></p>
                         <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
-                        <button onclick="updateCart(this)" class="increase-btn" value="increase" order-item-id="<?= $orderItem["OrderItemsID"] ?>">+</button>
-                        <button onclick="updateCart(this)" class="decrease-btn" value="decrease" order-item-id="<?= $orderItem["OrderItemsID"] ?>">-</button>
-                        <button onclick="updateCart(this)" class="remove-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Remove</button>
+                        <p class="item_return_status"> Return status: <?= $returnStatus["Name"] ?></p>
+                        <button onclick="returnItem(this)" class="return-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Return</button>
 
                     </div>
                 <?php

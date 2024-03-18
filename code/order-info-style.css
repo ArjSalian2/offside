@@ -35,7 +35,7 @@
     width: 100px;
 }
 
-.item_img, .item_name, .item_quantity, .increase-btn, .decrease-btn, .remove-btn {
+.item_img, .item_name, .item_quantity, .increase-btn, .decrease-btn, .remove-btn, .item_return_status {
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -55,14 +55,10 @@
     border: 0px;
 }
 
-.increase-btn, .decrease-btn {
-    background-color: black;
-    color: white;
-    width: 30px;
-}
 
-.remove-btn {
-    background-color: red;
+.return-btn {
+    margin-left: 5px;
+    background-color: black;
     color: white;
 }
 
