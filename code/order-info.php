@@ -18,7 +18,7 @@ $orderID = $_GET["id"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="homepage-img/logo.png">
     <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="new-cart-styles.css">
+    <link rel="stylesheet" href="order-info-style.css">
     <link rel="stylesheet" href="nav-styles.css">
     <title>Order Info</title>
 </head>
@@ -77,10 +77,10 @@ $orderID = $_GET["id"];
 </div>
 
 <body>
-    <div id="basket-div">
-        <h1 id="cartTitle"> Cart </h1>
+    <div id="order-div">
+        <h1 id="orderTitle"> Order Info </h1>
         <p id="stockMessageDiv"> </p>
-        <div id="cart-item-grid" >
+        <div id="order-item-grid" >
             <?php
             if (!isset($_SESSION['user_id'])) {
                 //$userId = null;  
