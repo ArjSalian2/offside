@@ -41,7 +41,7 @@ $orderID = $_GET["id"];
         }
         xhttp.open("POST", "returnItem.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("orderItemID="+itemId);
+        xhttp.send("orderItemID="+orderItemId);
         location.reload();
     }
 </script>
