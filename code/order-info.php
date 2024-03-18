@@ -130,14 +130,12 @@ $orderID = $_GET["id"];
                 $stmt->execute([$orderItem["ProductID"]]);
                 $productRecord = $stmt->fetch();
                 $totalPrice = $totalPrice + ($productRecord["product_price"] * $orderItem["Quantity"]);
-
-                $hasReturned = False;
+                
                 $stmt = $db->prepare("SELECT * FROM returnstatus WHERE ReturnStatusID=?");
                 $stmt->execute([$orderItem["ReturnStatusID"]]);
+
                 $returnStatus = $stmt->fetch();
-                if ($orderItem["ReturnStatusID"] == 2) {
-                    $hasReturned == True;
-                }
+
             ?>
                     <div class="order-item-card"> 
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
@@ -145,7 +143,7 @@ $orderID = $_GET["id"];
                         <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
                         <p class="item_return_status"> Return status: <?= $returnStatus["Name"] ?></p>
                         <?php 
-                        if (!$hasReturned) {
+                        if ($returnStatus["ReturnStatusID"] == 1) {
                             ?>
                             <button onclick="returnItem(this)" class="return-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Return</button>
                             <?php
