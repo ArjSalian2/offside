@@ -104,9 +104,9 @@ $orderID = $_GET["id"];
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
                         <p class="item_name"> <?= $productRecord["product_name"] ?></p>
                         <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
-                        <button onclick="updateCart(this)" class="increase-btn" value="increase" order-item-id="<?= $orderItem["ShoppingBasketItemID"] ?>">+</button>
-                        <button onclick="updateCart(this)" class="decrease-btn" value="decrease" order-item-id="<?= $orderItem["ShoppingBasketItemID"] ?>">-</button>
-                        <button onclick="updateCart(this)" class="remove-btn" value="remove" order-item-id="<?= $orderItem["ShoppingBasketItemID"] ?>">Remove</button>
+                        <button onclick="updateCart(this)" class="increase-btn" value="increase" order-item-id="<?= $orderItem["OrderItemsID"] ?>">+</button>
+                        <button onclick="updateCart(this)" class="decrease-btn" value="decrease" order-item-id="<?= $orderItem["OrderItemsID"] ?>">-</button>
+                        <button onclick="updateCart(this)" class="remove-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Remove</button>
 
                     </div>
                 <?php
