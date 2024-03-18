@@ -100,8 +100,27 @@ $orderID = $_GET["id"];
             } else {
                 //$userId = $_SESSION["user_id"];           
             $totalPrice = 0;
-            
             $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
+
+            $stmt = $db->prepare("SELECT * FROM orders WHERE OrderID=?");
+            $stmt->execute([$orderID]);
+            $orderRecord = $stmt->fetch();
+
+            $stmt = $db->prepare("SELECT * FROM orderstatus WHERE StatusID=?");
+            $stmt->execute([$orderRecord["OrderStatus"]]);
+            $orderStatus = $stmt->fetch();
+            ?>
+            <div class="order-record-info">
+                <div class="grid-container">
+                    <p class="order_date"> Order placed: <?= $orderRecord["OrderDate"] ?></p>
+                    <p class="order_price"> Order Total: £<?= $orderRecord["TotalAmount"] ?></p>
+                    <p class="order_id"> Order ID:  <?= $orderRecord["OrderID"] ?></p>
+                    <p class="order-info"> Status: <?= $orderStatus["StatusName"] ?></p>
+                </div>
+                        
+            </div>
+            <?php
+
             $stmt = $db->prepare("SELECT * FROM order_items WHERE OrderID=?");
             $stmt->execute([$orderID]);
             $orderItems = $stmt->fetchAll();
