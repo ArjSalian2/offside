@@ -33,16 +33,15 @@ $orderID = $_GET["id"];
     }
 
     function returnItem(buttonParam) {
-        itemId = buttonParam.getAttribute("order-item-id");
-        cartAction = buttonParam.value;
+        orderItemId = buttonParam.getAttribute("order-item-id");
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
             document.getElementById("cartTitle").innerHTML = this.responseText;
             
         }
-        xhttp.open("POST", "updateBasket.php", true);
+        xhttp.open("POST", "returnItem.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("itemID="+itemId + "&cartAction="+cartAction);
+        xhttp.send("orderItemID="+itemId);
         location.reload();
     }
 </script>
@@ -132,17 +131,27 @@ $orderID = $_GET["id"];
                 $productRecord = $stmt->fetch();
                 $totalPrice = $totalPrice + ($productRecord["product_price"] * $orderItem["Quantity"]);
 
+                $hasReturned = False;
                 $stmt = $db->prepare("SELECT * FROM returnstatus WHERE ReturnStatusID=?");
                 $stmt->execute([$orderItem["ReturnStatusID"]]);
                 $returnStatus = $stmt->fetch();
+                if ($orderItem["ReturnStatusID"] == 2) {
+                    $hasReturned == True;
+                }
             ?>
                     <div class="order-item-card"> 
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
                         <p class="item_name"> <?= $productRecord["product_name"] ?></p>
                         <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
                         <p class="item_return_status"> Return status: <?= $returnStatus["Name"] ?></p>
-                        <button onclick="returnItem(this)" class="return-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Return</button>
-
+                        <?php 
+                        if (!$hasReturned) {
+                            ?>
+                            <button onclick="returnItem(this)" class="return-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Return</button>
+                            <?php
+                        }
+                        
+                        ?>
                     </div>
                 <?php
             }
