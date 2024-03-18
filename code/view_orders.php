@@ -116,15 +116,8 @@ if (!isset($_SESSION['user_id'])) {
                 <p>Sign in</p>
                 </div>
                 <?php
-            } else {
+            } 
             ?>
-            
-            <div id="summ-div">
-                <p>Total: £<?= $totalPrice ?></p>
-                <button onclick="submitOrder(<?=$userId?>, <?=$totalPrice?>, <?=$basketID?>)" class="checkout-btn">Checkout</button>
-            </div>
-            <?php
-            }
-            ?>
+
     </div>
 </body>

@@ -7,10 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $orderID = $_GET["id"];
-$db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
-$stmt = $db->prepare("SELECT * FROM order_items WHERE OrderID=?");
-$stmt->execute([$productID]);
-$productRecord = $stmt->fetch();
+
 
 ?>
 <!DOCTYPE html>
@@ -89,33 +86,27 @@ $productRecord = $stmt->fetch();
                 //$userId = null;  
             } else {
                 //$userId = $_SESSION["user_id"];           
-            $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
             $totalPrice = 0;
-
-            $stmt = $db->prepare("SELECT * FROM shopping_basket WHERE UserID=?");
-            $stmt->execute([$userId]);
-            $basket = $stmt->fetch(PDO::FETCH_ASSOC);
-            $basketID = $basket["BasketID"];
-
-            $stmt = $db->prepare("SELECT * FROM shopping_basket_items WHERE BasketID=?"); 
-            $stmt->execute([$basketID]);
-            $basketProducts = $stmt->fetchAll();
-
             
-            
-            foreach ($basketProducts as $basketProduct) {
+            $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
+            $stmt = $db->prepare("SELECT * FROM order_items WHERE OrderID=?");
+            $stmt->execute([$orderID]);
+            $orderItems = $stmt->fetchAll();
+
+            foreach ($orderItems as $orderItem) {
+                
                 $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
-                $stmt->execute([$basketProduct["ProductID"]]);
+                $stmt->execute([$orderItem["ProductID"]]);
                 $productRecord = $stmt->fetch();
-                $totalPrice = $totalPrice + ($productRecord["product_price"] * $basketProduct["Quantity"])
+                $totalPrice = $totalPrice + ($productRecord["product_price"] * $orderItem["Quantity"]);
             ?>
-                    <div class="basket-item-card"> 
+                    <div class="order-item-card"> 
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
                         <p class="item_name"> <?= $productRecord["product_name"] ?></p>
-                        <p class="item_quantity"> Quantity: <?= $basketProduct["Quantity"] ?></p>
-                        <button onclick="updateCart(this)" class="increase-btn" value="increase" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">+</button>
-                        <button onclick="updateCart(this)" class="decrease-btn" value="decrease" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">-</button>
-                        <button onclick="updateCart(this)" class="remove-btn" value="remove" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">Remove</button>
+                        <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
+                        <button onclick="updateCart(this)" class="increase-btn" value="increase" order-item-id="<?= $orderItem["ShoppingBasketItemID"] ?>">+</button>
+                        <button onclick="updateCart(this)" class="decrease-btn" value="decrease" order-item-id="<?= $orderItem["ShoppingBasketItemID"] ?>">-</button>
+                        <button onclick="updateCart(this)" class="remove-btn" value="remove" order-item-id="<?= $orderItem["ShoppingBasketItemID"] ?>">Remove</button>
 
                     </div>
                 <?php
@@ -128,15 +119,7 @@ $productRecord = $stmt->fetch();
                 <p>Sign in</p>
                 </div>
                 <?php
-            } else {
-            ?>
-            
-            <div id="summ-div">
-                <p>Total: £<?= $totalPrice ?></p>
-                <button onclick="submitOrder(<?=$userId?>, <?=$totalPrice?>, <?=$basketID?>)" class="checkout-btn">Checkout</button>
-            </div>
-            <?php
-            }
+            } 
             ?>
     </div>
 </body>
