@@ -130,7 +130,7 @@ $orderID = $_GET["id"];
                 $stmt->execute([$orderItem["ProductID"]]);
                 $productRecord = $stmt->fetch();
                 $totalPrice = $totalPrice + ($productRecord["product_price"] * $orderItem["Quantity"]);
-                
+
                 $stmt = $db->prepare("SELECT * FROM returnstatus WHERE ReturnStatusID=?");
                 $stmt->execute([$orderItem["ReturnStatusID"]]);
 
@@ -143,7 +143,7 @@ $orderID = $_GET["id"];
                         <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
                         <p class="item_return_status"> Return status: <?= $returnStatus["Name"] ?></p>
                         <?php 
-                        if ($returnStatus["ReturnStatusID"] == 1) {
+                        if (($returnStatus["ReturnStatusID"] == 1) && ($orderStatus["StatusID"] == 2)) {
                             ?>
                             <button onclick="returnItem(this)" class="return-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Return</button>
                             <?php
