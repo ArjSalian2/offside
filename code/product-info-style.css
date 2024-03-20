@@ -9,6 +9,7 @@ body {
     margin: 0 auto;
     padding: 15px;
     display: flex;
+    position: relative;
 }
 
 /* Columns */
@@ -77,4 +78,34 @@ body {
 
 .info {
     text-transform: capitalize;
+}
+
+.review-div {
+    margin-top: 300px;
+
+    margin-left: 20%;
+
+}
+
+#review-area {
+    width:70%;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#submit-review-btn {
+    margin-top: 10px;
+    padding: 5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid black;
+
 }

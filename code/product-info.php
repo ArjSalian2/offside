@@ -101,13 +101,10 @@ $productRecord = $stmt->fetch();
     <div class="container">
 
         <div class="left-column">
-
             <img src="product_img/<?=$productRecord["ImageURL"] ?>">
-
         </div>
 
         <div class="right-column">
-
             <div class="product-description">
                 <h1><?=$productRecord["product_name"] ?></h1>
                 <h3 class="stock"> <?="Only " .$productRecord["StockLevel"] . " in stock"?> </h3>
@@ -118,11 +115,19 @@ $productRecord = $stmt->fetch();
                 <p ><?=$productRecord["Description"] ?></p>
                 <button onclick="addToCart(<?= $productID?>, <?= $userId?>)" class="add-to-cart-btn">Add to Cart</button>
             </div>
-
-
         </div>
+
+
 
     </div>
     
+        <div class="review-div">
+            <form action="javascript:submitReview()" method="post">
+            <label for="review-area">Leave a review:</label> <br>
+            <textarea id="review-area" name="review-message"  > </textarea><br>
+
+            <input id="submit-review-btn" type="submit">
+            </form>
+        </div>
 
 </body>
