@@ -19,8 +19,7 @@ if(isset($_GET['id'])) {
         exit();
     }
 } else {
-    // Product ID not provided, redirect or show error message
-    header("Location: products.php"); // Redirect to product management page
+    header("Location: products.php"); 
     exit();
 }
 
@@ -34,11 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
     $product_gender = $_POST['product_gender'];
     $CategoryID = $_POST['CategoryID'];
     $StockLevel = $_POST['StockLevel'];
+    $Description = $_POST['Description'];
 
     // Update product details in the database
     $sql = "UPDATE products SET product_name = '$product_name', product_price = '$product_price', 
             product_colour = '$product_colour', product_gender = '$product_gender', 
-            CategoryID = '$CategoryID', StockLevel = '$StockLevel' WHERE product_id = '$product_id'";
+            CategoryID = '$CategoryID', StockLevel = '$StockLevel', Description = '$Description' WHERE product_id = '$product_id'";
+
     $result = mysqli_query($conn, $sql);
     if ($result) {
         // successful update
@@ -102,6 +103,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
 
                     <label for="StockLevel">Stock Level:</label><br>
                     <input type="number" id="StockLevel" name="StockLevel" value="<?= $product['StockLevel'] ?>" required><br><br>
+
+
+                    <label for="Description">Description:</label><br>
+                    <input type="text" id="Description" name="Description" required><br><br>
+
 
                     <button type="submit" name="update_product" id = "addbutton" class = "addbutton">Update Product</button>
 
