@@ -14,6 +14,8 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
 $stmt->execute([$productID]);
 $productRecord = $stmt->fetch();
 
+$stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
+
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +50,41 @@ $productRecord = $stmt->fetch();
         }
 
     }
+
+
+    function submitReview() {
+
+        
+
+        form = document.getElementById('form');
+        fieldValue = form.review_message.value;
+
+        document.getElementById("product-name").innerHTML = fieldValue;
+        var userID = <?php echo json_encode($userId); ?>;
+        var productID = <?php echo json_encode($productID); ?>;
+
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("product-name").innerHTML = this.responseText;
+            
+        }
+        xhttp.open("POST", "submit-review.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("prodID="+productID + "&userID="+userID + "&review="+fieldValue);
+        form.rest();
+        location.reload();
+        
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById("form").addEventListener("submit", function(e) {
+            e.preventDefault() // Cancel the default action
+            submitReview();
+        });
+    });
+
+
 
 </script>
 
@@ -106,7 +143,7 @@ $productRecord = $stmt->fetch();
 
         <div class="right-column">
             <div class="product-description">
-                <h1><?=$productRecord["product_name"] ?></h1>
+                <h1 id="product-name"><?=$productRecord["product_name"] ?></h1>
                 <h3 class="stock"> <?="Only " .$productRecord["StockLevel"] . " in stock"?> </h3>
                 <p class="info"><?=$productRecord["product_gender"] ?></p>
                 <p class="info"><?=$productRecord["product_category"] ?></p>
@@ -122,9 +159,9 @@ $productRecord = $stmt->fetch();
     </div>
     
         <div class="review-div">
-            <form action="javascript:submitReview()" method="post">
+            <form id="form">
             <label for="review-area">Leave a review:</label> <br>
-            <textarea id="review-area" name="review-message"  > </textarea><br>
+            <textarea id="review-area" name="review_message"  > </textarea><br>
 
             <input id="submit-review-btn" type="submit">
             </form>
