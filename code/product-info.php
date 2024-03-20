@@ -33,6 +33,7 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
 
 <script>
 
+
     searchParam = new URLSearchParams(window.location.search);
     url = 'search.php' + '?' +searchParam;
     if (searchParam.has("search-term")) {
@@ -54,8 +55,6 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
 
     function submitReview() {
 
-        
-
         form = document.getElementById('form');
         fieldValue = form.review_message.value;
 
@@ -63,17 +62,20 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
         var userID = <?php echo json_encode($userId); ?>;
         var productID = <?php echo json_encode($productID); ?>;
 
+        if (fieldValue != null) {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("product-name").innerHTML = this.responseText;
+                
+            }
 
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-            document.getElementById("product-name").innerHTML = this.responseText;
-            
+            xhttp.open("POST", "submit-review.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("prodID="+productID + "&userID="+userID + "&review="+fieldValue);
+            form.reset();
+            window.location.reload();
         }
-        xhttp.open("POST", "submit-review.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("prodID="+productID + "&userID="+userID + "&review="+fieldValue);
-        form.rest();
-        location.reload();
+
         
     }
 
@@ -159,9 +161,11 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
     </div>
     
         <div class="review-div">
+
+
             <form id="form">
             <label for="review-area">Leave a review:</label> <br>
-            <textarea id="review-area" name="review_message"  > </textarea><br>
+            <textarea id="review-area" name="review_message" placeholder=""  required></textarea><br>
 
             <input id="submit-review-btn" type="submit">
             </form>
