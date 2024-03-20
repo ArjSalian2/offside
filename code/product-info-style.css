@@ -82,7 +82,6 @@ body {
 
 .review-div {
     margin-top: 300px;
-
     margin-left: 20%;
 
 }
@@ -107,5 +106,15 @@ body {
     text-decoration: none;
     border-radius: 10px;
     border: 1px solid black;
+    margin-bottom: 10px;
 
+}
+
+.review-card {
+    background-color: rgb(240, 240, 240);
+    border-radius: 4px;
+    height:110px;
+    width:70%;
+    display:inline-flexbox;
+    margin-bottom: 10px;
 }

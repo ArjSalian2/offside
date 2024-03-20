@@ -165,6 +165,38 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
 
             <input id="submit-review-btn" type="submit">
             </form>
+
+            <?php
+            if (!isset($_SESSION['user_id'])) {
+                //$userId = null;  
+            } else {
+                //$userId = $_SESSION["user_id"];           
+            $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
+            $totalPrice = 0;
+
+            $stmt = $db->prepare("SELECT * FROM reviews WHERE product_id=?");
+            $stmt->execute([$productID]);
+            $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            
+            foreach ($reviews as $review) {
+                $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
+                $stmt->execute([$review["product_id"]]);
+                $productRecord = $stmt->fetch();
+
+                $stmt = $db->prepare("SELECT * FROM users WHERE UserID=?");
+                $stmt->execute([$review["UserID"]]);
+                $userRecord = $stmt->fetch();
+            ?>
+                    <div class="review-card">  
+                        <p class="user_name">Name: <?= $userRecord["First Name"] ?></p>
+                        <p class="review_comment"> Review: <?= $review["Comment"] ?></p>
+
+                    </div>
+                <?php
+            }
+            }
+            ?>
         </div>
 
 </body>
