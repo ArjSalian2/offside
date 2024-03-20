@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 
         $sql = "INSERT INTO products (product_name, product_price, product_colour, product_gender, CategoryID, StockLevel, ImageURL, Description) 
-                    VALUES ('$product_name', '$product_price', '$product_colour', '$product_gender', '$CategoryID', '$StockLevel', '$new_image_name', 'Description')";
+                    VALUES ('$product_name', '$product_price', '$product_colour', '$product_gender', '$CategoryID', '$StockLevel', '$new_image_name', '$Description')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "<script>alert('Product added successfully');</script>";
