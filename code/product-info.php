@@ -161,20 +161,43 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
     </div>
     
         <div class="review-div">
-
-
-            <form id="form">
-            <label for="review-area">Leave a review:</label> <br>
-            <textarea id="review-area" name="review_message" placeholder=""  required></textarea><br>
-
-            <input id="submit-review-btn" type="submit">
-            </form>
-
             <?php
-            if (!isset($_SESSION['user_id'])) {
-                //$userId = null;  
+            $hasOrdered = FALSE;
+            
+
+            $stmt = $db->prepare("SELECT * FROM orders WHERE UserID=?");
+            $stmt->execute([$userId]);
+            $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($orders as $order) {
+                $stmt = $db->prepare("SELECT * FROM order_items WHERE OrderID=? AND ProductID=?");
+                $stmt->execute([$order["OrderID"], $productID]);
+                $orderItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($orderItems as $orderItem) {
+                    if ($orderItem["ProductID"] == $productID) {
+                        $hasOrdered = TRUE;
+                    }
+                }
+            }
+            if ($hasOrdered) {
+                ?>
+                <form id="form">
+                <label for="review-area">Leave a review:</label> <br>
+                <textarea id="review-area" name="review_message" placeholder=""  required></textarea><br>
+
+                <input id="submit-review-btn" type="submit">
+                </form>
+                <?php
             } else {
-                //$userId = $_SESSION["user_id"];           
+                ?>
+                <p>Cannot review unless product is ordered</p>
+                <?php
+            }
+
+
+            ?>
+            <?php
+         
             $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
             $totalPrice = 0;
 
@@ -199,7 +222,7 @@ $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
                     </div>
                 <?php
             }
-            }
+            
             ?>
         </div>
 
