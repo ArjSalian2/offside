@@ -2,19 +2,16 @@
 include_once "./Database/connection.php";
 
 // Check if product ID is provided
-
 if(isset($_GET['id'])) {
     $product_id = $_GET['id'];
 
     // Fetch product details from the database
-  
     $sql = "SELECT * FROM products WHERE product_id = '$product_id'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0) {
         $product = mysqli_fetch_assoc($result);
     } else {
         // Product not found, redirect or show error message
-      
         header("Location: products.php"); // Redirect to product management page
         exit();
     }
@@ -35,21 +32,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
     $StockLevel = $_POST['StockLevel'];
     $Description = $_POST['Description'];
 
-    // Update product details in the database
-    $sql = "UPDATE products SET product_name = '$product_name', product_price = '$product_price', 
-            product_colour = '$product_colour', product_gender = '$product_gender', 
-            CategoryID = '$CategoryID', StockLevel = '$StockLevel', Description = '$Description' WHERE product_id = '$product_id'";
+    // check if a new image is uploaded
 
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        // successful update
-        echo "<script>alert('Product updated successfully');</script>";
-        header("Location: products.php");
-        
-        exit();
-    } else {
-                #error mesage
-        echo "<script>alert('Error updating product');</script>";
+    if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+
+        // upload new image
+        $target_dir = "../product_img/";
+        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $new_image_name = uniqid() . "." . $imageFileType;
+        $target_file = $target_dir . $new_image_name;
+
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+
+            // Update product details including image URL
+
+            $sql = "UPDATE products SET product_name = '$product_name', product_price = '$product_price', 
+                    product_colour = '$product_colour', product_gender = '$product_gender', 
+                    CategoryID = '$CategoryID', StockLevel = '$StockLevel', Description = '$Description', 
+                    ImageURL = '$new_image_name' WHERE product_id = '$product_id'";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                // successful update
+                echo "<script>alert('Product updated successfully');</script>";
+                header("Location: products.php");
+                exit();
+            } else {
+                //error message
+                echo "<script>alert('Error updating product');</script>";
+            }
+        } 
+  
     }
 }
 ?>
@@ -75,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
         <div class="content">
             <h1 class="title">Edit Product</h1>
             <div class="form-container">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <label for="product_name">Product Name:</label><br>
                     <input type="text" id="product_name" name="product_name" value="<?= $product['product_name'] ?>" required><br><br>
 
@@ -104,9 +117,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
                     <label for="StockLevel">Stock Level:</label><br>
                     <input type="number" id="StockLevel" name="StockLevel" value="<?= $product['StockLevel'] ?>" required><br><br>
 
-
                     <label for="Description">Description:</label><br>
-                    <input type="text" id="Description" name="Description" required><br><br>
+                    <input type="text" id="Description" name="Description" value="<?= $product['Description'] ?>" required><br><br>
+
+                    <label for="image">Product Image:</label><br>
+                    <input type="file" id="image" name="image" required> <br><br>
+
 
 
                     <button type="submit" name="update_product" id = "addbutton" class = "addbutton">Update Product</button>
