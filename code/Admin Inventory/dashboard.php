@@ -425,7 +425,7 @@ foreach ($products as $product):
             <div class="col-lg-8 offset-lg-2">
                     <div class="cart shadow-lg rounded p-5 my-5">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h1>My orders</h1>
+                            <h1>Order History</h1>
                         </div>
 
                         <div class="table-responsive mt-3">
