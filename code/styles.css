@@ -1,114 +1,112 @@
+/*FOR THE HOMEPAGE*/
 
-/* FOR THE HOMEPAGE */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-header{
-display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 10px 20px;
+* {   /*Hadeeqah*/
+  margin: 0;  
+  padding: 0;
+  
+  
 }
 
-.top-right-nav{
-  margin-left: auto;
-  background-color:rgb(255, 255, 255);
- /* flex-grow: 1; */
-} 
-
-.logo img {            /* Hadeeqah*/
-  max-width: 100px;
-  height: auto;
- 
+body {  /*Hadeeqah*/
+  font-family: Arial, sans-serif; 
+  background-color: #ffffff; 
+  
 }
 
 
-/* Dima- nav,basket,search bar */
-#nav1{
-  display:flex;
-  align-items: center;
-  gap: 10px;
-  padding: 11px;
-  margin-left: 700px; 
-   background-color:white;
+header {   /*Hadeeqah*/
+  background-color: #ffffff; 
+  padding: 20px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+
 }
 
-#nav1 a{
-text-decoration: none;
-color: rgb(11,10,10);
-font-size: 13px;
-text-align: center;
-padding:3px 10px;
-/* margin: 0 5px; */
-}
-#nav1 a:hover{
-  background-color: transparent;
-  color: darkgray;
+.logo img { /*Hadeeqah*/
+  height: 25px; 
+  width: auto; 
 }
 
-#nav2{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  padding: 10px;
-  box-sizing:border-box;
+.top-right-nav a {  /*Hadeeqah*/
+  color: #000000; 
+  text-decoration: none; 
+  margin-left:20px; 
 }
-#nav2 a:hover{
-  background-color: transparent;
-  color: darkgray;
+
+.top-right-nav a:hover {  /*Hadeeqah*/
+  color:rgb(199, 193, 193) 
 }
-#nav2 a{
-  text-decoration: none;
-  color:black;
-  text-align: center;
-  padding: 5px 15px;
-  font-size: 14px;
+
+#nav2 {  /*Hadeeqah*/
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 20px; 
 }
-.nav2-center{
-  flex-grow:1;
-  display: flex;
-  justify-content: center;
-  margin-left: 300px;
+
+.nav2-center {  /*Hadeeqah*/
+  display: flex; 
+  justify-content: center; 
+  margin-left: -12px; 
 }
-.nav2-right{
-display: flex;
-align-items: center;
+
+.nav2-center a {  /*Hadeeqah*/
+  text-decoration: none; 
+  color: #000000; 
+  font-size: 13px; 
+  margin: 0px 1px; 
+  padding: 10px 10px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s ease; 
+}
+
+.nav2-center a:hover {  /*Hadeeqah*/
+  background-color: #ddd; 
 }
  
-#search form{
-  display:flex;
-  align-items: center;
-  border:1px solid #ccc;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-right: 10px;
-}
-#search input[type="text"]{
-  border:none;
-  padding:8px;
-  outline: none;
-  font-size: 13px;
-}
-#search input[type="submit"]{
-  background-color: white;
-  border:none;
-  padding:8px 12px;
-  font-size: 14px;
+.nav2-right {  /*Hadeeqah*/
+  display: flex; 
+  align-items: center; 
+ 
+
 }
 
-#search input[type="submit"]:hover{
-  background-color: #e0e0e0;
+#search form { /*Hadeeqah*/
+  display: flex;
+  
+  
 }
-#basket-icon{
-  margin-right: 10px;
+
+#search input[type="text"] {  /*Hadeeqah*/
+  padding: 5px; 
+  border-radius: 10px; 
+  margin-right: 2px; 
+  border-color: #000000; 
+
 }
-#basket-icon a img{
-  width: 20px;
-  height: auto;
+
+#search input[type="submit"] {  /*Hadeeqah*/
+  padding: 5px 15px; 
+  background-color: #000000; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
 }
-/* Dima- END of nav,basket,search bar */
+
+#search input[type="submit"]:hover {  /*Hadeeqah*/
+  background-color: #555; 
+}
+
+#basket-icon img {  /*Hadeeqah*/
+  width: 20px; 
+  height: auto; 
+  margin-top:5px; 
+  margin-left: 6px; 
+  
+ 
+}
 
 
 #banner {
@@ -168,7 +166,7 @@ align-items: center;
   max-width: 100%;
   max-height:100%;
   object-fit: contain;
-  border: 1px solid black;   /* the color*/
+  border: 1px solid black;   
 }
 
 
@@ -270,51 +268,105 @@ button{
 
 
 
-/* customer servicesection - Dima */
-.customer h2{
-  margin-left: 10px;
-}
-.customer-service{
-  display:flex;
-  align-items:center;
+
+
+
+/* DIMA  NEW IN SECTION */
+.h3{
+  text-align: left;
+  margin-left: 25px;
+  font-size: 21px;
+  }
+  
+  .new-in-section{
+    /* text-align: center; */
+    margin-left: 24px;
+    margin-top:10px;
+    overflow: hidden;
+    font-family:inherit;
+  }
+  .new-in-slider{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .new-in-slide{
+  flex:0 0 auto;
+  scroll-snap-align: start;
+  }
+  .new-in-slide p{
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .new-in-section img {
+  /* did px instead of % on widht*/
+    width:  440px;
+    border: 1px solid lightgrey;
+    margin-right: 23px;
+  }
+  
+
+
+
+/* DIMA   */
+.footer {
+  background-color: rgb(14, 11, 11);
+  /* color: rgb(236, 231, 231); */
+  /* padding: 0.5px; */
+  text-align: left;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.footer-links {
+  display: flex;
 }
 
-.image-with-text{
-  position:relative;
-  text-align: center;
-  width: 380px;
-  height: 390px;
-  border: 1px solid black;
-  margin-left: 10px;
-  margin-bottom: 20px;
+.icons{
+  margin-right :13px;
+  margin-top: 12px;;
 }
-.image-with-text img{
-  width: 100%;
-  height: 390px;
-  object-fit: cover;
-}
-.image-text{
-  position: absolute;
-  top: 10px;
-  left:67px ;
-  padding: 10px;
-  font-size: 23px;
-  color: #000000;
-}
-
-
-
-.footer{
-  background-color:white ;
-    color: black;
-    padding: 0.5px;
-    text-align: right;
-    margin-top: auto; 
+.footer a{
+  color:white;
+  display:inline-block;
+  margin-right :13px;
+  margin-left :5px;
+  font-size: 13px;
+  text-decoration: none;
 }
 .footer p{
-  margin: 0;
-  font-size: small;
+  color:white;
+  display:inline-block;
+  margin:10px 10px;
+  text-decoration: none;
+}
+.footer a:hover{
+  color:lightgray;
+}
+
+.fa{
+  padding: 10px;
+  width: 18px;
+  text-align: center;
+  border-radius: 50%;
+}
+.fa:hover{
+  opacity: 0.7;
+}
+.fa-twitter {
+  background: grey;
+  color: white;
+}
+.fa-instagram{
+  background: grey;
+  color: white;
+}
+.fa-facebook{
+  background: grey;
+  color: white;
 }
 
 
@@ -322,8 +374,7 @@ button{
 
 
 
-
-/* Dima-about page */
+/* Dima-about us page */
 
 body.about-page{
   margin:0;
@@ -331,58 +382,18 @@ body.about-page{
   background-color:  #f2f2f2; 
 }
 
-.branding{
-  color: black;
-  margin-right:auto;
-}
-
-#about-nav{
-  background-color:  white!important;
-  box-sizing: border-box;
-  width: 100%;
-  justify-content:flex-end;
-  padding: 10px;
-  display: flex;
-  justify-content:flex-end;  
-  }
-  
-  #about-nav a {
-    color: black;
-    font-size: 14px;
-    text-align: center;
-    padding: 3px 10px;
-    text-decoration: none;
-  }
-  
-  #bout-nav a:hover {
-    background-color: transparent;
-    color: darkgrey
-  }
-
 /* Dima-the first img on about us page */
-.image-container{
-  position:relative;
-  display:inline-block;
-}
+
 .about-image{
   display: block;
-  margin-left:100px;
-}
-.image-text2{
-  position: absolute;
-  top:85px;
-  left:135px ;
-  padding: 10px;
-  font-size: 30px;
-color: white;
-}
+  margin: 0;
+   width: 100%;
 
-
+}
   /* Dima-about page OUR MISSION*/
   .about{
     background-color:#f2f2f2;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 30px;
     text-align: center;
       }
       .about-title{
@@ -390,8 +401,6 @@ color: white;
         font-size: 20px;
         margin-top: 15px;
         padding-top: 15px;
-        /* margin-bottom:50px; 
-        margin-left:500px; */
       }
       .about p{
         position:center;
@@ -434,6 +443,7 @@ color: white;
         font-size: 20px;
         
       }
+     
      
 
        
@@ -478,14 +488,176 @@ color: white;
 }
 /* Dima-about page sustainability end*/
 
-.footer{                             /* Hadeeqah*/
-  background-color:white ;
-    color: black;
-    padding: 0.5px;
-    text-align: right;
-    margin-top: auto; 
+
+
+
+/*HADEEQAH- CSS FOR FAQS PAGE*/
+
+body.FAQ-page { 
+  font-family: 'Arial', sans-serif; 
+  background-image: url('homepage-img/FAQs-background-image.jpg');  
+  background-size: cover; 
+  
+ 
 }
-.footer p{   /* Hadeeqah*/
-  margin: 0; 
-  font-size: small;
+
+
+
+.faq-container {
+  max-width: 900px; 
+  margin: 50px auto; 
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8); 
+  border: 2px solid #000000; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); 
+  
+  
+
+}
+.faq-container:hover { 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+  transition: box-shadow 0.8s ease; 
+}
+
+.faq-header h1 { 
+  color: #000000; 
+  text-align: center; 
+  margin-bottom: 10px; 
+  font-size: 30px; 
+ 
+}
+
+.FAQs{ 
+  border: 1px solid #000000; 
+  padding: 10px; 
+  cursor: pointer; 
+  background-color: #e8dedea6; 
+  
+}
+
+
+.FAQs:hover {
+  background-color: rgb(238, 240, 214); 
+ 
+ }
+
+ .faq-question { 
+  font-size:15px ;
+  color: #000000; 
+  margin-bottom: 3px;
+  
+}
+
+.faq-answer { 
+  display: none;
+  color: #2b0101;
+  font-size: 14px; 
+  
+}
+
+.back-to-top { 
+  text-align: center; 
+  margin-top: 20px; 
+  display: block; 
+  width: fit-content; 
+  margin-left: auto; 
+  margin-right: auto;
+  padding: 4px 11px; 
+  border: 1px solid #000; 
+  background-color: #ffffff; 
+  
+  
+ 
+}
+
+.back-to-top a { 
+  text-decoration: none; 
+  color: #171414b9; 
+  font-weight: bold; 
+  
+}
+
+/*HADEEQAH- CSS FOR STUDENT DISCOUNT INFORMATION PAGE*/
+
+.student-container { 
+
+  display:flex; 
+ 
+ 
+
+  }
+  
+
+.discount-information-text { 
+  padding: 20px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  background-color: #000; 
+  color: #fff; 
+}
+
+
+.unidays-verification { 
+  font-weight: bold;  
+  color: #808080; 
+}
+
+.discount-title { 
+  font-size: 40px; 
+  margin-bottom: 20px; 
+}
+
+.offer-info { 
+  font-size: 29px; 
+  margin-bottom: 15px; 
+}
+
+.offer-description { 
+  font-size: 16px; 
+  margin-bottom: 40px; 
+}
+
+
+.shop-now-text{ 
+  font-size: 18px; 
+  color: rgb(255, 255, 255); 
+  font-weight: bold; 
+  margin-bottom: 30px; 
+}
+
+.buttons { 
+  display: flex; 
+  gap: 10px; 
+}
+
+.button-shop { 
+
+  text-decoration: none; 
+  color: #f7f1f1; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+  font-weight:bolder;
+  border: 2px solid white; 
+  border-radius: 5px;
+  
+}
+
+.button-shop:hover { 
+  background-color: white; 
+  color: black; 
+}
+
+.terms-and-conditions {
+  margin-top: 80px; 
+  font-size: 13px; 
+  color: #808080; 
+}
+
+.student-discount-image img { 
+
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;  
 }
