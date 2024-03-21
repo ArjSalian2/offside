@@ -274,6 +274,9 @@ include "./nav.php";
   <main>
     <div class="content">
       <h1 class="title">Dashboard</h1>
+      <!-- <button onclick="showToast('warning', 'Sample Product')">Show Warning Toast</button> -->
+      <div id="toast-container"></div>
+        <script src="scripts.js"></script>
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <!-- Total Revenue Box -->
@@ -288,9 +291,6 @@ include "./nav.php";
             </div>
           </div>
         </div>
-        <!-- <button onclick="showToast('warning', 'Sample Product')">Show Warning Toast</button> -->
-        <div id="toast-container"></div>
-        <script src="scripts.js"></script>
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <!-- Total Revenue Box -->
           <div class="card">
