@@ -2,40 +2,40 @@
 // Start the session
 include_once "./Database/connection.php";
 
-
 $totalRevenue = 0;
 $productRevenue = [];
 
 // Function to fetch monthly revenue from the database
-function fetchMonthlyRevenue() {
-  global $conn; // Assuming $conn is your database connection object
+function fetchMonthlyRevenue()
+{
+    global $conn; // Assuming $conn is your database connection object
 
-  // Initialize an array to store revenue for each month
-  $revenue = array_fill(0, 12, 0); // Initialize with 0 for each month (January to December)
+    // Initialize an array to store revenue for each month
+    $revenue = array_fill(0, 12, 0); // Initialize with 0 for each month (January to December)
 
-  // Query to fetch orders data for the past year
-  $sql = "SELECT * FROM orders WHERE OrderDate >= DATE_SUB(NOW(), INTERVAL 1 YEAR)";
-  $result = $conn->query($sql);
+    // Query to fetch orders data for the past year
+    $sql = "SELECT * FROM orders WHERE OrderDate >= DATE_SUB(NOW(), INTERVAL 1 YEAR)";
+    $result = $conn->query($sql);
 
-  if ($result->num_rows > 0) {
-      // Loop through each order
-      while ($order = $result->fetch_assoc()) {
-          // Extract month from order date
-          $orderDate = date_create($order['OrderDate']);
-          $month = intval(date_format($orderDate, 'm')) - 1; // Subtract 1 to match array index
+    if ($result->num_rows > 0) {
+        // Loop through each order
+        while ($order = $result->fetch_assoc()) {
+            // Extract month from order date
+            $orderDate = date_create($order['OrderDate']);
+            $month = intval(date_format($orderDate, 'm')) - 1; // Subtract 1 to match array index
 
-          // Retrieve order total
-          $orderId = $order['OrderID'];
-          $sqlItems = "SELECT SUM(Price) AS orderTotal FROM order_items WHERE OrderID = $orderId";
-          $resultItems = $conn->query($sqlItems);
-          $orderTotal = $resultItems->fetch_assoc()['orderTotal'];
+            // Retrieve order total
+            $orderId = $order['OrderID'];
+            $sqlItems = "SELECT SUM(Price) AS orderTotal FROM order_items WHERE OrderID = $orderId";
+            $resultItems = $conn->query($sqlItems);
+            $orderTotal = $resultItems->fetch_assoc()['orderTotal'];
 
-          // Add order total to revenue for the corresponding month
-          $revenue[$month] += $orderTotal;
-      }
-  }
+            // Add order total to revenue for the corresponding month
+            $revenue[$month] += $orderTotal;
+        }
+    }
 
-  return $revenue;
+    return $revenue;
 }
 
 // Fetch monthly revenue data
@@ -45,7 +45,6 @@ $revenue = fetchMonthlyRevenue();
 $sqlPendingOrders = "SELECT COUNT(*) AS TotalPendingOrders FROM orders WHERE OrderStatus = 1"; // Assuming 1 represents "Pending"
 $resultPendingOrders = $conn->query($sqlPendingOrders);
 $totalPendingOrders = $resultPendingOrders->fetch_assoc()['TotalPendingOrders'];
-
 
 // Query to get the count of new users created in the last 30 days
 $thirtyDaysAgo = date('Y-m-d', strtotime('-30 days'));
@@ -57,7 +56,6 @@ if ($resultNewUsers && $resultNewUsers->num_rows > 0) {
     $newUsersRow = $resultNewUsers->fetch_assoc();
     $newUsersCount = $newUsersRow['new_users'];
 }
-
 
 // Fetch product data from the database
 $sqlProducts = "SELECT * FROM products";
@@ -75,12 +73,16 @@ if ($resultProducts->num_rows > 0) {
             'name' => $row['product_name'],
             'image' => $row['ImageURL'],
             'category' => $row['product_category'],
-            'stock' => $row['StockLevel']
+            'stock' => $row['StockLevel'],
         ];
         // Add the product to the products array
         $products[] = $product;
     }
-    
+
+}
+
+foreach ($products as $product) {
+  $totalRevenue += $product['stock']; // Add each product's stock to the total
 }
 
 $sqlOrders = "SELECT o.OrderID, GROUP_CONCAT(p.product_name SEPARATOR ', ') AS products, SUM(oi.price) AS total_price, o.OrderStatus
@@ -90,8 +92,6 @@ $sqlOrders = "SELECT o.OrderID, GROUP_CONCAT(p.product_name SEPARATOR ', ') AS p
               GROUP BY o.OrderID, o.OrderStatus";
 
 $resultOrders = $conn->query($sqlOrders);
-
-
 
 ?>
 
@@ -105,6 +105,7 @@ $resultOrders = $conn->query($sqlOrders);
   <link rel="stylesheet" href="./css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/alert.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <title>Admin Inventory Management</title>
@@ -190,7 +191,7 @@ $resultOrders = $conn->query($sqlOrders);
 
    /* Table styles */
    .top-selling-table {
-    width: 50%; /* Adjust the width as needed */
+    width: 5%; /* Adjust the width as needed */
     max-width: 200px; /* Set a maximum width to prevent excessive width */
     border: 1px solid #ddd; /* Add border to the table */
     border-collapse: collapse;
@@ -213,8 +214,8 @@ $resultOrders = $conn->query($sqlOrders);
 /* Adjust the width of the product column */
 .top-selling-table th:nth-child(1),
 .top-selling-table td:nth-child(1) {
-    width: 3%; /* Adjust width as needed */
-    max-width: 100px; /* Set max-width to prevent excessive width */
+    width: 1%; /* Adjust width as needed */
+    max-width: 50px; /* Set max-width to prevent excessive width */
     overflow-x: hidden; /* Hide overflow content */
     text-overflow: ellipsis; /* Display ellipsis for overflow content */
     white-space: nowrap; /* Prevent text wrapping */
@@ -224,7 +225,7 @@ $resultOrders = $conn->query($sqlOrders);
 .top-selling-table th:nth-child(2),
 .top-selling-table td:nth-child(2) {
     width: 1%; /* Adjust width as needed */
-    max-width: 50px; /* Set max-width to prevent excessive width */
+    /* max-width: 50px; Set max-width to prevent excessive width */
     overflow: hidden; /* Hide overflow content */
     text-overflow: ellipsis; /* Display ellipsis for overflow content */
     white-space: nowrap; /* Prevent text wrapping */
@@ -233,12 +234,14 @@ $resultOrders = $conn->query($sqlOrders);
 /* Adjust the width of the stock level column */
 .top-selling-table th:nth-child(3),
 .top-selling-table td:nth-child(3) {
-    width: 1%; /* Adjust width as needed */
-    max-width: 100px; /* Set max-width to prevent excessive width */
-    overflow: hidden; /* Hide overflow content */
-    text-overflow: ellipsis; /* Display ellipsis for overflow content */
-    white-space: nowrap; /* Prevent text wrapping */
+    width: 1%; 
+    max-width: 100px; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
 }
+
+
 
 
 .product {
@@ -253,7 +256,6 @@ $resultOrders = $conn->query($sqlOrders);
 
 
 
-
   </style>
 
 </head>
@@ -261,9 +263,9 @@ $resultOrders = $conn->query($sqlOrders);
 <body>
 
   <?php
-  include "./sidebar.php";
-  include "./nav.php";
-  ?>
+include "./sidebar.php";
+include "./nav.php";
+?>
 
 
   <main>
@@ -278,19 +280,21 @@ $resultOrders = $conn->query($sqlOrders);
                 <box-icon class="dollar-icon" name='dollar-circle' type='solid'></box-icon>
                 <div>
                   <h6 class="card-title">Total Revenue</h6>
-                  <h3 class="card-text">$<?= array_sum($revenue) ?></h3>
+                  <h3 class="card-text">£<?=array_sum($revenue)?></h3>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+        <!-- <button onclick="showToast('warning', 'Sample Product')">Show Warning Toast</button> -->
+        <div id="toast-container"></div>
+        <script src="scripts.js"></script>
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <!-- Total Revenue Box -->
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Stock Level</h5>
-              <h3 class="card-text">$<?= $totalRevenue ?></h3>              
+              <h3 class="card-text"><?=$totalRevenue?></h3>
             </div>
           </div>
         </div>
@@ -300,7 +304,7 @@ $resultOrders = $conn->query($sqlOrders);
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Pending Orders</h5>
-              <h3 class="card-text"><?= $totalPendingOrders ?></h3>              
+              <h3 class="card-text"><?=$totalPendingOrders?></h3>
             </div>
           </div>
         </div>
@@ -310,13 +314,13 @@ $resultOrders = $conn->query($sqlOrders);
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">New Users</h5>
-              <h3 class="card-text"><?= $newUsersCount ?></h3>              
+              <h3 class="card-text"><?=$newUsersCount?></h3>
             </div>
           </div>
         </div>
 
       </div>
-  
+
       <div class="row">
         <div class="col-lg-5">
           <div class="card-style mb-30">
@@ -348,35 +352,68 @@ $resultOrders = $conn->query($sqlOrders);
                           <th>
                               <h6 class="text-sm text-medium">Product</h6>
                           </th>
-                          <th>
+                          <!-- <th>
                               <h6 class="text-sm text-medium">Category</h6>
-                          </th>
+                          </th> -->
                           <th>
                               <h6 class="text-sm text-medium">Stock Level</h6>
+                          </th>
+                          <th>
+                              <h6 class="text-sm text-medium">Stock Status</h6>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                      <?php foreach ($products as $product) : ?>
-                        <tr>
-                            <td class="product-name">
-                                <div class="product">
-                                    <div class="image">
-                                        <img src="../product_img/<?php echo $product['image']; ?>" alt="" style="height: 50px; width: 50px;" />
-                                    </div>
-                                    <div class="product-details">
-                                        <p class="text-sm"><?php echo $product['name']; ?></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="product-category">
-                                <p class="text-sm"><?php echo $product['category']; ?></p>
-                            </td>
-                            <td class="stock-level">
-                                <p class="text-sm"><?php echo $product['stock']; ?></p>
-                            </td>
-                        </tr>
-                      <?php endforeach; ?>  
+                      <?php 
+$notificationCount = 0;
+foreach ($products as $product):
+    if ($notificationCount < 5) { // Limit to 5 notifications
+?>
+        <tr>
+            <td class="product-name">
+                <div class="product">
+                    <div class="image">
+                        <img src="../product_img/<?php echo $product['image']; ?>" alt="" style="height: 50px; width: 50px;" />
+                    </div>
+                    <div class="product-details">
+                        <p class="text-sm"><?php echo $product['name']; ?></p>
+                    </div>
+                </div>
+            </td>
+            <!-- <td class="product-category">
+                <p class="text-sm"> -->
+                  <?php 
+                  // echo $product['category']; 
+                  ?>
+                <!-- </p>
+            </td> -->
+            <td class="stock-level">
+                <p class="text-sm"><?php echo $product['stock']; ?></p>
+            </td>
+            <td class="product-category">
+                <p class="text-sm">
+                    <?php
+                    $stock = $product['stock'];
+                    if ($stock > 0) {
+                        echo "In Stock";
+                        // echo $product['stock'];
+                    } else if($stock != null) {
+                        echo "Out of Stock";
+                        // echo $product['stock'];
+                        // Automatically trigger the warning toast
+                        echo "<script>showToast('warning', '" . $product['name'] . "');</script>";
+                        $notificationCount++; // Increment notification count
+                    }
+                    ?>
+                </p>
+            </td>
+        </tr>
+<?php 
+    } // End if
+endforeach; 
+?>
+
+
                       </tbody>
                     </table>
                 </div>
@@ -402,21 +439,21 @@ $resultOrders = $conn->query($sqlOrders);
                                 <tbody id="orderDetailsBody">
                                     <!-- Table rows will be dynamically added here -->
                                     <?php
-                // Check if there are any orders returned from the query
-                if ($resultOrders->num_rows > 0) {
-                  // Loop through each order
-                  while ($order = $resultOrders->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<th scope='row'>" . $order['OrderID'] . "</th>";
-                    echo "<td>" . $order['products'] . "</td>";
-                    echo "<td>$" . $order['total_price'] . "</td>";
-                    echo "<td>" . $order['OrderStatus'] . "</td>";
-                    echo "</tr>";
-                  }
-                } else {
-                  echo "<tr><td colspan='5'>No orders found.</td></tr>";
-                }
-                ?>
+// Check if there are any orders returned from the query
+if ($resultOrders->num_rows > 0) {
+    // Loop through each order
+    while ($order = $resultOrders->fetch_assoc()) {
+        echo "<tr>";
+        echo "<th scope='row'>" . $order['OrderID'] . "</th>";
+        echo "<td>" . $order['products'] . "</td>";
+        echo "<td>$" . $order['total_price'] . "</td>";
+        echo "<td>" . $order['OrderStatus'] . "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='5'>No orders found.</td></tr>";
+}
+?>
                                 </tbody>
                             </table>
                         </div>
@@ -425,7 +462,7 @@ $resultOrders = $conn->query($sqlOrders);
                     </div>
                 </div>
 
-            
+
     </div>
   </main>
 
@@ -444,7 +481,7 @@ $resultOrders = $conn->query($sqlOrders);
         var data = [];
 
         // Assuming you have $revenue array defined in your PHP code
-        var revenue = <?= json_encode($revenue) ?>;
+        var revenue = <?=json_encode($revenue)?>;
 
         // Labels for months
         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ];
@@ -454,7 +491,7 @@ $resultOrders = $conn->query($sqlOrders);
             // Rotate the months array so that the current month is on the far right
             var currentMonthIndex = new Date().getMonth();
             labels = months.slice(currentMonthIndex).concat(months.slice(0, currentMonthIndex)).reverse();
-            
+
             // Assuming you want to show monthly data
             data = revenue.slice(currentMonthIndex).concat(revenue.slice(0, currentMonthIndex)).reverse();
         }
