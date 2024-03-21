@@ -164,8 +164,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="col-25">
 
                             </div>
-                            <div class="col-75">
-                                <input type="submit" name="add_product" value="Save">
+                            <div class="col-end">
+                                <button type="submit" name="add_product" value="Save" class="savebutton"><i
+                                        class='bx bxs-save'></i> Save</button>
                             </div>
                         </div>
                     </form>

@@ -1,11 +1,21 @@
 <?php
 session_start();
+
+// Connect to the database
+require_once('<user_files>/connection.php');
+
+$isAdmin = false;
+
 if (!isset($_SESSION['user_id'])) {
     $userId = null;  
 } else {
     $userId = $_SESSION["user_id"];
+    $stmtUser = $db->prepare("SELECT * FROM users WHERE userID = ?");
+    $stmtUser->execute([$userId]);
+    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+    // Check if the user is an admin
+    $isAdmin = ($user['user_type'] == 0);
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -70,6 +80,11 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="top-right-nav">
         <div id="nav1">
+            <?php if ($isAdmin): ?>
+            <div class="admin-button">
+            <a href="../Admin Inventory/dashboard.php">Admin</a>
+            </div>
+            <?php endif; ?>
             <a href="about.html">About Us</a>
             <a href="contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>

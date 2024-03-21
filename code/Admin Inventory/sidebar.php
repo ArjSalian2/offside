@@ -14,7 +14,7 @@
       <a href="./products.php"><i class="bx bxs-box icon"></i> Products</a>
     </li>
     <li>
-      <a href="./dashboard.php"><i class="bx bxs-shopping-bag icon"></i> Orders</a>
+      <a href="./orders.php"><i class="bx bxs-shopping-bag icon"></i> Orders</a>
     </li>
   </ul>
 </div>
