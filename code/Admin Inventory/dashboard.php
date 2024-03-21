@@ -72,7 +72,7 @@ if ($resultProducts->num_rows > 0) {
         $product = [
           'name' => htmlspecialchars($row['product_name']), 
           'image' => $row['ImageURL'],
-          'category' => htmlspecialchars($row['category']), 
+          'category' => htmlspecialchars($row['product_category']), 
           'stock' => intval($row['StockLevel']), 
         ];
         // Add the product to the products array
