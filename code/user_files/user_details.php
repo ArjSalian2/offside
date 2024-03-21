@@ -16,6 +16,9 @@ $stmtUser = $db->prepare("SELECT * FROM users WHERE userID = ?");
 $stmtUser->execute([$userID]);
 $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
+// Check if the user is an admin
+$isAdmin = ($user['user_type'] == 0);
+
 $stmtPayment = $db->prepare("SELECT * FROM payment WHERE userID = ?");
 $stmtPayment->execute([$userID]);
 $paymentMethods = $stmtPayment->fetchAll(PDO::FETCH_ASSOC);
@@ -97,7 +100,7 @@ unset($_SESSION['password_error']);
         align-items: center;
         gap: 10px;
         padding: 11px;
-        margin-left: 850px; 
+        margin-left: 700px; 
         background-color:white;
         }
 
@@ -351,6 +354,11 @@ unset($_SESSION['password_error']);
     
         <div class="top-right-nav">
             <div id="nav1">
+                <?php if ($isAdmin): ?>
+                <div class="admin-button">
+                <a href="../Admin Inventory/dashboard.php">Admin</a>
+                </div>
+                <?php endif; ?>
                 <a href="../about.html">About Us</a>
                 <a href="../basket/contact.php">Contact Us</a>
                 <a href="login.php">Log In</a>
