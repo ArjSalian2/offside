@@ -3,7 +3,7 @@
     <span class="separator"></span>
     <ul class="logout">
       <li>
-        <a href="#"><i class="bx bx-log-out icon"></i> Logout</a>
+        <a href="../index.html"><i class="bx bx-log-out icon"></i> Customer</a>
       </li>
     </ul>
   </nav>
