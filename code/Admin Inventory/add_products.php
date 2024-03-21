@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
     $product_gender = $_POST['product_gender'];
     $CategoryID = $_POST['CategoryID'];
     $StockLevel = $_POST['StockLevel'];
+    $Description = $_POST['Description'];
 
     $target_dir = "../product_img/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -18,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
     // Uploading file to  eccomerce sports database
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 
-        $sql = "INSERT INTO products (product_name, product_price, product_colour, product_gender, CategoryID, StockLevel, ImageURL) 
-                    VALUES ('$product_name', '$product_price', '$product_colour', '$product_gender', '$CategoryID', '$StockLevel', '$new_image_name')";
+        $sql = "INSERT INTO products (product_name, product_price, product_colour, product_gender, CategoryID, StockLevel, ImageURL, Description) 
+                    VALUES ('$product_name', '$product_price', '$product_colour', '$product_gender', '$CategoryID', '$StockLevel', '$new_image_name', '$Description')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "<script>alert('Product added successfully');</script>";
@@ -84,6 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
 
                     <label for="StockLevel">Stock Level:</label><br>
                     <input type="number" id="StockLevel" name="StockLevel" required min="1"><br><br>
+
+
+                    <label for="Description">Description:</label><br>
+                    <input type="text" id="Description" name="Description"><br><br>
+
 
                     <label for="image">Product Image:</label><br>
 
