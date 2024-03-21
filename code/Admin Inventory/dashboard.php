@@ -70,10 +70,10 @@ if ($resultProducts->num_rows > 0) {
     while ($row = $resultProducts->fetch_assoc()) {
         // Store product details in an array
         $product = [
-            'name' => $row['product_name'],
-            'image' => $row['ImageURL'],
-            'category' => $row['product_category'],
-            'stock' => $row['StockLevel'],
+          'name' => htmlspecialchars($row['product_name']), 
+          'image' => $row['ImageURL'],
+          'category' => htmlspecialchars($row['category']), 
+          'stock' => intval($row['StockLevel']), 
         ];
         // Add the product to the products array
         $products[] = $product;
@@ -253,7 +253,10 @@ $resultOrders = $conn->query($sqlOrders);
     margin-right: 10px;
 }
 
-
+.col-lg-8 {
+  width: 100%;
+  margin-left: 0;
+}
 
 
   </style>
@@ -277,9 +280,8 @@ include "./nav.php";
           <div class="card">
             <div class="card-body">
               <div class="d-flex align-items-center">
-                <box-icon class="dollar-icon" name='dollar-circle' type='solid'></box-icon>
                 <div>
-                  <h6 class="card-title">Total Revenue</h6>
+                  <h5 class="card-title">Total Revenue</h5>
                   <h3 class="card-text">£<?=array_sum($revenue)?></h3>
                 </div>
               </div>
@@ -397,7 +399,7 @@ foreach ($products as $product):
                     if ($stock > 0) {
                         echo "In Stock";
                         // echo $product['stock'];
-                    } else if($stock != null) {
+                    } else if($stock == 0) {
                         echo "Out of Stock";
                         // echo $product['stock'];
                         // Automatically trigger the warning toast
@@ -408,10 +410,10 @@ foreach ($products as $product):
                 </p>
             </td>
         </tr>
-<?php 
-    } // End if
-endforeach; 
-?>
+        <?php 
+            } // End if
+        endforeach; 
+        ?>
 
 
                       </tbody>
@@ -447,7 +449,13 @@ if ($resultOrders->num_rows > 0) {
         echo "<th scope='row'>" . $order['OrderID'] . "</th>";
         echo "<td>" . $order['products'] . "</td>";
         echo "<td>$" . $order['total_price'] . "</td>";
-        echo "<td>" . $order['OrderStatus'] . "</td>";
+        echo "<td>";
+        if ($order['OrderStatus'] == 1) {
+          echo "<span class='badge bg-primary'>Processing</span>";
+        } else {
+          echo "<span class='badge bg-secondary'>Way to Shipping</span>";
+        }
+        echo "</td>";
         echo "</tr>";
     }
 } else {
