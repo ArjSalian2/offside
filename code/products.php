@@ -40,6 +40,14 @@ if (!isset($_SESSION['user_id'])) {
     if (searchParam.has("search-term")) {
         window.location.href = url;
     }
+
+    function viewProduct(buttonParam, userIDParam) {
+        productIdToView = buttonParam.getAttribute("data-product-id");
+        userID = userIDParam;
+        productUrl = "product-info.php" + "?id=" + productIdToView;
+        window.location.href = productUrl;
+    }
+
     function addToCart(buttonParam, userIdParam) {
         productIdToAdd = buttonParam.getAttribute("data-product-id");
         userID = userIdParam;
@@ -240,7 +248,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                             </div>
                             <!-- Add basket functionality here -->
-                            <button onclick="addToCart(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                            <button onclick="viewProduct(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">View product</button>
 
                             <!-- ----------------------------- -->
                             </div>
@@ -261,7 +269,8 @@ if (!isset($_SESSION['user_id'])) {
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
                             <!-- Add basket functionality here -->
-                                <button onclick="addToCart(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                                <button onclick="viewProduct(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">View product</button>
+                                
 
                             <!-- ----------------------------- -->
                             </div>

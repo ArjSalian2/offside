@@ -58,14 +58,24 @@ if (!isset($_SESSION['user_id'])) {
         userId = userIdParam;
         totalPrice = totalPriceParam
         basketId = basketIdParam
+        outOfStock = false;
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            document.getElementById("cartTitle").innerHTML = this.responseText;
+            if (this.responseText != "") {
+                outOfStock = true;
+            }
+            if (outOfStock == false) {
+                location.reload();
+            } else {
+                document.getElementById("stockMessageDiv").innerHTML = this.responseText;
+            }
+            
         }
         xhttp.open("POST", "submit_order.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("userID="+userId + "&totalPrice="+totalPrice + "&basketID="+basketId);
-        location.reload();
+
+
     }
 </script>
 
@@ -89,7 +99,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
             <a href="user_files/user_details.php">Account details</a>
-            <a href="my_orders.php">My orders</a>
+            <a href="view_orders.php">My orders</a>
         </div>
     </div>
 
@@ -119,6 +129,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <div id="basket-div">
         <h1 id="cartTitle"> Cart </h1>
+        <p id="stockMessageDiv"> </p>
         <div id="cart-item-grid" >
             <?php
             if (!isset($_SESSION['user_id'])) {
@@ -148,7 +159,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="basket-item-card"> 
                         <img class="item_img" src="product_img/<?= $productRecord["ImageURL"] ?>">
                         <p class="item_name"> <?= $productRecord["product_name"] ?></p>
-                        <p class="item_quantity"> <?= $basketProduct["Quantity"] ?></p>
+                        <p class="item_quantity"> Quantity: <?= $basketProduct["Quantity"] ?></p>
                         <button onclick="updateCart(this)" class="increase-btn" value="increase" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">+</button>
                         <button onclick="updateCart(this)" class="decrease-btn" value="decrease" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">-</button>
                         <button onclick="updateCart(this)" class="remove-btn" value="remove" basket-item-id="<?= $basketProduct["ShoppingBasketItemID"] ?>">Remove</button>
@@ -169,7 +180,7 @@ if (!isset($_SESSION['user_id'])) {
             
             <div id="summ-div">
                 <p>Total: £<?= $totalPrice ?></p>
-                <button onclick="submitOrder(<?=$userId?>, <?=$totalPrice?>, <?=$basketID?>)">Checkout</button>
+                <button onclick="submitOrder(<?=$userId?>, <?=$totalPrice?>, <?=$basketID?>)" class="checkout-btn">Checkout</button>
             </div>
             <?php
             }

@@ -1,4 +1,4 @@
-#basket-div {
+#order-div {
 
     border-radius: 4px;
     width: 80%;
@@ -6,21 +6,33 @@
     margin-right: 10%;
 }
 
-#basket-div h1 {
+#order-div h1 {
     padding-left: 5px;
     padding-top: 5px;
 }
 
 .grid-container {
     display: grid;
-    width: 100%;
-    grid-template-columns: 100%;
+    width: 95%;
+    grid-template-columns: auto auto auto auto;
     overflow: hidden;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    margin-left: 2.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 4px;
+
 }
 
-.basket-item-card {
+.grid-container p {
+    padding-left: 10px;
+}
+
+.order-item-card {
     outline: black solid 1px;;
-    background-color: rgb(240, 240, 240);
+    background-color: white;
     border-radius: 4px;
     height:110px;
     width:95%;
@@ -29,24 +41,24 @@
     margin-left: 2.5%;
 
 }
+.order-item-card p {
+    padding-top: 10px;
+}
 
-.basket-item-card img{
+.order-item-card img{
     height:100px;
     width: 100px;
 }
 
-.item_img, .item_name, .item_quantity, .increase-btn, .decrease-btn, .remove-btn {
+.item_img, .item_name, .item_quantity, .increase-btn, .decrease-btn, .remove-btn, .item_return_status {
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
     float: inline-start;
+    padding-right: 20px;
 }
 
-#summ-div {
-    margin-left: 2.5%;
-}
-
-.basket-item-card button {
+.order-item-card button {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 5px;
@@ -57,30 +69,14 @@
     text-decoration: none;
     border-radius: 10px;
     border: 0px;
+    margin-top: 10px;
 }
 
-.increase-btn, .decrease-btn {
+
+.return-btn {
+    margin-left: 5px;
     background-color: black;
     color: white;
-    width: 30px;
-}
-
-.remove-btn {
-    background-color: red;
-    color: white;
-}
-
-.checkout-btn {
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 0px;
-    background-color: black;
-    color: white;
-    margin-bottom: 10px;
 }
 
 #stockMessageDiv {
