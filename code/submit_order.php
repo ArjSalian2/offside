@@ -4,7 +4,14 @@ $recievedTotalPrice = $_POST['totalPrice'];
 $recievedUserID = $_POST["userID"];
 $recievedBasketID = $_POST["basketID"];
 
+
 $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
+
+
+$stmt = $db->prepare("SELECT * FROM address WHERE userID=?");
+$stmt->execute([$recievedUserID]);
+$userAddressRecord = $stmt->fetch();
+
 
 //Check stock level
 $outOfStock = False;
@@ -17,12 +24,21 @@ foreach ($basketItems as $basketItem) {
     $stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
     $stmt->execute([$basketItem["ProductID"]]);
     $productRecord = $stmt->fetch();
+
     if ($productRecord["StockLevel"] < $basketItem["Quantity"]) {
         $outOfStock = True;
         echo "Only " . $productRecord["StockLevel"] . " " . $productRecord["product_name"] . " in stock" ;
         exit();
     }
-}
+
+
+   
+    
+    // Calculate the total price for the quantity
+    $fullQuantityPrice = ($productRecord["product_price"] * $basketItem["Quantity"]);
+    
+
+
 
 if (!$outOfStock) {
     $stmt = $db->prepare("SELECT * FROM address WHERE userID=?");
