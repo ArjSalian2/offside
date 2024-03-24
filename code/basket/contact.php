@@ -49,91 +49,55 @@ if (!isset($_SESSION['user_id'])) {
 
   </script>
 
-  <header>
+<header>
 
-    <div class="logo"> <!--Hadeeqah -The logo for top of page-->
-      <a href="/offside/index.html">
+<div class="logo"> <!--Hadeeqah -The logo for top of page-->
+    <a href="/offside/index.php">
         <img src="../homepage-img/logo.png" alt="Offside Logo">
-      </a>
-    </div>
+    </a>
+</div>
 
-    <div class="top-right-nav">
-      <div id="nav1">
+<div class="top-right-nav"> <!-- Hadeeqah- Updated the nav bar -->
+    <div id="nav1">
+
         <?php if ($isAdmin): ?>
-        <div class="admin-button">
         <a href="../Admin Inventory/dashboard.php">Admin</a>
-        </div>
         <?php endif; ?>
+
         <a href="../about.html">About Us</a>
-        <a href="contact.php">Contact Us</a>
+        <a href="../basket/contact.php">Contact Us</a>
         <a href="../user_files/login.php">Log In</a>
         <a href="../user_files/user_details.php">Account details</a>
-        <a href="my_orders.php">My orders</a>
-      </div>
+        <a href="../view_orders.php">My orders</a>
+
     </div>
+</div>
 
-  </header>
 
-  <!-- nav2-dima -->
-  <div id="nav2">
-    <div class="nav2-center">
-      <a href="../products.php?gender%5B%5D=womens">Women</a>
-      <a href="../products.php?gender%5B%5D=mens">Men</a>
-      <a href="../products.php?category%5B%5D=accessories">Accessories</a>
-    </div>
+</header>
+<hr>
 
-    <div class="nav2-right">
-      <div id="search">
+<!-- nav2-dima -->
+<div id="nav2">
+<div class="nav2-center">
+    <a href="../products.php?gender%5B%5D=womens">Women</a>
+    <a href="../products.php?gender%5B%5D=mens">Men</a>
+    <a href="../products.php?category%5B%5D=accessories">Accessories</a>
+</div>
+
+<div class="nav2-right">
+    <div id="search">
         <form>
-          <input  type="text" name="search-term" placeholder="Search">
-          <input type="submit" value="Enter">
+            <input type="text" name="search-term" placeholder="Search">
+            <input type="submit" value="Enter">
         </form>
-      </div>
-      <div id="basket-icon">
-        <a href="cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
-      </div>
     </div>
-  </div>
+    <div id="basket-icon">
+        <a href="../new_cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
+    </div>
+</div>
+</div>  
 
-<!--
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse justify-content-end navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav  mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="products.php">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cart.php">Cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.php">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Current User
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="my_orders.php">My orders</a></li>
-                            </ul>
-                        </li>
-
-
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-    </header>
--->
     <section>
         <div class="container">
             <div class="row">
