@@ -40,11 +40,20 @@ foreach ($basketItems as $basketItem) {
 
 
 
+
+
 if (!$outOfStock) {
+
+    //Check address:
     $stmt = $db->prepare("SELECT * FROM address WHERE userID=?");
     $stmt->execute([$recievedUserID]);
     $userAddressRecord = $stmt->fetch();
-    
+    if ($userAddressRecord == False) {
+        echo "Enter your address in account details to checkout" ;
+        exit();
+    }
+
+
     $date = date("Y-m-d");
     
     $stmt = $db->prepare("INSERT INTO orders (UserID, OrderDate, OrderStatus, AddressID, TotalAmount) VALUES (?,?,?,?,?)");

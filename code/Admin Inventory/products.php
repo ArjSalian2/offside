@@ -1,5 +1,5 @@
 <?php
-include_once "./Database/connection.php";
+include_once "Database/connection.php";
 $search = " WHERE product_id > 0 ";
 $category = $gender = $minprice = $maxprice = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search"])) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["filter"])) {
     ?>
 
     <?php
-    include_once "./Database/connection.php";
+    include_once "Database/connection.php";
 
     ///////////DELETING PRODUCTS////////////////
     

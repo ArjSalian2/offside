@@ -11,6 +11,18 @@ $_SESSION["userIdSession"] = $recievedUserId;
 
 $db = new PDO("mysql:host=localhost;dbname=sports_ecommerce_database", "root", "");
 
+//Check stock level
+$outOfStock = False;
+
+$stmt = $db->prepare("SELECT * FROM products WHERE product_id=?");
+$stmt->execute([$recievedProductId]);
+$productRecord = $stmt->fetch();
+
+if ($productRecord["StockLevel"] <= 0) {
+    $outOfStock = True;
+    exit();
+}
+
 $stmt = $db->prepare("SELECT * FROM shopping_basket WHERE UserID=?");
 $stmt->execute([$recievedUserId]);
 $allBaskets = $stmt->fetch();
