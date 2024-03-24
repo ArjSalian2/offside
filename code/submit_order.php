@@ -30,7 +30,7 @@ foreach ($basketItems as $basketItem) {
         echo "Only " . $productRecord["StockLevel"] . " " . $productRecord["product_name"] . " in stock" ;
         exit();
     }
-
+}
 
    
     
@@ -63,6 +63,13 @@ if (!$outOfStock) {
     
         $stmt = $db->prepare("INSERT INTO order_items (ProductID, OrderID, Quantity, Price, ReturnStatusID) VALUES (?,?,?,?,?)");
         $stmt->execute([$basketItem["ProductID"], $orderRecord["OrderID"], $basketItem["Quantity"], $fullQuantityPrice, 1]);
+
+        // Calculate the new stock level
+         $newStockLevel = $productRecord["StockLevel"] - $basketItem["Quantity"];
+
+        // Update the stock level in the products table
+        $stmt = $db->prepare("UPDATE products SET StockLevel=? WHERE product_id=?");
+        $stmt->execute([$newStockLevel, $basketItem["ProductID"]]);
     }
     
     $stmt = $db->prepare("DELETE FROM shopping_basket_items WHERE BasketID=?");
