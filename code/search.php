@@ -32,6 +32,17 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="stylesheet" href="searchstyle.css">
 </head>
 
+<script>
+
+function viewProduct(buttonParam, userIDParam) {
+  productIdToView = buttonParam.getAttribute("data-product-id");
+  userID = userIDParam;
+  productUrl = "product-info.php" + "?id=" + productIdToView;
+  window.location.href = productUrl;
+}
+
+</script>
+
 
 <header>
 
@@ -119,7 +130,6 @@ if (!isset($_SESSION['user_id'])) {
         <input type="submit" value="Search" />
       </form>
 
-      <script src="basket/scripts.js"></script>
 </html>
 
 <!--SEARCH PAGE END-->
@@ -180,7 +190,7 @@ $results = $db->query($query);
                                 <p class="product-card-gender"> <?= $product["product_gender"] ?> </p>
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
-                                <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                                <button onclick="viewProduct(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">View product</button>
                             </div>
                         <?php
                         }
