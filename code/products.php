@@ -111,7 +111,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="new_cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
         </div>
     </div>
-</div>
+</div>  
 
 <!-- Hadeeqah -->
 <div id="banner">

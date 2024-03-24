@@ -72,112 +72,7 @@ unset($_SESSION['password_error']);
             display: flex;
         }
 
-        header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        }
-
-        .top-right-nav{
-        margin-left: auto;
-        background-color:rgb(255, 255, 255);
-        /* flex-grow: 1; */
-        } 
-
-        .logo img { 
-        max-width: 100px;
-        height: auto;
-        /* position: absolute;
-        top:0;
-        left:0;
-        padding:5px; */
-        }
-
-        /* Dima- nav,basket,search bar */
-        #nav1{
-        display:flex;
-        align-items: center;
-        gap: 10px;
-        padding: 11px;
-        margin-left: 700px; 
-        background-color:white;
-        }
-
-        #nav1 a{
-        text-decoration: none;
-        color: rgb(11,10,10);
-        font-size: 13px;
-        text-align: center;
-        padding:3px 10px;
-        /* margin: 0 5px; */
-        }
-        #nav1 a:hover{
-        background-color: transparent;
-        color: darkgray;
-        }
-
-        #nav2{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: white;
-        padding: 10px;
-        box-sizing:border-box;
-        }
-        #nav2 a:hover{
-        background-color: transparent;
-        color: darkgray;
-        }
-        #nav2 a{
-        text-decoration: none;
-        color:black;
-        text-align: center;
-        padding: 5px 15px;
-        font-size: 14px;
-        }
-        .nav2-center{
-        flex-grow:1;
-        display: flex;
-        justify-content: center;
-        margin-left: 300px;
-        }
-        .nav2-right{
-        display: flex;
-        align-items: center;
-        }
         
-        #search form{
-        display:flex;
-        align-items: center;
-        border:1px solid #ccc;
-        border-radius: 15px;
-        overflow: hidden;
-        margin-right: 10px;
-        }
-        #search input[type="text"]{
-        border:none;
-        padding:8px;
-        outline: none;
-        font-size: 13px;
-        }
-        #search input[type="submit"]{
-        background-color: white;
-        border:none;
-        padding:8px 12px;
-        font-size: 14px;
-        }
-
-        #search input[type="submit"]:hover{
-        background-color: #e0e0e0;
-        }
-        #basket-icon{
-        margin-right: 10px;
-        }
-        #basket-icon a img{
-        width: 20px;
-        height: auto;
-        }
         
         .messages-container {
             position: absolute;
@@ -344,55 +239,55 @@ unset($_SESSION['password_error']);
         window.location.href = url;
         }
     </script>
+    
     <header>
-    
-        <div class="logo"> <!--Hadeeqa-The logo for top of page-->
-            <a href="/offside/index.html">
-                <img src="../homepage-img/logo.png" alt="Offside Logo">
-            </a>
-        </div>
-    
-        <div class="top-right-nav">
-            <div id="nav1">
-                <?php if ($isAdmin): ?>
-                <div class="admin-button">
-                <a href="../Admin Inventory/dashboard.php">Admin</a>
-                </div>
-                <?php endif; ?>
-                <a href="../about.html">About Us</a>
-                <a href="../basket/contact.php">Contact Us</a>
-                <a href="login.php">Log In</a>
-                <a href="user_details.php">Account details</a>
-                <a href="../basket/my_orders.php">My orders</a>
-            </div>
-        </div>
-    
-    </header>
-    
-    <div id="nav2">
-        <div class="nav2-center">
-            <a href="../products.php?gender%5B%5D=womens">Women</a>
-            <a href="../products.php?gender%5B%5D=mens">Men</a>
-            <a href="../products.php?category%5B%5D=accessories">Accessories</a>
-        </div>
-    
-        <div class="nav2-right">
-            <div id="search">
-                <form>
-                    <input type="text" name="search" placeholder="Search">
-                    <input type="submit" value="Enter">
-                </form>
-            </div>
-            <div id="basket-icon">
-                <a href="../new_cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
-            </div>
+
+    <div class="logo"> <!--Hadeeqah -The logo for top of page-->
+        <a href="/offside/index.php">
+            <img src="../homepage-img/logo.png" alt="Offside Logo">
+        </a>
+    </div>
+
+    <div class="top-right-nav"> <!-- Hadeeqah- Updated the nav bar -->
+        <div id="nav1">
+
+            <?php if ($isAdmin): ?>
+            <a href="../Admin Inventory/dashboard.php">Admin</a>
+            <?php endif; ?>
+
+            <a href="../about.html">About Us</a>
+            <a href="../basket/contact.php">Contact Us</a>
+            <a href="../user_files/login.php">Log In</a>
+            <a href="user_details.php">Account details</a>
+            <a href="../view_orders.php">My orders</a>
+
         </div>
     </div>
 
-    <div id="banner">
-        <h2> Free Delivery & Returns</h2>
-        <p> Offside members get free delivery and 60-day returns</p>
-      </div>
+
+</header>
+<hr>
+
+<!-- nav2-dima -->
+<div id="nav2">
+    <div class="nav2-center">
+        <a href="products.php?gender%5B%5D=womens">Women</a>
+        <a href="products.php?gender%5B%5D=mens">Men</a>
+        <a href="products.php?category%5B%5D=accessories">Accessories</a>
+    </div>
+
+    <div class="nav2-right">
+        <div id="search">
+            <form>
+                <input type="text" name="search-term" placeholder="Search">
+                <input type="submit" value="Enter">
+            </form>
+        </div>
+        <div id="basket-icon">
+            <a href="../new_cart.php"><img src="../homepage-img/basket-icon.png" alt="Basket"></a>
+        </div>
+    </div>
+</div>
       
     <div class="messages-container">
         <?php if ($passwordError): ?>

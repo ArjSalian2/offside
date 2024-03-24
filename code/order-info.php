@@ -8,6 +8,22 @@ if (!isset($_SESSION['user_id'])) {
 
 $orderID = $_GET["id"];
 
+// Connect to the database
+require_once('<user_files>/connection.php');
+
+$isAdmin = false;
+
+if (!isset($_SESSION['user_id'])) {
+    $userId = null;  
+} else {
+    $userId = $_SESSION["user_id"];
+    $stmtUser = $db->prepare("SELECT * FROM users WHERE userID = ?");
+    $stmtUser->execute([$userId]);
+    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+    // Check if the user is an admin
+    $isAdmin = ($user['user_type'] == 0);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -50,22 +66,31 @@ $orderID = $_GET["id"];
 <header>
 
     <div class="logo"> <!--Hadeeqah -The logo for top of page-->
-        <a href="/offside/index.html">
+        <a href="/offside/index.php">
             <img src="homepage-img/logo.png" alt="Offside Logo">
         </a>
     </div>
 
-    <div class="top-right-nav">
+    <div class="top-right-nav"> <!-- Hadeeqah- Updated the nav bar -->
         <div id="nav1">
+
+            <?php if ($isAdmin): ?>
+            <a href="Admin Inventory/dashboard.php">Admin</a>
+            <?php endif; ?>
+
             <a href="about.html">About Us</a>
-            <a href="contact.php">Contact Us</a>
+            <a href="basket/contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
             <a href="user_files/user_details.php">Account details</a>
             <a href="view_orders.php">My orders</a>
+
         </div>
     </div>
 
+
 </header>
+
+<hr>
 
 <!-- nav2-dima -->
 <div id="nav2">
@@ -87,6 +112,7 @@ $orderID = $_GET["id"];
         </div>
     </div>
 </div>
+
 
 <body>
     <div id="order-div">
