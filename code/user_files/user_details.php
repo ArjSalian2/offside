@@ -271,9 +271,9 @@ unset($_SESSION['password_error']);
 <!-- nav2-dima -->
 <div id="nav2">
     <div class="nav2-center">
-        <a href="products.php?gender%5B%5D=womens">Women</a>
-        <a href="products.php?gender%5B%5D=mens">Men</a>
-        <a href="products.php?category%5B%5D=accessories">Accessories</a>
+        <a href="../products.php?gender%5B%5D=womens">Women</a>
+        <a href="../products.php?gender%5B%5D=mens">Men</a>
+        <a href="../products.php?category%5B%5D=accessories">Accessories</a>
     </div>
 
     <div class="nav2-right">
