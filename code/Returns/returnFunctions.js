@@ -4,7 +4,7 @@ function AllOrders() {
     method: "post",
     data: { record: 1 },
     success: function (data) {
-      $(".allOrders").html(data);
+      $(".allOrders").php(data);
     },
   });
 }

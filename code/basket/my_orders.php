@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+// Connect to the database
+require_once('../<user_files>/connection.php');
+
+$isAdmin = false;
+
+if (!isset($_SESSION['user_id'])) {
+    $userId = null;  
+} else {
+    $userId = $_SESSION["user_id"];
+    $stmtUser = $db->prepare("SELECT * FROM users WHERE userID = ?");
+    $stmtUser->execute([$userId]);
+    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+    // Check if the user is an admin
+    $isAdmin = ($user['user_type'] == 0);
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,14 +51,19 @@
   <header>
 
     <div class="logo"> <!--Hadeeqah -The logo for top of page-->
-      <a href="/offside/index.html">
+      <a href="/offside/index.php">
         <img src="../homepage-img/logo.png" alt="Offside Logo">
       </a>
     </div>
 
     <div class="top-right-nav">
       <div id="nav1">
-        <a href="../about.html">About Us</a>
+        <?php if ($isAdmin): ?>
+        <div class="admin-button">
+        <a href="../Admin Inventory/dashboard.php">Admin</a>
+        </div>
+        <?php endif; ?>
+        <a href="../about.php">About Us</a>
         <a href="contact.php">Contact Us</a>
         <a href="../user_files/login.php">Log In</a>
         <a href="../user_files/user_details.php">Account details</a>

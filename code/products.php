@@ -1,6 +1,23 @@
 <?php
 // Start the session
 session_start();
+
+// Connect to the database
+require_once('<user_files>/connection.php');
+
+$isAdmin = false;
+
+if (!isset($_SESSION['user_id'])) {
+    $userId = null;  
+} else {
+    $userId = $_SESSION["user_id"];
+    $stmtUser = $db->prepare("SELECT * FROM users WHERE userID = ?");
+    $stmtUser->execute([$userId]);
+    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+    // Check if the user is an admin
+    $isAdmin = ($user['user_type'] == 0);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,28 +41,56 @@ session_start();
         window.location.href = url;
     }
 
+    function viewProduct(buttonParam, userIDParam) {
+        productIdToView = buttonParam.getAttribute("data-product-id");
+        userID = userIDParam;
+        productUrl = "product-info.php" + "?id=" + productIdToView;
+        window.location.href = productUrl;
+    }
+
+    function addToCart(buttonParam, userIdParam) {
+        productIdToAdd = buttonParam.getAttribute("data-product-id");
+        userID = userIdParam;
+        if(userID != null) {
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "addToBasketDB.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("prodID="+productIdToAdd + "&userID="+userID);
+        }
+
+    }
+
 
 </script>
+
 
 <header>
 
     <div class="logo"> <!--Hadeeqah -The logo for top of page-->
-        <a href="/offside/index.html">
+        <a href="/offside/index.php">
             <img src="homepage-img/logo.png" alt="Offside Logo">
         </a>
     </div>
 
-    <div class="top-right-nav">
+    <div class="top-right-nav"> <!-- Hadeeqah- Updated the nav bar -->
         <div id="nav1">
-            <a href="about.html">About Us</a>
+
+            <?php if ($isAdmin): ?>
+            <a href="Admin Inventory/dashboard.php">Admin</a>
+            <?php endif; ?>
+
+            <a href="about.php">About Us</a>
             <a href="basket/contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
             <a href="user_files/user_details.php">Account details</a>
-            <a href="basket/my_orders.php">My orders</a>
+            <a href="view_orders.php">My orders</a>
+
         </div>
     </div>
 
+
 </header>
+<hr>
 
 <!-- nav2-dima -->
 <div id="nav2">
@@ -63,19 +108,23 @@ session_start();
             </form>
         </div>
         <div id="basket-icon">
-            <a href="basket/cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
+            <a href="new_cart.php"><img src="homepage-img/basket-icon.png" alt="Basket"></a>
         </div>
     </div>
-</div>
+</div>  
+
+<!-- Hadeeqah -->
 <div id="banner">
     <h2> Free Delivery & Returns</h2>
     <p> Offside members get free delivery and 60-day returns</p>
 </div>
 
+
+
     <body>
         <main>
 
-            <h1>
+            <h1 id="productTitle">
                 Products
             </h1>
 
@@ -207,7 +256,7 @@ session_start();
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                             </div>
                             <!-- Add basket functionality here -->
-                            <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                            <button onclick="viewProduct(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">View product</button>
 
                             <!-- ----------------------------- -->
                             </div>
@@ -228,7 +277,8 @@ session_start();
                                 <p class="product-card-price">£<?= $product["product_price"] ?> </p>
                                 </div>
                             <!-- Add basket functionality here -->
-                                <button class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">Add to Cart</button>
+                                <button onclick="viewProduct(this, <?= $userId?>)" class="add-to-cart-btn" data-product-id="<?= $product["product_id"] ?>">View product</button>
+                                
 
                             <!-- ----------------------------- -->
                             </div>
@@ -240,5 +290,5 @@ session_start();
                 ?>
             </div>
         </main>
-        <script src="basket/script.js"></script>
+       <!--<script src="basket/script.js"></script>-->
     </body>

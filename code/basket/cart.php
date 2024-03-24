@@ -29,14 +29,14 @@
   <header>
 
     <div class="logo"> <!--Hadeeqah -The logo for top of page-->
-      <a href="/offside/index.html">
+      <a href="/offside/index.php">
         <img src="../homepage-img/logo.png" alt="Offside Logo">
       </a>
     </div>
 
     <div class="top-right-nav">
       <div id="nav1">
-        <a href="../about.html">About Us</a>
+        <a href="../about.php">About Us</a>
         <a href="contact.php">Contact Us</a>
         <a href="../user_files/login.php">Log In</a>
         <a href="../user_files/user_details.php">Account details</a>

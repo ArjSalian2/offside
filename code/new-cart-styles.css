@@ -1,0 +1,90 @@
+#basket-div {
+
+    border-radius: 4px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#basket-div h1 {
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100%;
+    overflow: hidden;
+}
+
+.basket-item-card {
+    outline: black solid 1px;;
+    background-color: rgb(240, 240, 240);
+    border-radius: 4px;
+    height:110px;
+    width:95%;
+    display:inline-flexbox;
+    margin-bottom: 10px;
+    margin-left: 2.5%;
+
+}
+
+.basket-item-card img{
+    height:100px;
+    width: 100px;
+}
+
+.item_img, .item_name, .item_quantity, .increase-btn, .decrease-btn, .remove-btn {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: inline-start;
+}
+
+#summ-div {
+    margin-left: 2.5%;
+}
+
+.basket-item-card button {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.increase-btn, .decrease-btn {
+    background-color: black;
+    color: white;
+    width: 30px;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+}
+
+.checkout-btn {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 0px;
+    background-color: black;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#stockMessageDiv {
+    font-size: 20px;
+    color: red;
+    margin-bottom: 5px;
+}
