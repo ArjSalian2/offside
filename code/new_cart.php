@@ -145,7 +145,20 @@ if (!isset($_SESSION['user_id'])) {
 
             $stmt = $db->prepare("SELECT * FROM shopping_basket WHERE UserID=?");
             $stmt->execute([$userId]);
+            $allBaskets = $stmt->fetch();
+
+            if ($allBaskets) {
+            } else {
+                echo "User has no basket";
+                $stmt = $db->prepare("INSERT INTO shopping_basket (UserID) VALUES (?)");
+                $stmt->execute([$userId]); 
+                header("Refresh:0");
+            }
+
+            $stmt = $db->prepare("SELECT * FROM shopping_basket WHERE UserID=?");
+            $stmt->execute([$userId]);
             $basket = $stmt->fetch(PDO::FETCH_ASSOC);
+            
             $basketID = $basket["BasketID"];
 
             $stmt = $db->prepare("SELECT * FROM shopping_basket_items WHERE BasketID=?"); 
