@@ -78,7 +78,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="Admin Inventory/dashboard.php">Admin</a>
             <?php endif; ?>
 
-            <a href="about.html">About Us</a>
+            <a href="about.php">About Us</a>
             <a href="basket/contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
             <a href="user_files/user_details.php">Account details</a>

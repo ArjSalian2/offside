@@ -15,14 +15,14 @@
       <header>
     
         <div class="logo"> <!--Hadeeqah -The logo for top of page-->
-          <a href="/offside/index.html">
+          <a href="/offside/index.php">
             <img src="homepage-img/logo.png" alt="Offside Logo">
           </a>
         </div>
     
         <div class="top-right-nav">  <!-- Hadeeqah- Updated the nav bar -->
           <div id="nav1">
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
             <a href="basket/contact.php">Contact Us</a>
             <a href="user_files/login.php">Log In</a>
           </div>
@@ -69,10 +69,9 @@ Innovation drives our quest for sustainable future. We continuously explore new 
   <div class="footer-links">
   <a href="user_files/user_details.php">Account Details</a>
     <a href="basket/contact.php">Contact Us</a>
-    <a href="FAQ.html">FAQ</a>
-    <a href="Returns/allOrders.php">Returns Page</a>
+    <a href="FAQ.php">FAQ</a>
     <a href="Feedback/feedback.php">Feedback Form</a>
-    <a href="student.html">Student Discounts</a>
+    <a href="student.php">Student Discounts</a>
   </div>
   <div class="icons">
 <a href="https://twitter.com/?lang=en" class="fa fa-twitter"></a>

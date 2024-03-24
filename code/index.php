@@ -59,7 +59,7 @@ if (!isset($_SESSION['user_id'])) {
           <a href="Admin Inventory/dashboard.php">Admin</a>
         <?php endif; ?>
 
-        <a href="about.html">About Us</a>
+        <a href="about.php">About Us</a>
         <a href="basket/contact.php">Contact Us</a>
         <a href="user_files/login.php">Log In</a>
         <a href="user_files/user_details.php">Account details</a>
@@ -195,10 +195,9 @@ if (!isset($_SESSION['user_id'])) {
     <div class="footer-links">
     <a href="user_files/user_details.php">Account Details</a>
       <a href="basket/contact.php">Contact Us</a>
-      <a href="FAQ.html">FAQ</a>
-      <a href="Returns/allOrders.php">Returns Page</a>
+      <a href="FAQ.php">FAQ</a>
       <a href="Feedback/feedback.php">Feedback Form</a>
-      <a href="student.html">Student Discounts</a>
+      <a href="student.php">Student Discounts</a>
     </div>
     <div class="icons">
       <a href="https://twitter.com/?lang=en" class="fa fa-twitter"></a>
