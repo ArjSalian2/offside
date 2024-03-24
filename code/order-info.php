@@ -169,7 +169,7 @@ if (!isset($_SESSION['user_id'])) {
                         <p class="item_quantity"> Quantity: <?= $orderItem["Quantity"] ?></p>
                         <p class="item_return_status"> Return status: <?= $returnStatus["Name"] ?></p>
                         <?php 
-                        if (($returnStatus["ReturnStatusID"] == 1) && ($orderStatus["StatusID"] == 2)) {
+                        if (($returnStatus["ReturnStatusID"] == 1) && ($orderStatus["StatusID"] == 4)) {
                             ?>
                             <button onclick="returnItem(this)" class="return-btn" value="remove" order-item-id="<?= $orderItem["OrderItemsID"] ?>">Return</button>
                             <?php
