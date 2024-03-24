@@ -119,7 +119,7 @@ if (!isset($_SESSION['user_id'])) {
         <input type="submit" value="Search" />
       </form>
 
-      <script src="basket/script.js"></script>
+      <script src="basket/scripts.js"></script>
 </html>
 
 <!--SEARCH PAGE END-->

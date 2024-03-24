@@ -290,5 +290,5 @@ if (!isset($_SESSION['user_id'])) {
                 ?>
             </div>
         </main>
-       <!--<script src="basket/script.js"></script>-->
+       <!--<script src="basket/scripts.js"></script>-->
     </body>

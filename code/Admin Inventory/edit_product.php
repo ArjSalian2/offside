@@ -134,6 +134,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_product'])) {
 
 </body>
 
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 
 </html>

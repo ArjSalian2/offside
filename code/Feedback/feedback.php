@@ -106,6 +106,6 @@
 
 
 </body>
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 
 </html>
