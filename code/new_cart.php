@@ -2,7 +2,7 @@
 session_start();
 
 // Connect to the database
-require_once('<user_files>/connection.php');
+require_once('user_files/connection.php');
 
 $isAdmin = false;
 

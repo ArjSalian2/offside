@@ -4,7 +4,7 @@
 session_start();
 
 // Connect to the database
-require_once('../<user_files>/connection.php');
+require_once('../user_files/connection.php');
 
 $isAdmin = false;
 
@@ -212,7 +212,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <> src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 </body>
 
